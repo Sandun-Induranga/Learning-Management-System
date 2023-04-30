@@ -3,7 +3,7 @@ import mainImage from "../../assets/main-page-image.jpg";
 const Home = () => {
   return (
     <>
-      <header className="w-full h-28 bg-black fixed"></header>
+      <header className="w-full h-28 fixed"></header>
       <main className="w-full h-screen">
         <section className="flex h-full">
           <div className="w-1/3 h-full flex flex-col gap-y-10 justify-center pl-20">
