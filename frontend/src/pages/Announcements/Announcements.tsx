@@ -5,7 +5,7 @@ const Announcements = () => {
   return (
     <>
       <Header />
-      <div className="mt-20 p-10">
+      <div className="mt-20 p-10 flex justify-center">
         <Announcement />
       </div>
     </>

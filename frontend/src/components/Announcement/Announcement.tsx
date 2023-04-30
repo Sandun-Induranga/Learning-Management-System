@@ -2,7 +2,7 @@ import userImage from "../../assets/avatar.jpg";
 import { Avatar } from "@mui/material";
 const Announcement = () => {
   return (
-    <main className="w-1/2 border p-10 rounded-lg flex flex-col gap-6">
+    <main className="md:w-1/2 border p-10 rounded-lg flex flex-col gap-6">
       <section className="flex gap-4">
         <Avatar className="border" src={userImage} />
         <div className="flex flex-col">
@@ -10,7 +10,7 @@ const Announcement = () => {
           <span className="text-xs text-gray-600">2023-04-30</span>
         </div>
       </section>
-      <section>
+      <section className="text-gray-700">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
         quibusdam labore libero vel sunt ut, hic quis magnam possimus voluptatem
         vero aliquam voluptatibus qui veritatis sint porro molestias saepe
