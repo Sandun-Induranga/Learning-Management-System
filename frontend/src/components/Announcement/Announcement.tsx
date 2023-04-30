@@ -1,5 +1,7 @@
+import { Send } from "@mui/icons-material";
 import userImage from "../../assets/avatar.jpg";
 import { Avatar } from "@mui/material";
+
 const Announcement = () => {
   return (
     <main className="md:w-1/2 border p-10 rounded-lg flex flex-col gap-6">
@@ -18,6 +20,14 @@ const Announcement = () => {
         Ratione perferendis eius, id minus autem commodi nesciunt nobis ex
         exercitationem velit minima dolores nostrum, quae mollitia vitae et
         corporis vero. Earum!
+      </section>
+      <section className="py-3 px-5 border rounded-lg flex justify-between">
+        <input
+          type="text"
+          placeholder="Add a Comment"
+          className="w-[92%] outline-none"
+        />
+        <Send className="text-sky-edited-500" />
       </section>
     </main>
   );
