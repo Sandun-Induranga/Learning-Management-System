@@ -1,5 +1,11 @@
+import Header from "../../../components/Header";
+
 const Announcement = () => {
-  return <div>Announcement</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 
 export default Announcement;
