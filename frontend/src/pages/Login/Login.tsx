@@ -1,3 +1,4 @@
+import { Person2, Password } from "@mui/icons-material";
 import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
 
 const Login = () => {
@@ -6,21 +7,35 @@ const Login = () => {
       <h1 className="text-4xl text-sky-edited-500 font-semibold">
         Online Learning
       </h1>
-      <form className="md:w-1/4 flex flex-col gap-y-5">
+      <form className="md:w-1/4 flex flex-col items-center gap-y-5">
         <TextField
           type="text"
-          label="Username"
+          label={
+            <span className="flex items-center gap-4">
+              <Person2 className="!text-4xl" />
+              Username
+            </span>
+          }
           fullWidth
           className="!border-sky-edited-500"
         ></TextField>
         <TextField
           type="password"
-          label="Username"
+          label={
+            <span className="flex items-center gap-4">
+              <Password className="!text-4xl" />
+              Password
+            </span>
+          }
           fullWidth
           className="!border-sky-edited-500"
         ></TextField>
-        <FormControlLabel control={<Checkbox />} label="Remember Me" />
-        <Button variant="contained" className="!bg-sky-edited-500">
+        <FormControlLabel
+          className="my-4"
+          control={<Checkbox />}
+          label="Remember Me"
+        />
+        <Button variant="contained" fullWidth className="!bg-sky-edited-500">
           Login
         </Button>
       </form>
