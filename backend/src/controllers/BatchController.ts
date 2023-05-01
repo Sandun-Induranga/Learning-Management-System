@@ -8,12 +8,12 @@ export default class BatchController {
   ): Promise<Response> => {
     try {
       let { batchName } = req.body;
-      let course = new Batch({ batchName: batchName });
-      let savedCourse = await course.save();
+      let batch = new Batch({ batchName: batchName });
+      let savedBatch = await batch.save();
 
       return res
         .status(200)
-        .json({ message: "Successfully Added..!", responseData: savedCourse });
+        .json({ message: "Successfully Added..!", responseData: savedBatch });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });
