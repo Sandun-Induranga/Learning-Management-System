@@ -8,7 +8,7 @@ export interface IStudent extends Document {
   contact: string;
   username: string;
   password: string;
-  courseId: string;
+  batchId: string;
 }
 
 const StudentSchema = new Schema(
@@ -41,7 +41,7 @@ const StudentSchema = new Schema(
       type: String,
       required: true,
     },
-    courseId: {
+    batchId: {
       type: String,
       required: true,
     },

@@ -62,4 +62,27 @@ export default class BatchController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
+  deleteBatch: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { id } = req.params;
+
+      let deletedBatch = await Batch.findByIdAndDelete(id);
+
+      if (!deletedBatch) throw new Error("Failed to Delete Batch");
+
+      return res.status(200).json({
+        message: "Successfully Deleted..!",
+        responseData: deletedBatch,
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
 }
