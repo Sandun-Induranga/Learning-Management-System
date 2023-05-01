@@ -21,6 +21,7 @@ export default class BatchController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
   getAllBatches: RequestHandler = async (
     req: Request,
     res: Response
@@ -31,6 +32,29 @@ export default class BatchController {
       return res
         .status(200)
         .json({ message: "Successfully Loaded..!", responseData: batches });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
+
+  updateBatch: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { id } = req.params;
+
+      let updatedBatch = await Batch.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+
+      return res.status(200).json({
+        message: "Successfully Updated..!",
+        responseData: updatedBatch,
+      });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });
