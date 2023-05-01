@@ -4,6 +4,7 @@ export interface IClassWork extends Document {
   type: string;
   dueDate: Date;
   submissionStatus: string;
+  files: string[];
   courseId: string;
 }
 
@@ -21,6 +22,10 @@ const ClassWorkSchema = new Schema(
       type: String,
       required: true,
     },
+    files: {
+      type: Array,
+      required: true,
+    },
     courseId: {
       type: String,
       required: true,
@@ -29,4 +34,4 @@ const ClassWorkSchema = new Schema(
   { timestamps: true }
 );
 
-export const ClassWork = model("ClassWork", ClassWorkSchema);
+export const ClassWork = model<IClassWork>("ClassWork", ClassWorkSchema);
