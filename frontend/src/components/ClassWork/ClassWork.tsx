@@ -34,7 +34,7 @@ const ClassWork = () => {
           <PictureAsPdf /> Document
         </a>
       </section>
-      <aside className="w-full border p-6 rounded-lg flex flex-col items-center">
+      <aside className="w-full border p-6 rounded-lg flex flex-col items-center gap-4">
         <p>Submit Your Work</p>
         <section className="w-40 h-40 border rounded-lg flex justify-center relative">
           <input
@@ -43,6 +43,9 @@ const ClassWork = () => {
           />
           <Add className="text-gray-700 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
         </section>
+        <button className="px-6 py-2 bg-sky-edited-500 text-white rounded-lg w-max">
+          Submit
+        </button>
       </aside>
     </main>
   );
