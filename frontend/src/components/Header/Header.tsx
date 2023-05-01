@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full h-20 fixed px-10 sm:px-20 flex justify-between items-center shadow top-0 z-50">
+      <header className="w-full h-20 fixed px-10 sm:px-20 flex justify-between items-center shadow top-0 z-50 bg-white">
         <img src={logo} className="w-20" alt="" />
         <nav className="sm:flex gap-10 text-gray-700 hidden">
           <NavLink to={"/announcement"}>Announcement</NavLink>
