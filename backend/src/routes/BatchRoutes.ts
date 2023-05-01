@@ -13,6 +13,7 @@ export default class CourseRoutes {
     this.router.post("/", this.batchController.saveBatch);
     this.router.get("/", this.batchController.getAllBatches);
     this.router.put("/:id", this.batchController.updateBatch);
+    this.router.delete("/:id", this.batchController.deleteBatch);
   };
 
   public getRouter = (): Router => {
