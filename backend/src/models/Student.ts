@@ -8,6 +8,7 @@ export interface IStudent extends Document {
   contact: string;
   username: string;
   password: string;
+  categoryId: string;
 }
 
 const StudentSchema = new Schema(
@@ -37,6 +38,10 @@ const StudentSchema = new Schema(
       required: true,
     },
     password: {
+      type: String,
+      required: true,
+    },
+    courseId: {
       type: String,
       required: true,
     },
