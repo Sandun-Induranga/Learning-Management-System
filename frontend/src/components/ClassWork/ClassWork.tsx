@@ -1,6 +1,4 @@
-import { Add, PictureAsPdf, Send } from "@mui/icons-material";
-import { Avatar, TextField } from "@mui/material";
-import userImage from "../../assets/avatar.jpg";
+import { Add, PictureAsPdf } from "@mui/icons-material";
 
 const ClassWork = () => {
   return (
