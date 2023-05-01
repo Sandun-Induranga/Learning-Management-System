@@ -1,4 +1,14 @@
-import { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
+
+interface IStudent extends Document {
+  studentName: string;
+  address: string;
+  dob: Date;
+  email: string;
+  contact: string;
+  username: string;
+  password: string;
+}
 
 const StudentSchema = new Schema({
   studentName: {
@@ -7,6 +17,10 @@ const StudentSchema = new Schema({
   },
   address: {
     type: String,
+    required: true,
+  },
+  dob: {
+    type: Date,
     required: true,
   },
   email: {
@@ -26,3 +40,5 @@ const StudentSchema = new Schema({
     required: true,
   },
 });
+
+export const Student = model<IStudent>("Student", StudentSchema);
