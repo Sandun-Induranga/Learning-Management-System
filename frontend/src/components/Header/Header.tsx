@@ -2,9 +2,12 @@ import { Avatar } from "@mui/material";
 import logo from "../../assets/ijse.png";
 import userImage from "../../assets/avatar.jpg";
 import { NavLink } from "react-router-dom";
-import { Menu } from "@mui/icons-material";
+import { Close, Menu } from "@mui/icons-material";
+import { useState } from "react";
 
 const Header = () => {
+  const [isOpen, setOpen] = useState<boolean>(false);
+
   return (
     <>
       <header className="w-full h-20 fixed px-10 sm:px-20 flex justify-between items-center shadow top-0">
@@ -18,7 +21,11 @@ const Header = () => {
           <Avatar className="border" src={userImage}></Avatar>
         </div>
         <div className="sm:hidden">
-          <Menu className="!text-gray-700" />
+          {!isOpen ? (
+            <Menu className="!text-gray-700" />
+          ) : (
+            <Close className="!text-gray-700" />
+          )}
         </div>
       </header>
     </>
