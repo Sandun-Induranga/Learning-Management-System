@@ -1,11 +1,18 @@
 import { Document, Schema, model } from "mongoose";
 
+type Answer = {
+  studentId: string;
+  file: string[];
+};
+
 export interface IClassWork extends Document {
   type: string;
   dueDate: Date;
   submissionStatus: string;
   files: string[];
   courseId: string;
+  moduleId: string;
+  answer: Answer[];
 }
 
 const ClassWorkSchema = new Schema(
@@ -28,6 +35,14 @@ const ClassWorkSchema = new Schema(
     },
     courseId: {
       type: String,
+      required: true,
+    },
+    moduleId: {
+      type: String,
+      required: true,
+    },
+    answer: {
+      type: Array,
       required: true,
     },
   },
