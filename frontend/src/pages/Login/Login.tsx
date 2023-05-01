@@ -1,5 +1,6 @@
 import { Person2, Password } from "@mui/icons-material";
 import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -35,9 +36,11 @@ const Login = () => {
           control={<Checkbox />}
           label="Remember Me"
         />
-        <Button variant="contained" fullWidth className="!bg-sky-edited-500">
-          Login
-        </Button>
+        <NavLink className="w-full" to={"/student"}>
+          <Button variant="contained" fullWidth className="!bg-sky-edited-500">
+            Login
+          </Button>
+        </NavLink>
       </form>
     </main>
   );

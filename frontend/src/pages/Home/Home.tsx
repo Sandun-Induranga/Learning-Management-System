@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import mainImage from "../../assets/main-page-image.jpg";
 
 const Home = () => {
@@ -16,9 +17,11 @@ const Home = () => {
               eveniet odit delectus maxime libero animi, doloribus doloremque?
               Eaque nisi fugiat quisquam?
             </p>
-            <button className="px-12 py-4 bg-sky-edited-500 text-lg text-white rounded-full w-max font-semibold">
-              LOGIN
-            </button>
+            <NavLink to={"/login"}>
+              <button className="px-12 py-4 bg-sky-edited-500 text-lg text-white rounded-full w-max font-semibold">
+                LOGIN
+              </button>
+            </NavLink>
           </div>
           <div className="w-2/3 h-full flex justify-center items-end">
             <img src={mainImage} className="w-11/12" alt="" />
