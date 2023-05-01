@@ -1,16 +1,16 @@
 import express, { Router } from "express";
-import CourseController from "../controllers/CourseController";
+import BatchController from "../controllers/BatchController";
 
 export default class CourseRoutes {
   private router: Router = express.Router();
-  private courseController: CourseController = new CourseController();
+  private batchController: BatchController = new BatchController();
 
   constructor() {
     this.configRoutes();
   }
 
   private configRoutes = (): void => {
-    this.router.post("/", this.courseController.saveCourse);
+    this.router.post("/", this.batchController.saveBatch);
   };
 
   public getRouter = (): Router => {
