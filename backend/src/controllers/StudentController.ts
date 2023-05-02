@@ -74,12 +74,33 @@ export default class StudentController {
         new: true,
       });
 
-      return res
-        .status(200)
-        .json({
-          message: "Successfully Updated..!",
-          responseData: updatedStudent,
-        });
+      return res.status(200).json({
+        message: "Successfully Updated..!",
+        responseData: updatedStudent,
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
+
+  deleteStudent: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { id } = req.params;
+
+      let deletedStudent = await Student.findByIdAndDelete(id);
+
+      if (!deletedStudent) throw new Error("Failed to Delete Student");
+
+      return res.status(200).json({
+        message: "Successfully Deleted..!",
+        responseData: deletedStudent,
+      });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });
