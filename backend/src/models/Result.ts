@@ -1,4 +1,11 @@
-import { Schema } from "mongoose";
+import { Document, Schema, model } from "mongoose";
+
+export interface IResult extends Document {
+  studentId: string;
+  classWorkId: string;
+  mark: number;
+  grade: string;
+}
 
 const ResultSchema = new Schema({
   studentId: {
@@ -18,3 +25,5 @@ const ResultSchema = new Schema({
     required: true,
   },
 });
+
+export const Result = model("Result", ResultSchema);
