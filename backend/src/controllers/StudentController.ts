@@ -63,6 +63,24 @@ export default class StudentController {
     }
   };
 
+  getAllStudents: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let students = await Student.find();
+
+      return res
+        .status(200)
+        .json({ message: "Successfully Loaded..!", responseData: students });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
+
   updateStudent: RequestHandler = async (
     req: Request,
     res: Response
