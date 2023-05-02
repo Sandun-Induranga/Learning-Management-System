@@ -1,6 +1,7 @@
 import { Request, RequestHandler, Response } from "express";
 import { Student } from "../models/Student";
 import { Batch } from "../models/Batch";
+import multer from "multer";
 
 export default class StudentController {
   saveStudent: RequestHandler = async (
@@ -22,6 +23,22 @@ export default class StudentController {
       }
 
       return res;
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
+
+  saveStudentImage: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      console.log(req);
+
+      return res.status(200).json({ message: "Uploaded" });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });
