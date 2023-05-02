@@ -1,7 +1,6 @@
 import { Request, RequestHandler, Response } from "express";
 import { Student } from "../models/Student";
 import { Batch } from "../models/Batch";
-import multer from "multer";
 
 export default class StudentController {
   saveStudent: RequestHandler = async (
@@ -36,9 +35,26 @@ export default class StudentController {
     res: Response
   ): Promise<Response> => {
     try {
-      console.log(req);
+      let { id } = req.params;
 
-      return res.status(200).json({ message: "Uploaded" });
+      let student = new Student(await Student.findById(id));
+      student.profilePhoto =
+        req.file?.destination
+          .replace(
+            "/media/sandu/0559F5C021740317/GDSE/Project_Zone/VS_Projects/Learning-Management-System/frontend/src",
+            "../.."
+          )
+          .toString() +
+        "/" +
+        req.file?.originalname.toString();
+
+      let updatedStudent = await Student.findByIdAndUpdate(id, student, {
+        new: true,
+      });
+
+      return res
+        .status(200)
+        .json({ message: "Uploaded", responseData: updatedStudent });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });

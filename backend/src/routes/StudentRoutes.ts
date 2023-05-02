@@ -13,19 +13,22 @@ export default class StudentRoutes {
   private configRoutes = (): void => {
     const storage = multer.diskStorage({
       destination: function (req, file, callback) {
-        callback(null, __dirname);
+        callback(
+          null,
+          "/media/sandu/0559F5C021740317/GDSE/Project_Zone/VS_Projects/Learning-Management-System/frontend/src/assets/uploads/student_images"
+        );
       },
-      // Sets file(s) to be saved in uploads folder in same directory
+
       filename: function (req, file, callback) {
         callback(null, file.originalname);
       },
-      // Sets saved filename(s) to be original filename(s)
     });
     const upload = multer({ storage: storage });
 
-    this.router.post(
-      "/image",
-      upload.array("files"),
+    this.router.post("/", this.studentController.saveStudent);
+    this.router.put(
+      "/image/:id",
+      upload.single("files"),
       this.studentController.saveStudentImage
     );
   };
