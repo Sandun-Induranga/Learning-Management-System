@@ -5,8 +5,22 @@ import express from "express";
 import db from "mongoose";
 import routes from "./routes";
 import { json, urlencoded } from "body-parser";
+import cors from "cors";
 
 const app = express();
+
+const allowedOrigins = ["http://localhost:5173"];
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.indexOf(origin!) !== -1 || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
