@@ -26,6 +26,9 @@ export default class StudentRoutes {
     const upload = multer({ storage: storage });
 
     this.router.post("/", this.studentController.saveStudent);
+    this.router.get("/", this.studentController.getAllStudents);
+    this.router.put("/", this.studentController.updateStudent);
+    this.router.delete("/", this.studentController.deleteStudent);
     this.router.put(
       "/image/:id",
       upload.single("files"),
