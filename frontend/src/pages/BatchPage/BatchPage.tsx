@@ -1,7 +1,7 @@
 import Batch from "../../components/Batch/Batch";
 import Header from "../../components/Header/Header";
 import api from "../../api";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { Button, TextField, ThemeProvider, createTheme } from "@mui/material";
 
@@ -21,6 +21,7 @@ const theme = createTheme({
 const BatchPage = () => {
   const [batchList, setBatchList] = useState<BatchDetail[]>([]);
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
+  const [batchName, setBatchName] = useState<string>("");
 
   useEffect(() => {
     getAllBatches();
@@ -39,6 +40,18 @@ const BatchPage = () => {
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
+  };
+
+  const newBatch = {
+    batchName: batchName,
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    if (name == "batchName") {
+      setBatchName(value);
+    }
   };
 
   return (
@@ -78,7 +91,16 @@ const BatchPage = () => {
             <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
               <form className="w-ful">
                 <ThemeProvider theme={theme}>
-                  <TextField label="Batch Name" fullWidth color="primary" />
+                  <TextField
+                    label="Batch Name"
+                    fullWidth
+                    color="primary"
+                    name="batchName"
+                    value={batchName}
+                    onChange={handleInputChange}
+                    placeholder="Enter Batch Name"
+                    required
+                  />
                   <Button variant="contained" fullWidth className="!mt-5">
                     Save Batch
                   </Button>
