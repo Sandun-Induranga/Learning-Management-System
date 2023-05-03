@@ -85,4 +85,23 @@ export default class BatchController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
+  findBatchById: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { id } = req.params;
+      let batch = await Batch.findById(id);
+
+      return res
+        .status(200)
+        .json({ message: "Successfully Loaded..!", responseData: batch });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
 }

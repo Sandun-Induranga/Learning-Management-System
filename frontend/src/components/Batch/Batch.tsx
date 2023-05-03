@@ -8,7 +8,7 @@ import {
   ThemeProvider,
   createTheme,
 } from "@mui/material";
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 
 type BatchDetail = {
   _id: string;
@@ -56,15 +56,39 @@ const Batch = (props: BatchDetail) => {
       });
   };
 
-  const updateBatch = (batchId: string) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let newBatch = {
+      batchName: batchName,
+    };
+
     api
-      .put(`batch/${batchId}`)
+      .put(`batch/${props._id}`, newBatch)
       .then((res) => {
-        props.updateBatchList(batchId);
+        props.updateBatchList(props._id);
       })
       .catch((error) => {
         console.log(error);
       });
+
+    handleClose();
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    if (name == "batchName") {
+      setBatchName(value);
+    }
+  };
+
+  const handleUpdate = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name } = event.target;
+
+    if (name == "batchName") {
+      setBatchName(value);
+    }
   };
 
   return (
@@ -106,7 +130,7 @@ const Batch = (props: BatchDetail) => {
                 fullWidth
                 className="!mt-5"
               >
-                Save Batch
+                Update Batch
               </Button>
             </ThemeProvider>
           </form>
