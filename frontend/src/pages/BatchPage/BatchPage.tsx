@@ -71,7 +71,11 @@ const BatchPage = () => {
   };
 
   const removeBatchFromList = (batchId: string) => {
-    setBatchList(batchList.filter((post) => post._id !== batchId));
+    setBatchList(batchList.filter((batch) => batch._id !== batchId));
+  };
+
+  const updateBatchList = () => {
+    getAllBatches();
   };
 
   return (
@@ -142,6 +146,7 @@ const BatchPage = () => {
               _id={batch._id}
               batchName={batch.batchName}
               removeBatchFromList={removeBatchFromList}
+              updateBatchList={updateBatchList}
             />
           ))}
         </main>
