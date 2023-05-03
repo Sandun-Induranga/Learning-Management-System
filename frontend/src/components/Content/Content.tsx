@@ -3,6 +3,7 @@ import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Announcements from "../../pages/Announcements";
 import ClassWorks from "../../pages/ClassWorks/ClassWorks";
+import BatchPage from "../../pages/BatchPage/BatchPage";
 
 const Content = () => {
   return (
@@ -12,6 +13,8 @@ const Content = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/student" element={<Announcements />}></Route>
         <Route path="/student/class-work" element={<ClassWorks />}></Route>
+
+        <Route path="/teacher/batch" element={<BatchPage />}></Route>
       </Routes>
     </>
   );
