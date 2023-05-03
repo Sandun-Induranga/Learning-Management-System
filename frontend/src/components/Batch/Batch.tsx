@@ -1,6 +1,13 @@
 import { Delete, Edit } from "@mui/icons-material";
 import api from "../../api";
-import { Box, Modal, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Modal,
+  TextField,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material";
 import React from "react";
 
 type BatchDetail = {
@@ -22,10 +29,19 @@ const style = {
   p: 4,
 };
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#007DFE",
+    },
+  },
+});
+
 const Batch = (props: BatchDetail) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [batchName, setBatchName] = useState<string>("");
 
   const deleteBatch = (batchId: string) => {
     api
@@ -72,12 +88,28 @@ const Batch = (props: BatchDetail) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          <form className="w-ful" onSubmit={handleSubmit}>
+            <ThemeProvider theme={theme}>
+              <TextField
+                label="Batch Name"
+                fullWidth
+                color="primary"
+                name="batchName"
+                value={batchName}
+                onChange={handleInputChange}
+                placeholder="Enter Batch Name"
+                required
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+                className="!mt-5"
+              >
+                Save Batch
+              </Button>
+            </ThemeProvider>
+          </form>
         </Box>
       </Modal>
     </div>
