@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import api from "../../api";
 import { useEffect, useState } from "react";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
-import { TextField, ThemeProvider, createTheme } from "@mui/material";
+import { Button, TextField, ThemeProvider, createTheme } from "@mui/material";
 
 type BatchDetail = {
   _id: string;
@@ -75,17 +75,20 @@ const BatchPage = () => {
                 <DoDisturbOn />
               </span>
             </section>
-            <section className="w-full h-32 border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 cursor-pointer p-10">
-              <form className="w-full">
+            <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
+              <form className="w-ful">
                 <ThemeProvider theme={theme}>
-                  <TextField fullWidth color="primary" />
+                  <TextField label="Batch Name" fullWidth color="primary" />
+                  <Button variant="contained" fullWidth className="!mt-5">
+                    Save Batch
+                  </Button>
                 </ThemeProvider>
               </form>
             </section>
           </>
         )}
 
-        <main className="grid sm:grid-cols-2 md:grid-cols-4 grid-cols-1 gap-4">
+        <main className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 grid-cols-1 gap-4">
           {batchList.map((batch) => (
             <Batch
               key={batch._id}
