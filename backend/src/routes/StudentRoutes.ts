@@ -15,7 +15,7 @@ export default class StudentRoutes {
       destination: function (req, file, callback) {
         callback(
           null,
-          "/media/sandu/0559F5C021740317/GDSE/Project_Zone/VS_Projects/Learning-Management-System/frontend/src/assets/uploads/student_images"
+          "/media/sandu/0559F5C021740317/GDSE/Project_Zone/VS_Projects/Learning-Management-System/frontend/public/uploads/student_images"
         );
       },
 

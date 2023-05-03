@@ -3,11 +3,20 @@ import Header from "../../components/Header/Header";
 import api from "../../api";
 import { useEffect, useState } from "react";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
+import { TextField, ThemeProvider, createTheme } from "@mui/material";
 
 type BatchDetail = {
   _id: string;
   batchName: string;
 };
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#007DFE",
+    },
+  },
+});
 
 const BatchPage = () => {
   const [batchList, setBatchList] = useState<BatchDetail[]>([]);
@@ -66,12 +75,12 @@ const BatchPage = () => {
                 <DoDisturbOn />
               </span>
             </section>
-            <section
-              className="w-full h-32 border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 cursor-pointer"
-              onClick={bindAddAndDiscartEvent}
-            >
-              <DoDisturbOn />
-              Discart Batch
+            <section className="w-full h-32 border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 cursor-pointer p-10">
+              <form className="w-full">
+                <ThemeProvider theme={theme}>
+                  <TextField fullWidth color="primary" />
+                </ThemeProvider>
+              </form>
             </section>
           </>
         )}

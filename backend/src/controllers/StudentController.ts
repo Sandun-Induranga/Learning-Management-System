@@ -39,13 +39,7 @@ export default class StudentController {
 
       let student = new Student(await Student.findById(id));
       student.profilePhoto =
-        req.file?.destination
-          .replace(
-            "/media/sandu/0559F5C021740317/GDSE/Project_Zone/VS_Projects/Learning-Management-System/frontend/src",
-            "../.."
-          )
-          .toString() +
-        "/" +
+        "../../../public/uploads/student_images/" +
         req.file?.originalname.toString();
 
       let updatedStudent = await Student.findByIdAndUpdate(id, student, {
