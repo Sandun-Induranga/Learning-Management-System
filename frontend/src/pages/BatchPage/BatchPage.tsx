@@ -42,16 +42,32 @@ const BatchPage = () => {
     setIsClickedAddButton(!isClickedAddButton);
   };
 
-  const newBatch = {
-    batchName: batchName,
-  };
-
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     if (name == "batchName") {
       setBatchName(value);
     }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let newBatch = {
+      batchName: batchName,
+    };
+
+    api
+      .post("batch", newBatch)
+      .then((res) => {
+        console.log(res);
+        let batches = batchList;
+        batches.push(res.data.responseData);
+        setBatchList(batches);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -89,7 +105,7 @@ const BatchPage = () => {
               </span>
             </section>
             <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-              <form className="w-ful">
+              <form className="w-ful" onSubmit={handleSubmit}>
                 <ThemeProvider theme={theme}>
                   <TextField
                     label="Batch Name"
@@ -101,7 +117,12 @@ const BatchPage = () => {
                     placeholder="Enter Batch Name"
                     required
                   />
-                  <Button variant="contained" fullWidth className="!mt-5">
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                    className="!mt-5"
+                  >
                     Save Batch
                   </Button>
                 </ThemeProvider>
