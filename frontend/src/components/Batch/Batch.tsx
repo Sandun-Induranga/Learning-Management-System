@@ -13,8 +13,7 @@ import React, { ChangeEvent, useState } from "react";
 type BatchDetail = {
   _id: string;
   batchName: string;
-  removeBatchFromList?: (batchId: string) => void;
-  updateBatchList: (batchId: string) => void;
+  updateBatchList: () => void;
 };
 
 const style = {
@@ -47,9 +46,7 @@ const Batch = (props: BatchDetail) => {
     api
       .delete(`batch/${batchId}`)
       .then((res) => {
-        if (props.removeBatchFromList) {
-          props.removeBatchFromList(batchId);
-        }
+        props.updateBatchList();
       })
       .catch((error) => {
         console.log(error);
@@ -66,7 +63,7 @@ const Batch = (props: BatchDetail) => {
     api
       .put(`batch/${props._id}`, newBatch)
       .then((res) => {
-        props.updateBatchList(props._id);
+        props.updateBatchList();
       })
       .catch((error) => {
         console.log(error);
@@ -83,12 +80,16 @@ const Batch = (props: BatchDetail) => {
     }
   };
 
-  const handleUpdate = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name } = event.target;
-
-    if (name == "batchName") {
-      setBatchName(value);
-    }
+  const editBatch = (event: React.MouseEvent<HTMLElement>) => {
+    handleOpen();
+    api
+      .put(`batch/${props._id}`)
+      .then((res) => {
+        setBatchName(res.data.responseData.batchName);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -98,7 +99,7 @@ const Batch = (props: BatchDetail) => {
         ID : {props._id}
       </span>
       <section className="flex gap-4">
-        <button className="text-lg" onClick={handleOpen}>
+        <button className="text-lg" onClick={editBatch}>
           <Edit className="!text-lg" />
         </button>
         <button className="text-lg" onClick={() => deleteBatch(props._id)}>
