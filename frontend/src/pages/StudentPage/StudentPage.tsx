@@ -1,18 +1,9 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Student from "../../components/Student/Student";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
-import {
-  Autocomplete,
-  Button,
-  Table,
-  TableCell,
-  TableHead,
-  TableRow,
-  TextField,
-  createTheme,
-} from "@mui/material";
+import { Autocomplete, Button, TextField, createTheme } from "@mui/material";
 import api from "../../api";
 
 const theme = createTheme({
@@ -67,6 +58,14 @@ const StudentPage = () => {
       });
   };
 
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    if (name == "studentName") {
+      setStudentName(value);
+    }
+  };
+
   return (
     <>
       <Header />
@@ -110,7 +109,7 @@ const StudentPage = () => {
                     color="primary"
                     name="studentName"
                     value={studentName}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
                   />
@@ -120,7 +119,7 @@ const StudentPage = () => {
                     color="primary"
                     name="address"
                     value={address}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
                   />
@@ -131,7 +130,7 @@ const StudentPage = () => {
                     color="primary"
                     name="batchName"
                     value={date}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     // placeholder="Enter Batch Name"
                     required
                   />
@@ -142,7 +141,7 @@ const StudentPage = () => {
                     color="primary"
                     name="batchName"
                     value={email}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
                   />
@@ -164,7 +163,7 @@ const StudentPage = () => {
                     color="primary"
                     name="batchName"
                     value={username}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
                   />
@@ -175,7 +174,7 @@ const StudentPage = () => {
                     color="primary"
                     name="batchName"
                     value={password}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
                   />
