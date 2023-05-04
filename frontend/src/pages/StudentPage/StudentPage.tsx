@@ -3,7 +3,16 @@ import Header from "../../components/Header";
 import Student from "../../components/Student/Student";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
-import { Autocomplete, Button, TextField, createTheme } from "@mui/material";
+import {
+  Autocomplete,
+  Button,
+  Table,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+  createTheme,
+} from "@mui/material";
 import api from "../../api";
 
 const theme = createTheme({
@@ -30,6 +39,8 @@ type StudentDetail = {
 const StudentPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
   const [studentList, setStudentList] = useState<StudentDetail[]>([]);
+  const [studentName, setStudentName] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
@@ -92,7 +103,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="studentName"
-                    // value={batchName}
+                    value={studentName}
                     // onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
@@ -102,7 +113,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="address"
-                    // value={batchName}
+                    value={address}
                     // onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
@@ -186,9 +197,9 @@ const StudentPage = () => {
         )}
 
         <main className="mt-10">
-          <table className="w-full">
-            <thead>
-              <tr>
+          <table className="w-full border p-5">
+            <thead className="bg-sky-edited-500 h-12 text-white">
+              <tr className="">
                 <th>Student Id</th>
                 <th>Student Name</th>
                 <th>Student Adress</th>

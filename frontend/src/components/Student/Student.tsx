@@ -13,7 +13,7 @@ type StudentDetail = {
 
 const Student = (props: StudentDetail) => {
   return (
-    <tr>
+    <tr className="h-12 cursor-pointer">
       <td>{props._id}</td>
       <td>{props.studentName}</td>
       <td>{props.address}</td>
