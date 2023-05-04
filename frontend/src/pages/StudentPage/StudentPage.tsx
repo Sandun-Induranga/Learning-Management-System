@@ -122,7 +122,6 @@ const StudentPage = () => {
               <p>Discart Student</p>
               <span>
                 <DoDisturbOn />
-                center
               </span>
             </section>
             <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
