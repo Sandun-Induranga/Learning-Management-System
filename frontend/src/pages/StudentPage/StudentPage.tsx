@@ -29,7 +29,7 @@ type StudentDetail = {
 
 const StudentPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
-  const [studentList, setStudentList] = useState<StudentDetail>();
+  const [studentList, setStudentList] = useState<StudentDetail[]>([]);
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
@@ -200,9 +200,9 @@ const StudentPage = () => {
               </tr>
             </thead>
             <tbody>
-              <Student />
-              <Student />
-              <Student />
+              {studentList.map((student) => (
+                <Student />
+              ))}
             </tbody>
           </table>
         </main>

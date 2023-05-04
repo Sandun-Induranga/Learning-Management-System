@@ -1,4 +1,17 @@
-const Student = () => {
+type StudentDetail = {
+  _id: string;
+  studentName: string;
+  address: string;
+  dob: Date;
+  email: string;
+  contact: string;
+  username: string;
+  password: string;
+  batchId: string;
+  profilePhoto: string;
+};
+
+const Student = (props: StudentDetail) => {
   return (
     <tr>
       <td>Student Id</td>
