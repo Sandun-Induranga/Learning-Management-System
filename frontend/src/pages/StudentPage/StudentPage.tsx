@@ -60,9 +60,37 @@ const StudentPage = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+    switch (name) {
+      case "studentName":
+        setStudentName(value);
+        break;
+      case "address":
+        setStudentName(value);
+        break;
+      case "dob":
+        setStudentName(value);
+        break;
+      case "email":
+        setStudentName(value);
+        break;
+      case "contact":
+        setStudentName(value);
+        break;
+      case "username":
+        setStudentName(value);
+        break;
+      case "password":
+        setStudentName(value);
+        break;
+      case "batchId":
+        setStudentName(value);
+        break;
+      case "profilePhoto":
+        setStudentName(value);
+        break;
 
-    if (name == "studentName") {
-      setStudentName(value);
+      default:
+        break;
     }
   };
 
