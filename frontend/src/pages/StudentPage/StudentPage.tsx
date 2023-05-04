@@ -128,6 +128,16 @@ const StudentPage = () => {
               <form className="w-ful space-y-5">
                 <ThemeProvider theme={theme}>
                   <TextField
+                    label="Student NIC"
+                    fullWidth
+                    color="primary"
+                    name="studentName"
+                    value={studentName}
+                    onChange={handleInputChange}
+                    placeholder="Enter Batch Name"
+                    required
+                  />
+                  <TextField
                     label="Student Name"
                     fullWidth
                     color="primary"
@@ -145,17 +155,6 @@ const StudentPage = () => {
                     value={address}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
-                    required
-                  />
-                  <TextField
-                    // label="Date Of Birth"
-                    type="date"
-                    fullWidth
-                    color="primary"
-                    name="dob"
-                    value={date}
-                    onChange={handleInputChange}
-                    // placeholder="Enter Batch Name"
                     required
                   />
                   <TextField
@@ -232,7 +231,7 @@ const StudentPage = () => {
               <tr className="">
                 <th>Student Id</th>
                 <th>Student Name</th>
-                <th>Student Adress</th>
+                <th>Student Address</th>
                 <th>Date Of Birth</th>
                 <th>Email</th>
                 <th>Contact</th>
