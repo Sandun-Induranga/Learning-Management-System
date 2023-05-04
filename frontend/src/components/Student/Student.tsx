@@ -13,15 +13,14 @@ type StudentDetail = {
 
 const Student = (props: StudentDetail) => {
   return (
-    <tr className="h-12 cursor-pointer">
+    <tr className="h-12 cursor-pointer text-center">
       <td>{props._id}</td>
       <td>{props.studentName}</td>
       <td>{props.address}</td>
-      <td>{props.dob}</td>
       <td>{props.email}</td>
       <td>{props.contact}</td>
       <td>{props.username}</td>
-      <td>{props.password}</td>
+      <td>{props.batchName}</td>
     </tr>
   );
 };

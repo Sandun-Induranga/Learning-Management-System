@@ -26,7 +26,7 @@ export default class StudentController {
         address: address,
         email: email,
         contact: contact,
-        batch: batchName,
+        batchName: batchName,
         profilePhoto: profilePhoto,
         username: username,
       });
@@ -118,7 +118,7 @@ export default class StudentController {
         address: address,
         email: email,
         contact: contact,
-        batch: batchName,
+        batchName: batchName,
         profilePhoto: profilePhoto,
         username: username,
       });

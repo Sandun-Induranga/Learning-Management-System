@@ -233,7 +233,6 @@ const StudentPage = () => {
                 <th>Student Id</th>
                 <th>Student Name</th>
                 <th>Student Address</th>
-                <th>Date Of Birth</th>
                 <th>Email</th>
                 <th>Contact</th>
                 <th>Username</th>
