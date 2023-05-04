@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Student from "../../components/Student/Student";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
 import { Autocomplete, Button, TextField, createTheme } from "@mui/material";
+import api from "../../api";
 
 const theme = createTheme({
   palette: {
@@ -13,11 +14,29 @@ const theme = createTheme({
   },
 });
 
+type StudentDetail = {};
+
 const StudentPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
+  const [studentList, setStudentList] = useState<StudentDetail>();
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
+  };
+
+  useEffect(() => {
+    getAllBatches();
+  });
+
+  const getAllBatches = () => {
+    api
+      .get("batch")
+      .then((res) => {
+        setStudentList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -78,14 +97,14 @@ const StudentPage = () => {
                     required
                   />
                   <TextField
-                    label="Date Of Birth"
+                    // label="Date Of Birth"
                     type="date"
                     fullWidth
                     color="primary"
                     name="batchName"
                     // value={batchName}
                     // onChange={handleInputChange}
-                    placeholder="Enter Batch Name"
+                    // placeholder="Enter Batch Name"
                     required
                   />
                   <TextField
@@ -170,16 +189,9 @@ const StudentPage = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Student Id</td>
-                <td>Student Name</td>
-                <td>Student Adress</td>
-                <td>Date Of Birth</td>
-                <td>Email</td>
-                <td>Contact</td>
-                <td>Username</td>
-                <td>Batch</td>
-              </tr>
+              <Student />
+              <Student />
+              <Student />
             </tbody>
           </table>
         </main>
