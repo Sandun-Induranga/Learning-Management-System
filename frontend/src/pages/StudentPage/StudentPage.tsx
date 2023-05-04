@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import Student from "../../components/Student/Student";
-import { AddCircle, DoDisturbOn } from "@mui/icons-material";
+import { Add, AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
 import { Autocomplete, Button, TextField, createTheme } from "@mui/material";
 import api from "../../api";
@@ -211,6 +211,13 @@ const StudentPage = () => {
                       <TextField {...params} label="Batch" />
                     )}
                   />
+                  <section className="w-40 h-40 border rounded-lg flex justify-center relative">
+                    <input
+                      className="opacity-0 cursor-pointer w-full h-full z-10"
+                      type="file"
+                    />
+                    <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
+                  </section>
                   <Button
                     type="submit"
                     variant="contained"
