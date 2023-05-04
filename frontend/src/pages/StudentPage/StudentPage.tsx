@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 import Student from "../../components/Student/Student";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
-import { Button, TextField, createTheme } from "@mui/material";
+import { Autocomplete, Button, TextField, createTheme } from "@mui/material";
 
 const theme = createTheme({
   palette: {
@@ -28,7 +28,7 @@ const StudentPage = () => {
           <>
             <section
               className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
-              //   onClick={bindAddAndDiscartEvent}
+              onClick={bindAddAndDiscartEvent}
             >
               <p>Add New Student</p>
               <span>
@@ -55,10 +55,31 @@ const StudentPage = () => {
               </span>
             </section>
             <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-              <form className="w-ful">
+              <form className="w-ful space-y-5">
                 <ThemeProvider theme={theme}>
                   <TextField
-                    label="Batch Name"
+                    label="Student Name"
+                    fullWidth
+                    color="primary"
+                    name="studentName"
+                    // value={batchName}
+                    // onChange={handleInputChange}
+                    placeholder="Enter Batch Name"
+                    required
+                  />
+                  <TextField
+                    label="Address"
+                    fullWidth
+                    color="primary"
+                    name="address"
+                    // value={batchName}
+                    // onChange={handleInputChange}
+                    placeholder="Enter Batch Name"
+                    required
+                  />
+                  <TextField
+                    label="Date Of Birth"
+                    type="date"
                     fullWidth
                     color="primary"
                     name="batchName"
@@ -66,6 +87,59 @@ const StudentPage = () => {
                     // onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
+                  />
+                  <TextField
+                    label="Email"
+                    type="email"
+                    fullWidth
+                    color="primary"
+                    name="batchName"
+                    // value={batchName}
+                    // onChange={handleInputChange}
+                    placeholder="Enter Batch Name"
+                    required
+                  />
+                  <TextField
+                    label="Contact"
+                    type="text"
+                    fullWidth
+                    color="primary"
+                    name="batchName"
+                    // value={batchName}
+                    // onChange={handleInputChange}
+                    placeholder="Enter Batch Name"
+                    required
+                  />
+                  <TextField
+                    label="Username"
+                    type="text"
+                    fullWidth
+                    color="primary"
+                    name="batchName"
+                    // value={batchName}
+                    // onChange={handleInputChange}
+                    placeholder="Enter Batch Name"
+                    required
+                  />
+                  <TextField
+                    label="Password"
+                    type="password"
+                    fullWidth
+                    color="primary"
+                    name="batchName"
+                    // value={batchName}
+                    // onChange={handleInputChange}
+                    placeholder="Enter Batch Name"
+                    required
+                  />
+                  <Autocomplete
+                    disablePortal
+                    id="batch"
+                    options={[1, 2, 3, 4, 5]}
+                    fullWidth
+                    renderInput={(params) => (
+                      <TextField {...params} label="Batch" />
+                    )}
                   />
                   <Button
                     type="submit"
@@ -81,7 +155,34 @@ const StudentPage = () => {
           </>
         )}
 
-        <main className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 grid-cols-1 gap-4"></main>
+        <main className="mt-10">
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th>Student Id</th>
+                <th>Student Name</th>
+                <th>Student Adress</th>
+                <th>Date Of Birth</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Username</th>
+                <th>Batch</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Student Id</td>
+                <td>Student Name</td>
+                <td>Student Adress</td>
+                <td>Date Of Birth</td>
+                <td>Email</td>
+                <td>Contact</td>
+                <td>Username</td>
+                <td>Batch</td>
+              </tr>
+            </tbody>
+          </table>
+        </main>
       </section>
     </>
   );
