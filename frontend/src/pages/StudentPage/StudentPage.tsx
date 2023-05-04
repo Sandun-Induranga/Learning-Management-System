@@ -18,7 +18,7 @@ type StudentDetail = {
   _id: string;
   studentName: string;
   address: string;
-  dob: Date;
+  dob: string;
   email: string;
   contact: string;
   username: string;
@@ -201,7 +201,18 @@ const StudentPage = () => {
             </thead>
             <tbody>
               {studentList.map((student) => (
-                <Student />
+                <Student
+                  _id={student._id}
+                  studentName={student.studentName}
+                  address={student.address}
+                  contact={student.contact}
+                  dob={student.dob}
+                  email={student.email}
+                  username={student.username}
+                  password={student.password}
+                  profilePhoto={student.profilePhoto}
+                  batchId={student.batchId}
+                />
               ))}
             </tbody>
           </table>
