@@ -1,12 +1,13 @@
 type StudentDetail = {
   _id: string;
+  nic: string;
   studentName: string;
   address: string;
   email: string;
   contact: string;
   username: string;
   password: string;
-  batchId: string;
+  batchName: string;
   profilePhoto: string;
 };
 

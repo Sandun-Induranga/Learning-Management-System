@@ -122,10 +122,11 @@ const StudentPage = () => {
               <p>Discart Student</p>
               <span>
                 <DoDisturbOn />
+                center
               </span>
             </section>
             <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-              <form className="w-ful space-y-5">
+              <form className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center">
                 <ThemeProvider theme={theme}>
                   <TextField
                     label="Student NIC"
@@ -243,6 +244,7 @@ const StudentPage = () => {
               {studentList.map((student) => (
                 <Student
                   _id={student._id}
+                  nic={student.nic}
                   studentName={student.studentName}
                   address={student.address}
                   contact={student.contact}
@@ -250,7 +252,7 @@ const StudentPage = () => {
                   username={student.username}
                   password={student.password}
                   profilePhoto={student.profilePhoto}
-                  batchId={student.batchName}
+                  batchName={student.batchName}
                 />
               ))}
             </tbody>
