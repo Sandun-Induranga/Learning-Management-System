@@ -15,6 +15,11 @@ const theme = createTheme({
 
 const StudentPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
+
+  const bindAddAndDiscartEvent = () => {
+    setIsClickedAddButton(!isClickedAddButton);
+  };
+
   return (
     <>
       <Header />
@@ -32,7 +37,7 @@ const StudentPage = () => {
             </section>
             <section
               className="w-full h-32 border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 cursor-pointer"
-              //   onClick={bindAddAndDiscartEvent}
+              onClick={bindAddAndDiscartEvent}
             >
               <AddCircle />
               Add New Student
@@ -42,7 +47,7 @@ const StudentPage = () => {
           <>
             <section
               className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
-              //   onClick={bindAddAndDiscartEvent}
+              onClick={bindAddAndDiscartEvent}
             >
               <p>Discart Student</p>
               <span>
