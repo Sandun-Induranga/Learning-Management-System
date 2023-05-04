@@ -41,6 +41,12 @@ const StudentPage = () => {
   const [studentList, setStudentList] = useState<StudentDetail[]>([]);
   const [studentName, setStudentName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
+  const [date, setDate] = useState<Date>(new Date());
+  const [email, setEmail] = useState<string>("");
+  const [contact, setContact] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [batch, setbatch] = useState<string>("");
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
@@ -124,7 +130,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="batchName"
-                    // value={batchName}
+                    value={date}
                     // onChange={handleInputChange}
                     // placeholder="Enter Batch Name"
                     required
@@ -135,7 +141,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="batchName"
-                    // value={batchName}
+                    value={email}
                     // onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
@@ -146,7 +152,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="batchName"
-                    // value={batchName}
+                    value={contact}
                     // onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
@@ -157,7 +163,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="batchName"
-                    // value={batchName}
+                    value={username}
                     // onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
@@ -168,7 +174,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="batchName"
-                    // value={batchName}
+                    value={password}
                     // onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
@@ -176,8 +182,9 @@ const StudentPage = () => {
                   <Autocomplete
                     disablePortal
                     id="batch"
-                    options={[1, 2, 3, 4, 5]}
+                    options={["1", "2", "3", "4", "5"]}
                     fullWidth
+                    value={batch}
                     renderInput={(params) => (
                       <TextField {...params} label="Batch" />
                     )}
