@@ -82,13 +82,9 @@ const StudentPage = () => {
       case "password":
         setStudentName(value);
         break;
-      case "batchId":
-        setStudentName(value);
-        break;
       case "profilePhoto":
         setStudentName(value);
         break;
-
       default:
         break;
     }
@@ -156,7 +152,7 @@ const StudentPage = () => {
                     type="date"
                     fullWidth
                     color="primary"
-                    name="batchName"
+                    name="dob"
                     value={date}
                     onChange={handleInputChange}
                     // placeholder="Enter Batch Name"
@@ -167,7 +163,7 @@ const StudentPage = () => {
                     type="email"
                     fullWidth
                     color="primary"
-                    name="batchName"
+                    name="email"
                     value={email}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
@@ -178,7 +174,7 @@ const StudentPage = () => {
                     type="text"
                     fullWidth
                     color="primary"
-                    name="batchName"
+                    name="contact"
                     value={contact}
                     // onChange={handleInputChange}
                     placeholder="Enter Batch Name"
@@ -189,7 +185,7 @@ const StudentPage = () => {
                     type="text"
                     fullWidth
                     color="primary"
-                    name="batchName"
+                    name="username"
                     value={username}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
@@ -200,7 +196,7 @@ const StudentPage = () => {
                     type="password"
                     fullWidth
                     color="primary"
-                    name="batchName"
+                    name="password"
                     value={password}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
