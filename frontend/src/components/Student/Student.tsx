@@ -2,7 +2,6 @@ type StudentDetail = {
   _id: string;
   studentName: string;
   address: string;
-  dob: string;
   email: string;
   contact: string;
   username: string;

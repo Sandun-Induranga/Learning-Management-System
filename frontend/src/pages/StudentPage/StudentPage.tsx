@@ -18,7 +18,6 @@ type StudentDetail = {
   _id: string;
   studentName: string;
   address: string;
-  dob: string;
   email: string;
   contact: string;
   username: string;
@@ -65,10 +64,10 @@ const StudentPage = () => {
         setStudentName(value);
         break;
       case "address":
-        setStudentName(value);
+        setAddress(value);
         break;
       case "dob":
-        setStudentName(value);
+        setDate(new Date(value));
         break;
       case "email":
         setStudentName(value);
@@ -247,7 +246,6 @@ const StudentPage = () => {
                   studentName={student.studentName}
                   address={student.address}
                   contact={student.contact}
-                  dob={student.dob}
                   email={student.email}
                   username={student.username}
                   password={student.password}
