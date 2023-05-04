@@ -67,23 +67,17 @@ const StudentPage = () => {
       case "address":
         setAddress(value);
         break;
-      case "dob":
-        setDate(new Date(value));
-        break;
       case "email":
-        setStudentName(value);
+        setEmail(value);
         break;
       case "contact":
-        setStudentName(value);
+        setContact(value);
         break;
       case "username":
-        setStudentName(value);
+        setUsername(value);
         break;
       case "password":
-        setStudentName(value);
-        break;
-      case "profilePhoto":
-        setStudentName(value);
+        setPassword(value);
         break;
       default:
         break;
