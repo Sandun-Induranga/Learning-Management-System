@@ -8,6 +8,7 @@ export interface IStudent extends Document {
   contact: string;
   batch: string;
   profilePhoto: string;
+  username: string;
 }
 
 const StudentSchema = new Schema(
@@ -37,6 +38,10 @@ const StudentSchema = new Schema(
       required: true,
     },
     profilePhoto: {
+      type: String,
+      required: true,
+    },
+    username: {
       type: String,
       required: true,
     },

@@ -1,6 +1,5 @@
 import { Request, RequestHandler, Response } from "express";
 import { Student } from "../models/Student";
-import { Batch } from "../models/Batch";
 import { User } from "../models/User";
 
 export default class StudentController {
@@ -29,12 +28,18 @@ export default class StudentController {
         contact: contact,
         batch: batchName,
         profilePhoto: profilePhoto,
+        username: username,
       });
 
-      let user = new User({ username: username, password: password });
+      let user = new User({
+        username: username,
+        password: password,
+        role: "Student",
+      });
 
-      let savedStudent = await student.save();
-      let savedUser = await user.save();
+      await student.save();
+      await user.save();
+
       return res.status(200).json({ message: "Successfully Saved..!" });
     } catch (error: unknown) {
       if (error instanceof Error)
@@ -96,9 +101,40 @@ export default class StudentController {
     try {
       let { id } = req.params;
 
-      let updatedStudent = await Student.findByIdAndUpdate(id, req.body, {
+      let {
+        nic,
+        studentName,
+        address,
+        email,
+        contact,
+        batchName,
+        profilePhoto,
+        username,
+        password,
+      } = req.body;
+
+      let student = new Student({
+        nic: nic,
+        studentName: studentName,
+        address: address,
+        email: email,
+        contact: contact,
+        batch: batchName,
+        profilePhoto: profilePhoto,
+        username: username,
+      });
+
+      let user = User.findOne({ username: username });
+
+      let updatedStudent = await Student.findByIdAndUpdate(id, student, {
         new: true,
       });
+
+      if (user) {
+        await User.findOneAndUpdate(user, {
+          new: true,
+        });
+      }
 
       return res.status(200).json({
         message: "Successfully Updated..!",
@@ -117,9 +153,10 @@ export default class StudentController {
     res: Response
   ): Promise<Response> => {
     try {
-      let { id } = req.params;
+      let { id, username } = req.params;
 
       let deletedStudent = await Student.findByIdAndDelete(id);
+      await User.findOneAndDelete({ username: username });
 
       if (!deletedStudent) throw new Error("Failed to Delete Student");
 

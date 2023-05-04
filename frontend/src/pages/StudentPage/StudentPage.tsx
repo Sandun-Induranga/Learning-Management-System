@@ -16,13 +16,14 @@ const theme = createTheme({
 
 type StudentDetail = {
   _id: string;
+  nic: string;
   studentName: string;
   address: string;
   email: string;
   contact: string;
   username: string;
   password: string;
-  batchId: string;
+  batchName: string;
   profilePhoto: string;
 };
 
@@ -250,7 +251,7 @@ const StudentPage = () => {
                   username={student.username}
                   password={student.password}
                   profilePhoto={student.profilePhoto}
-                  batchId={student.batchId}
+                  batchId={student.batchName}
                 />
               ))}
             </tbody>
