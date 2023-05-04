@@ -21,6 +21,7 @@ const Header = () => {
           <NavLink to={"/student/class-work"}>Class Works</NavLink>
           <NavLink to={"/teacher/batch"}>Batches</NavLink>
           <NavLink to={"/student/members"}>Members</NavLink>
+          <NavLink to={"/teacher/students"}>Students</NavLink>
         </nav>
         <div className="hidden sm:inline-block">
           <Avatar className="border" src={userImage}></Avatar>
@@ -35,7 +36,8 @@ const Header = () => {
                 <NavLink to={"/announcement"}>Announcement</NavLink>
                 <NavLink to={"/classWork"}>Class Works</NavLink>
                 <NavLink to={"/announcement"}>Members</NavLink>
-                <NavLink to={"/batch"}>Batches</NavLink>
+                <NavLink to={"/teacher/batch"}>Batches</NavLink>
+                <NavLink to={"/teacher/students"}>Students</NavLink>
                 <Avatar className="border" src={userImage}></Avatar>
               </nav>
             </>

@@ -4,6 +4,7 @@ import Login from "../../pages/Login";
 import Announcements from "../../pages/Announcements";
 import ClassWorks from "../../pages/ClassWorks/ClassWorks";
 import BatchPage from "../../pages/BatchPage/BatchPage";
+import StudentPage from "../../pages/StudentPage/StudentPage";
 
 const Content = () => {
   return (
@@ -15,6 +16,7 @@ const Content = () => {
         <Route path="/student/class-work" element={<ClassWorks />}></Route>
 
         <Route path="/teacher/batch" element={<BatchPage />}></Route>
+        <Route path="/teacher/students" element={<StudentPage />}></Route>
       </Routes>
     </>
   );
