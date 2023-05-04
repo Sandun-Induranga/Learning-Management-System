@@ -14,7 +14,18 @@ const theme = createTheme({
   },
 });
 
-type StudentDetail = {};
+type StudentDetail = {
+  _id: string;
+  studentName: string;
+  address: string;
+  dob: Date;
+  email: string;
+  contact: string;
+  username: string;
+  password: string;
+  batchId: string;
+  profilePhoto: string;
+};
 
 const StudentPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
@@ -30,7 +41,7 @@ const StudentPage = () => {
 
   const getAllBatches = () => {
     api
-      .get("batch")
+      .get("student")
       .then((res) => {
         setStudentList(res.data.responseData);
       })
