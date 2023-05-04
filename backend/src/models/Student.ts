@@ -1,29 +1,27 @@
 import { Document, Schema, model } from "mongoose";
 
 export interface IStudent extends Document {
+  nic: string;
   studentName: string;
   address: string;
-  dob: Date;
   email: string;
   contact: string;
-  username: string;
-  password: string;
-  batchId: string;
+  batch: string;
   profilePhoto: string;
 }
 
 const StudentSchema = new Schema(
   {
+    nic: {
+      type: String,
+      required: true,
+    },
     studentName: {
       type: String,
       required: true,
     },
     address: {
       type: String,
-      required: true,
-    },
-    dob: {
-      type: Date,
       required: true,
     },
     email: {
@@ -34,15 +32,7 @@ const StudentSchema = new Schema(
       type: String,
       required: true,
     },
-    username: {
-      type: String,
-      required: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
-    batchId: {
+    batchName: {
       type: String,
       required: true,
     },

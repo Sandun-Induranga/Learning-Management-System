@@ -1,6 +1,7 @@
 import { Request, RequestHandler, Response } from "express";
 import { Student } from "../models/Student";
 import { Batch } from "../models/Batch";
+import { User } from "../models/User";
 
 export default class StudentController {
   saveStudent: RequestHandler = async (
@@ -8,20 +9,33 @@ export default class StudentController {
     res: Response
   ): Promise<Response> => {
     try {
-      let { batchName } = req.body;
-      let batch = await Batch.findOne({ batchName: batchName });
-      let student = new Student(req.body);
+      let {
+        nic,
+        studentName,
+        address,
+        email,
+        contact,
+        batchName,
+        profilePhoto,
+        username,
+        password,
+      } = req.body;
 
-      if (batch) {
-        student.batchId = batch._id.toString();
-        let savedStudent = await student.save();
-        return res.status(200).json({
-          message: "Successfully Added..!",
-          responseData: savedStudent,
-        });
-      }
+      let student = new Student({
+        nic: nic,
+        studentName: studentName,
+        address: address,
+        email: email,
+        contact: contact,
+        batch: batchName,
+        profilePhoto: profilePhoto,
+      });
 
-      return res;
+      let user = new User({ username: username, password: password });
+
+      let savedStudent = await student.save();
+      let savedUser = await user.save();
+      return res.status(200).json({ message: "Successfully Saved..!" });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });
