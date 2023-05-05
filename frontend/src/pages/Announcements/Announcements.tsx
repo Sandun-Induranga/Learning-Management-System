@@ -1,7 +1,19 @@
 import Header from "../../components/Header";
 import Announcement from "../../components/Announcement/Announcement";
+import api from "axios";
 
 const Announcements = () => {
+  const getAllAnnouncements = () => {
+    api
+      .get("announcement")
+      .then((res) => {
+        console.log(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <Header />
