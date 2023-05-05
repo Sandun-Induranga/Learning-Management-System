@@ -7,12 +7,24 @@ import { ChangeEvent, useState } from "react";
 const Login = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [role, setRole] = useState<string>("");
 
-  const getUser = () => {
+  const userLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let loginDetail = {
+      username: username,
+      password: password,
+    };
+
     api
-      .post("user")
-      .then((res) => {})
-      .catch((error) => {});
+      .post("user", loginDetail)
+      .then((res) => {
+        setRole(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +47,10 @@ const Login = () => {
       <h1 className="text-4xl text-sky-edited-500 font-semibold">
         Online Learning
       </h1>
-      <form className="md:w-1/4 flex flex-col items-center gap-y-5">
+      <form
+        className="md:w-1/4 flex flex-col items-center gap-y-5"
+        onSubmit={userLogin}
+      >
         <TextField
           type="text"
           label={
@@ -69,7 +84,10 @@ const Login = () => {
           control={<Checkbox />}
           label="Remember Me"
         />
-        <NavLink className="w-full" to={"/student"}>
+        <NavLink
+          className="w-full"
+          to={role == "Student" ? "/student" : "/Teacher"}
+        >
           <Button variant="contained" fullWidth className="!bg-sky-edited-500">
             Login
           </Button>
