@@ -1,6 +1,14 @@
 import { Person2, Password } from "@mui/icons-material";
-import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  TextField,
+} from "@mui/material";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import api from "../../api";
 import { ChangeEvent, useState } from "react";
 
@@ -8,6 +16,7 @@ const Login = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [role, setRole] = useState<string>("");
+  const navigate = useNavigate();
 
   const userLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -15,12 +24,24 @@ const Login = () => {
     let loginDetail = {
       username: username,
       password: password,
+      role: role,
     };
 
     api
       .post("user", loginDetail)
       .then((res) => {
         setRole(res.data.responseData);
+
+        switch (res.data.responseData) {
+          case "Student":
+            navigate("/student", { replace: true });
+            break;
+          case "Teacher":
+            window.location.href = "http://localhost:5173/teacher";
+            break;
+          default:
+            break;
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -40,6 +61,10 @@ const Login = () => {
       default:
         break;
     }
+  };
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setRole(event.target.value);
   };
 
   return (
@@ -84,14 +109,18 @@ const Login = () => {
           control={<Checkbox />}
           label="Remember Me"
         />
-        <NavLink
-          className="w-full"
-          to={role == "Student" ? "/student" : "/Teacher"}
+        <Select value={role} onChange={handleChange}>
+          <MenuItem value={"Student"}>Student</MenuItem>
+          <MenuItem value="Teacher">Teacher</MenuItem>
+        </Select>
+        <Button
+          type="submit"
+          variant="contained"
+          fullWidth
+          className="!bg-sky-edited-500"
         >
-          <Button variant="contained" fullWidth className="!bg-sky-edited-500">
-            Login
-          </Button>
-        </NavLink>
+          Login
+        </Button>
       </form>
     </main>
   );
