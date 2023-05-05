@@ -1,8 +1,13 @@
 import Header from "../../components/Header";
 import Announcement from "../../components/Announcement/Announcement";
-import api from "axios";
+import api from "../../api";
+import { useEffect } from "react";
 
 const Announcements = () => {
+  useEffect(() => {
+    getAllAnnouncements();
+  });
+
   const getAllAnnouncements = () => {
     api
       .get("announcement")
