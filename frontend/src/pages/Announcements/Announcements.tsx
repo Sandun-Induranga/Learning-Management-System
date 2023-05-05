@@ -1,9 +1,25 @@
 import Header from "../../components/Header";
 import Announcement from "../../components/Announcement/Announcement";
 import api from "../../api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
+type Comment = {
+  studentName: string;
+  comment: string;
+};
+
+type AnnouncementDetail = {
+  teacherName: string;
+  description: string;
+  createdAt: string;
+  comments: Comment[];
+};
 
 const Announcements = () => {
+  const [announcementList, setAnnouncementList] = useState<
+    AnnouncementDetail[]
+  >([]);
+
   useEffect(() => {
     getAllAnnouncements();
   });
@@ -12,7 +28,7 @@ const Announcements = () => {
     api
       .get("announcement")
       .then((res) => {
-        console.log(res.data.responseData);
+        setAnnouncementList(res.data.responseData);
       })
       .catch((error) => {
         console.log(error);
@@ -23,33 +39,14 @@ const Announcements = () => {
     <>
       <Header />
       <div className="mt-20 p-10 flex flex-col items-center justify-center gap-4">
-        <Announcement
-          teacherName="Teacher 1"
-          description="This is an Announcement"
-          comments={[
-            { studentName: "Ramal", comment: "This is a comment" },
-            { studentName: "Ramal", comment: "This is a comment" },
-          ]}
-          createdAt="2023-05-05"
-        />
-        <Announcement
-          teacherName="Teacher 1"
-          description="This is an Announcement"
-          comments={[
-            { studentName: "Ramal", comment: "This is a comment" },
-            { studentName: "Ramal", comment: "This is a comment" },
-          ]}
-          createdAt="2023-05-05"
-        />
-        <Announcement
-          teacherName="Teacher 1"
-          description="This is an Announcement"
-          comments={[
-            { studentName: "Ramal", comment: "This is a comment" },
-            { studentName: "Ramal", comment: "This is a comment" },
-          ]}
-          createdAt="2023-05-05"
-        />
+        {announcementList.map((announcement) => (
+          <Announcement
+            teacherName={announcement.teacherName}
+            description={announcement.description}
+            comments={announcement.comments}
+            createdAt={announcement.createdAt}
+          />
+        ))}
       </div>
     </>
   );
