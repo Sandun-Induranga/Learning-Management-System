@@ -15,7 +15,7 @@ const Login = () => {
       .catch((error) => {});
   };
 
-  const handleInputChange = (event: ChangeEvent<HTMLFormElement>) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     switch (name) {
@@ -45,7 +45,9 @@ const Login = () => {
             </span>
           }
           fullWidth
+          name="username"
           value={username}
+          onChange={handleInputChange}
           className="!border-sky-edited-500"
         ></TextField>
         <TextField
@@ -57,7 +59,9 @@ const Login = () => {
             </span>
           }
           fullWidth
+          name="password"
           value={password}
+          onChange={handleInputChange}
           className="!border-sky-edited-500"
         ></TextField>
         <FormControlLabel
