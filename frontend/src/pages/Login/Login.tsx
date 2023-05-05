@@ -2,13 +2,32 @@ import { Person2, Password } from "@mui/icons-material";
 import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import api from "../../api";
+import { ChangeEvent, useState } from "react";
 
 const Login = () => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
   const getUser = () => {
     api
-      .get("user/")
+      .post("user")
       .then((res) => {})
       .catch((error) => {});
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLFormElement>) => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case "username":
+        setUsername(value);
+        break;
+      case "password":
+        setPassword(value);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -26,6 +45,7 @@ const Login = () => {
             </span>
           }
           fullWidth
+          value={username}
           className="!border-sky-edited-500"
         ></TextField>
         <TextField
@@ -37,6 +57,7 @@ const Login = () => {
             </span>
           }
           fullWidth
+          value={password}
           className="!border-sky-edited-500"
         ></TextField>
         <FormControlLabel
