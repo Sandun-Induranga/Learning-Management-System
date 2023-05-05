@@ -33,6 +33,12 @@ const Announcement = (props: AnnouncementProps) => {
         />
         <Send className="text-sky-edited-500" />
       </section>
+      {props.comments.map((comment) => (
+        <section className="text-gray-700">
+          <h1>{comment.studentName}</h1>
+          <h1 className="text-sm ml-4">{comment.comment}</h1>
+        </section>
+      ))}
     </main>
   );
 };
