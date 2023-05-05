@@ -93,17 +93,23 @@ const Batch = (props: BatchDetail) => {
   };
 
   return (
-    <div className="border rounded-lg p-4 flex flex-col items-center text-2xl text-sky-edited-500 font-semibold cursor-pointer">
+    <div className="border rounded-lg p-4 flex flex-col items-center text-2xl text-sky-edited-500 font-semibold cursor-pointer gap-y-4">
       {props.batchName}
       <span className="text-xs text-gray-700 font-normal">
         ID : {props._id}
       </span>
       <section className="flex gap-4">
-        <button className="text-lg" onClick={editBatch}>
-          <Edit className="!text-lg" />
+        <button
+          className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
+          onClick={editBatch}
+        >
+          <Edit className="!text-sm text-white" />
         </button>
-        <button className="text-lg" onClick={() => deleteBatch(props._id)}>
-          <Delete className="!text-lg" />
+        <button
+          className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
+          onClick={() => deleteBatch(props._id)}
+        >
+          <Delete className="!text-sm text-white" />
         </button>
       </section>
       <Modal

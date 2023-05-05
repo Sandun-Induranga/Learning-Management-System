@@ -32,12 +32,11 @@ const StudentPage = () => {
   const [studentList, setStudentList] = useState<StudentDetail[]>([]);
   const [studentName, setStudentName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
-  const [date, setDate] = useState<Date>(new Date());
   const [email, setEmail] = useState<string>("");
   const [contact, setContact] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [batch, setbatch] = useState<string>("");
+  const [batchName, setBatchName] = useState<string>("");
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
@@ -60,9 +59,12 @@ const StudentPage = () => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+    console.log(event.target);
+
     switch (name) {
       case "studentName":
         setStudentName(value);
+        console.log(event.target);
         break;
       case "address":
         setAddress(value);
@@ -195,16 +197,18 @@ const StudentPage = () => {
                     placeholder="Enter Batch Name"
                     required
                   />
-                  <Autocomplete
-                    disablePortal
-                    id="batch"
-                    options={["1", "2", "3", "4", "5"]}
-                    fullWidth
-                    value={batch}
-                    renderInput={(params) => (
-                      <TextField {...params} label="Batch" />
-                    )}
-                  />
+                  <select name="batchName" id="">
+                    <Autocomplete
+                      disablePortal
+                      id="batchName"
+                      options={["1", "2", "3", "4", "5"]}
+                      fullWidth
+                      value={batchName}
+                      renderInput={(params) => (
+                        <TextField {...params} label="Batch" />
+                      )}
+                    />
+                  </select>
                   <section className="w-40 h-40 border rounded-lg flex justify-center relative">
                     <input
                       className="opacity-0 cursor-pointer w-full h-full z-10"
