@@ -2,7 +2,7 @@ import { RequestHandler, Request, Response } from "express";
 import { User } from "../models/User";
 
 export default class UserController {
-  saveAnnouncement: RequestHandler = async (
+  userLogin: RequestHandler = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
