@@ -6,20 +6,28 @@ type Comment = {
 };
 
 interface IAnnouncement extends Document {
+  teacherName: string;
   description: string;
   comments: Comment;
 }
 
-const AnnouncementSchema = new Schema({
-  description: {
-    type: String,
-    required: true,
+const AnnouncementSchema = new Schema(
+  {
+    teacherName: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    comments: {
+      type: Array,
+      required: true,
+    },
   },
-  comments: {
-    type: Array,
-    required: true,
-  },
-});
+  { timestamps: true }
+);
 
 export const Announcement = model<IAnnouncement>(
   "Announcement",

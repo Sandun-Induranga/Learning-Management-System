@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import AnnoucementController from "../controllers/AnnouncementController";
 
-export default class CourseRoutes {
+export default class AnnoucementRoutes {
   private router: Router = express.Router();
   private announcementController: AnnoucementController =
     new AnnoucementController();
