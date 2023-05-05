@@ -8,6 +8,7 @@ type Comment = {
 interface IAnnouncement extends Document {
   teacherName: string;
   description: string;
+  batch: string;
   comments: Comment;
 }
 
@@ -18,6 +19,10 @@ const AnnouncementSchema = new Schema(
       required: true,
     },
     description: {
+      type: String,
+      required: true,
+    },
+    batch: {
       type: String,
       required: true,
     },
