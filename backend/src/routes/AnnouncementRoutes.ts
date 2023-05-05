@@ -12,6 +12,7 @@ export default class AnnoucementRoutes {
 
   private configRoutes = (): void => {
     this.router.post("/", this.announcementController.saveAnnouncement);
+    this.router.get("/", this.announcementController.getAllAnnouncements);
   };
 
   public getRouter = (): Router => {
