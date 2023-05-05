@@ -1,8 +1,16 @@
 import { Person2, Password } from "@mui/icons-material";
 import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import api from "../../api";
 
 const Login = () => {
+  const getUser = () => {
+    api
+      .get("user/")
+      .then((res) => {})
+      .catch((error) => {});
+  };
+
   return (
     <main className="flex flex-col justify-center items-center gap-10 h-screen">
       <h1 className="text-4xl text-sky-edited-500 font-semibold">
