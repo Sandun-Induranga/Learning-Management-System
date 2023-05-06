@@ -1,11 +1,5 @@
 import { Person2, Password } from "@mui/icons-material";
-import {
-  Button,
-  Checkbox,
-  FormControlLabel,
-  SelectChangeEvent,
-  TextField,
-} from "@mui/material";
+import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import api from "../../api";
 import { ChangeEvent, useState } from "react";
@@ -59,10 +53,6 @@ const Login = () => {
       default:
         break;
     }
-  };
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setRole(event.target.value);
   };
 
   return (

@@ -4,7 +4,6 @@ import Student from "../../components/Student/Student";
 import { Add, AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
 import {
-  Autocomplete,
   Button,
   MenuItem,
   Select,
@@ -38,6 +37,7 @@ type StudentDetail = {
 const StudentPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
   const [studentList, setStudentList] = useState<StudentDetail[]>([]);
+  const [nic, setNic] = useState<string>("");
   const [studentName, setStudentName] = useState<string>("");
   const [address, setAddress] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -45,6 +45,7 @@ const StudentPage = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [batchName, setBatchName] = useState<string>("");
+  const [profilePhoto, setProfilePhoto] = useState<string>(" ");
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
@@ -70,9 +71,11 @@ const StudentPage = () => {
     console.log(event.target);
 
     switch (name) {
+      case "nic":
+        setNic(value);
+        break;
       case "studentName":
         setStudentName(value);
-        console.log(event.target);
         break;
       case "address":
         setAddress(value);
@@ -97,6 +100,29 @@ const StudentPage = () => {
 
   const handleComboBox = (event: SelectChangeEvent<string>) => {
     setBatchName(event.target.value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let newStudent = {
+      nic: nic,
+      studentName: studentName,
+      address: address,
+      email: email,
+      contact: contact,
+      username: username,
+      password: password,
+      batchName: batchName,
+      profilePhoto: profilePhoto,
+    };
+
+    api
+      .post("student", newStudent)
+      .then((res) => {})
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -140,8 +166,8 @@ const StudentPage = () => {
                     label="Student NIC"
                     fullWidth
                     color="primary"
-                    name="studentName"
-                    value={studentName}
+                    name="nic"
+                    value={nic}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
@@ -184,7 +210,7 @@ const StudentPage = () => {
                     color="primary"
                     name="contact"
                     value={contact}
-                    // onChange={handleInputChange}
+                    onChange={handleInputChange}
                     placeholder="Enter Batch Name"
                     required
                   />
@@ -223,6 +249,7 @@ const StudentPage = () => {
                     <input
                       className="opacity-0 cursor-pointer w-full h-full z-10"
                       type="file"
+                      name="file"
                     />
                     <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
                   </section>
