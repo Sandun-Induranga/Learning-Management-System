@@ -137,11 +137,11 @@ const StudentPage = () => {
       .post("student", newStudent)
       .then((res) => {
         let id = res.data.responseData._id;
-        let photo = {
-          profilePhoto: profilePhoto,
-        };
+
+        let formData = new FormData();
+        formData.append("files", profilePhoto);
         api
-          .put(`student/${id}`, photo)
+          .put(`student/image/${id}`, formData)
           .then((res) => {
             getAllStudents();
             console.log(res);
@@ -287,7 +287,7 @@ const StudentPage = () => {
                     <input
                       className="opacity-0 cursor-pointer w-full h-full z-10"
                       type="file"
-                      name="file"
+                      name="files"
                       id="file"
                       onChange={handleFileSelect}
                     />

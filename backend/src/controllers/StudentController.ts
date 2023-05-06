@@ -37,10 +37,12 @@ export default class StudentController {
         role: "Student",
       });
 
-      await student.save();
+      let savedStudent = await student.save();
       await user.save();
 
-      return res.status(200).json({ message: "Successfully Saved..!" });
+      return res
+        .status(200)
+        .json({ message: "Successfully Saved..!", responseData: savedStudent });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });
