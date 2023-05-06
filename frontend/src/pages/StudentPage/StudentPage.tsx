@@ -55,7 +55,7 @@ const StudentPage = () => {
   useEffect(() => {
     getAllStudents();
     getAllBatches();
-  });
+  }, []);
 
   const getAllStudents = () => {
     api
@@ -72,7 +72,9 @@ const StudentPage = () => {
     api
       .get("batch")
       .then((res) => {
-        setBatchList(res.data.responseData);
+        setBatchList(
+          res.data.responseData.map((batch: any) => batch.batchName)
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -112,6 +114,7 @@ const StudentPage = () => {
   };
 
   const handleComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
     setBatchName(event.target.value);
   };
 
@@ -175,7 +178,10 @@ const StudentPage = () => {
               </span>
             </section>
             <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-              <form className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center">
+              <form
+                className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center"
+                onSubmit={handleSubmit}
+              >
                 <ThemeProvider theme={theme}>
                   <TextField
                     label="Student NIC"
