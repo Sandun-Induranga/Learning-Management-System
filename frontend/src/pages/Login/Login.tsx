@@ -3,12 +3,10 @@ import {
   Button,
   Checkbox,
   FormControlLabel,
-  MenuItem,
-  Select,
   SelectChangeEvent,
   TextField,
 } from "@mui/material";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import api from "../../api";
 import { ChangeEvent, useState } from "react";
 
@@ -34,7 +32,7 @@ const Login = () => {
 
         switch (res.data.responseData) {
           case "Student":
-            navigate("/student", { replace: true });
+            navigate("/student", { replace: false });
             break;
           case "Teacher":
             window.location.href = "http://localhost:5173/teacher";
@@ -109,10 +107,6 @@ const Login = () => {
           control={<Checkbox />}
           label="Remember Me"
         />
-        <Select value={role} onChange={handleChange}>
-          <MenuItem value={"Student"}>Student</MenuItem>
-          <MenuItem value="Teacher">Teacher</MenuItem>
-        </Select>
         <Button
           type="submit"
           variant="contained"

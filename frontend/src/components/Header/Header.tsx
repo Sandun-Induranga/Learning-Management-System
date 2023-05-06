@@ -1,5 +1,5 @@
 import { Avatar } from "@mui/material";
-import logo from "../../assets/ijse.png";
+import logo from "../../assets/logo.png";
 import userImage from "../../assets/avatar.jpg";
 import { NavLink } from "react-router-dom";
 import { Close, Menu } from "@mui/icons-material";
