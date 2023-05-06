@@ -3,7 +3,15 @@ import Header from "../../components/Header";
 import Student from "../../components/Student/Student";
 import { Add, AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
-import { Autocomplete, Button, TextField, createTheme } from "@mui/material";
+import {
+  Autocomplete,
+  Button,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  TextField,
+  createTheme,
+} from "@mui/material";
 import api from "../../api";
 
 const theme = createTheme({
@@ -81,9 +89,14 @@ const StudentPage = () => {
       case "password":
         setPassword(value);
         break;
+
       default:
         break;
     }
+  };
+
+  const handleComboBox = (event: SelectChangeEvent<string>) => {
+    setBatchName(event.target.value);
   };
 
   return (
@@ -197,18 +210,15 @@ const StudentPage = () => {
                     placeholder="Enter Batch Name"
                     required
                   />
-                  <select name="batchName" id="">
-                    <Autocomplete
-                      disablePortal
-                      id="batchName"
-                      options={["1", "2", "3", "4", "5"]}
-                      fullWidth
-                      value={batchName}
-                      renderInput={(params) => (
-                        <TextField {...params} label="Batch" />
-                      )}
-                    />
-                  </select>
+
+                  <Select
+                    value={batchName}
+                    name="batchName"
+                    onChange={handleComboBox}
+                  >
+                    <MenuItem value={"1"}>1</MenuItem>
+                    <MenuItem value={"2"}>2</MenuItem>
+                  </Select>
                   <section className="w-40 h-40 border rounded-lg flex justify-center relative">
                     <input
                       className="opacity-0 cursor-pointer w-full h-full z-10"
