@@ -46,20 +46,33 @@ const StudentPage = () => {
   const [password, setPassword] = useState<string>("");
   const [batchName, setBatchName] = useState<string>("");
   const [profilePhoto, setProfilePhoto] = useState<string>(" ");
+  const [batchList, setBatchList] = useState<string[]>([]);
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
   };
 
   useEffect(() => {
+    getAllStudents();
     getAllBatches();
   });
 
-  const getAllBatches = () => {
+  const getAllStudents = () => {
     api
       .get("student")
       .then((res) => {
         setStudentList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getAllBatches = () => {
+    api
+      .get("batch")
+      .then((res) => {
+        setBatchList(res.data.responseData);
       })
       .catch((error) => {
         console.log(error);
@@ -119,7 +132,9 @@ const StudentPage = () => {
 
     api
       .post("student", newStudent)
-      .then((res) => {})
+      .then(() => {
+        getAllStudents();
+      })
       .catch((error) => {
         console.log(error);
       });
@@ -242,8 +257,9 @@ const StudentPage = () => {
                     name="batchName"
                     onChange={handleComboBox}
                   >
-                    <MenuItem value={"1"}>1</MenuItem>
-                    <MenuItem value={"2"}>2</MenuItem>
+                    {batchList.map((batch) => (
+                      <MenuItem value={batch}>{batch}</MenuItem>
+                    ))}
                   </Select>
                   <section className="w-40 h-40 border rounded-lg flex justify-center relative">
                     <input
