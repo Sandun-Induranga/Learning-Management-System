@@ -45,7 +45,7 @@ const StudentPage = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [batchName, setBatchName] = useState<string>("");
-  const [profilePhoto, setProfilePhoto] = useState<string>(" ");
+  const [profilePhoto, setProfilePhoto] = useState<any>(" ");
   const [batchList, setBatchList] = useState<string[]>([]);
 
   const bindAddAndDiscartEvent = () => {
@@ -130,17 +130,33 @@ const StudentPage = () => {
       username: username,
       password: password,
       batchName: batchName,
-      profilePhoto: profilePhoto,
+      profilePhoto: " ",
     };
 
     api
       .post("student", newStudent)
-      .then(() => {
-        getAllStudents();
+      .then((res) => {
+        let id = res.data.responseData._id;
+        let photo = {
+          profilePhoto: profilePhoto,
+        };
+        api
+          .put(`student/${id}`, photo)
+          .then((res) => {
+            getAllStudents();
+            console.log(res);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleFileSelect = (event: any) => {
+    setProfilePhoto(event.target.files[0]);
   };
 
   return (
@@ -272,6 +288,8 @@ const StudentPage = () => {
                       className="opacity-0 cursor-pointer w-full h-full z-10"
                       type="file"
                       name="file"
+                      id="file"
+                      onChange={handleFileSelect}
                     />
                     <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
                   </section>
