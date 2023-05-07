@@ -307,7 +307,7 @@ const StudentPage = () => {
           </>
         )}
 
-        <main className="mt-10">
+        <main className="mt-10 overflow-auto">
           <table className="w-full border p-5">
             <thead className="bg-sky-edited-500 h-12 text-white">
               <tr className="">

@@ -10,7 +10,8 @@ import {
   ThemeProvider,
   createTheme,
 } from "@mui/material";
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import api from "../../api";
 
 type StudentDetail = {
   _id: string;
@@ -30,7 +31,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: "80%",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -59,6 +60,23 @@ const Student = (props: StudentDetail) => {
   const [batchName, setBatchName] = useState<string>("");
   const [profilePhoto, setProfilePhoto] = useState<any>(" ");
   const [batchList, setBatchList] = useState<string[]>([]);
+
+  useEffect(() => {
+    getAllBatches();
+  }, []);
+
+  const getAllBatches = () => {
+    api
+      .get("batch")
+      .then((res) => {
+        setBatchList(
+          res.data.responseData.map((batch: any) => batch.batchName)
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -118,7 +136,7 @@ const Student = (props: StudentDetail) => {
           <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
             <form
               className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center"
-              onSubmit={handleSubmit}
+              // onSubmit={handleSubmit}
             >
               <ThemeProvider theme={theme}>
                 <TextField
@@ -211,7 +229,7 @@ const Student = (props: StudentDetail) => {
                     type="file"
                     name="files"
                     id="file"
-                    onChange={handleFileSelect}
+                    // onChange={handleFileSelect}
                   />
                   <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
                 </section>
