@@ -7,7 +7,7 @@ import {
   ThemeProvider,
   createTheme,
 } from "@mui/material";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useState } from "react";
 
 type StudentDetail = {
   _id: string;
@@ -43,9 +43,19 @@ const theme = createTheme({
 });
 
 const Student = (props: StudentDetail) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [nic, setNic] = useState<string>("");
+  const [studentName, setStudentName] = useState<string>("");
+  const [address, setAddress] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [contact, setContact] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [batchName, setBatchName] = useState<string>("");
+  const [profilePhoto, setProfilePhoto] = useState<any>(" ");
+  const [batchList, setBatchList] = useState<string[]>([]);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -109,7 +119,7 @@ const Student = (props: StudentDetail) => {
                 fullWidth
                 color="primary"
                 name="batchName"
-                value={props._id}
+                value={props.nic}
                 onChange={handleInputChange}
                 placeholder="Enter Batch Name"
                 required
