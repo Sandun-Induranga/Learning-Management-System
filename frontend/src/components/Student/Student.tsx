@@ -2,11 +2,12 @@ import {
   Box,
   Button,
   Modal,
+  SelectChangeEvent,
   TextField,
   ThemeProvider,
   createTheme,
 } from "@mui/material";
-import React from "react";
+import React, { ChangeEvent } from "react";
 
 type StudentDetail = {
   _id: string;
@@ -46,6 +47,43 @@ const Student = (props: StudentDetail) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    console.log(event.target);
+
+    switch (name) {
+      case "nic":
+        setNic(value);
+        break;
+      case "studentName":
+        setStudentName(value);
+        break;
+      case "address":
+        setAddress(value);
+        break;
+      case "email":
+        setEmail(value);
+        break;
+      case "contact":
+        setContact(value);
+        break;
+      case "username":
+        setUsername(value);
+        break;
+      case "password":
+        setPassword(value);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const handleComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
+    setBatchName(event.target.value);
+  };
+
   return (
     <>
       <tr className="h-12 cursor-pointer text-center" onClick={handleOpen}>
@@ -64,7 +102,7 @@ const Student = (props: StudentDetail) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form className="w-ful" onSubmit={handleSubmit}>
+          <form className="w-ful">
             <ThemeProvider theme={theme}>
               <TextField
                 label="Batch Name"
