@@ -115,141 +115,119 @@ const Student = (props: StudentDetail) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <form className="w-ful">
-            <ThemeProvider theme={theme}>
-              <TextField
-                label="Batch Name"
-                fullWidth
-                color="primary"
-                name="batchName"
-                value={props.nic}
-                onChange={handleInputChange}
-                placeholder="Enter Batch Name"
-                required
-              />
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                className="!mt-5"
-              >
-                Update Batch
-              </Button>
-            </ThemeProvider>
-          </form>
+          <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
+            <form
+              className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center"
+              onSubmit={handleSubmit}
+            >
+              <ThemeProvider theme={theme}>
+                <TextField
+                  label="Student NIC"
+                  fullWidth
+                  color="primary"
+                  name="nic"
+                  value={nic}
+                  onChange={handleInputChange}
+                  placeholder="Enter Batch Name"
+                  required
+                />
+                <TextField
+                  label="Student Name"
+                  fullWidth
+                  color="primary"
+                  name="studentName"
+                  value={studentName}
+                  onChange={handleInputChange}
+                  placeholder="Enter Batch Name"
+                  required
+                />
+                <TextField
+                  label="Address"
+                  fullWidth
+                  color="primary"
+                  name="address"
+                  value={address}
+                  onChange={handleInputChange}
+                  placeholder="Enter Batch Name"
+                  required
+                />
+                <TextField
+                  label="Email"
+                  type="email"
+                  fullWidth
+                  color="primary"
+                  name="email"
+                  value={email}
+                  onChange={handleInputChange}
+                  placeholder="Enter Batch Name"
+                  required
+                />
+                <TextField
+                  label="Contact"
+                  type="text"
+                  fullWidth
+                  color="primary"
+                  name="contact"
+                  value={contact}
+                  onChange={handleInputChange}
+                  placeholder="Enter Batch Name"
+                  required
+                />
+                <TextField
+                  label="Username"
+                  type="text"
+                  fullWidth
+                  color="primary"
+                  name="username"
+                  value={username}
+                  onChange={handleInputChange}
+                  placeholder="Enter Batch Name"
+                  required
+                />
+                <TextField
+                  label="Password"
+                  type="password"
+                  fullWidth
+                  color="primary"
+                  name="password"
+                  value={password}
+                  onChange={handleInputChange}
+                  placeholder="Enter Batch Name"
+                  required
+                />
+
+                <Select
+                  value={batchName}
+                  name="batchName"
+                  onChange={handleComboBox}
+                >
+                  {batchList.map((batch) => (
+                    <MenuItem value={batch}>{batch}</MenuItem>
+                  ))}
+                </Select>
+                <section className="w-40 h-40 border rounded-lg flex justify-center relative">
+                  <input
+                    className="opacity-0 cursor-pointer w-full h-full z-10"
+                    type="file"
+                    name="files"
+                    id="file"
+                    onChange={handleFileSelect}
+                  />
+                  <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
+                </section>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  fullWidth
+                  className="!mt-5"
+                >
+                  Save Student
+                </Button>
+              </ThemeProvider>
+            </form>
+          </section>
         </Box>
       </Modal>
-      <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-        <form
-          className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center"
-          onSubmit={handleSubmit}
-        >
-          <ThemeProvider theme={theme}>
-            <TextField
-              label="Student NIC"
-              fullWidth
-              color="primary"
-              name="nic"
-              value={nic}
-              onChange={handleInputChange}
-              placeholder="Enter Batch Name"
-              required
-            />
-            <TextField
-              label="Student Name"
-              fullWidth
-              color="primary"
-              name="studentName"
-              value={studentName}
-              onChange={handleInputChange}
-              placeholder="Enter Batch Name"
-              required
-            />
-            <TextField
-              label="Address"
-              fullWidth
-              color="primary"
-              name="address"
-              value={address}
-              onChange={handleInputChange}
-              placeholder="Enter Batch Name"
-              required
-            />
-            <TextField
-              label="Email"
-              type="email"
-              fullWidth
-              color="primary"
-              name="email"
-              value={email}
-              onChange={handleInputChange}
-              placeholder="Enter Batch Name"
-              required
-            />
-            <TextField
-              label="Contact"
-              type="text"
-              fullWidth
-              color="primary"
-              name="contact"
-              value={contact}
-              onChange={handleInputChange}
-              placeholder="Enter Batch Name"
-              required
-            />
-            <TextField
-              label="Username"
-              type="text"
-              fullWidth
-              color="primary"
-              name="username"
-              value={username}
-              onChange={handleInputChange}
-              placeholder="Enter Batch Name"
-              required
-            />
-            <TextField
-              label="Password"
-              type="password"
-              fullWidth
-              color="primary"
-              name="password"
-              value={password}
-              onChange={handleInputChange}
-              placeholder="Enter Batch Name"
-              required
-            />
-
-            <Select
-              value={batchName}
-              name="batchName"
-              onChange={handleComboBox}
-            >
-              {batchList.map((batch) => (
-                <MenuItem value={batch}>{batch}</MenuItem>
-              ))}
-            </Select>
-            <section className="w-40 h-40 border rounded-lg flex justify-center relative">
-              <input
-                className="opacity-0 cursor-pointer w-full h-full z-10"
-                type="file"
-                name="files"
-                id="file"
-                onChange={handleFileSelect}
-              />
-              <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
-            </section>
-            <Button
-              type="submit"
-              variant="contained"
-              fullWidth
-              className="!mt-5"
-            >
-              Save Student
-            </Button>
-          </ThemeProvider>
-        </form>
-      </section>
     </>
   );
 };
