@@ -307,7 +307,7 @@ const StudentPage = () => {
           </>
         )}
 
-        <main className="mt-10 overflow-auto">
+        <main className="mt-10">
           <table className="w-full border p-5">
             <thead className="bg-sky-edited-500 h-12 text-white">
               <tr className="">
@@ -320,7 +320,7 @@ const StudentPage = () => {
                 <th>Batch</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="mt-12 overflow-auto">
               {studentList.map((student) => (
                 <Student
                   _id={student._id}

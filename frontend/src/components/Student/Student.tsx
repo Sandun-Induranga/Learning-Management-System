@@ -115,9 +115,21 @@ const Student = (props: StudentDetail) => {
     setBatchName(event.target.value);
   };
 
+  const editStudent = (event: React.MouseEvent<HTMLElement>) => {
+    handleOpen();
+    setNic(props.nic);
+    setStudentName(props.studentName);
+    setAddress(props.address);
+    setEmail(props.email);
+    setContact(props.contact);
+    setUsername(props.username);
+    setPassword(props.password);
+    setBatchName(props.batchName);
+  };
+
   return (
     <>
-      <tr className="h-12 cursor-pointer text-center" onClick={handleOpen}>
+      <tr className="h-12 cursor-pointer text-center" onClick={editStudent}>
         <td>{props._id}</td>
         <td>{props.studentName}</td>
         <td>{props.address}</td>
