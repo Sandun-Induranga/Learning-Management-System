@@ -124,7 +124,12 @@ const Student = (props: StudentDetail) => {
     setContact(props.contact);
     setUsername(props.username);
     setPassword(props.password);
+    setPassword(props.password);
     setBatchName(props.batchName);
+  };
+
+  const handleFileSelect = (event: any) => {
+    setProfilePhoto(event.target.files[0]);
   };
 
   return (
@@ -241,7 +246,7 @@ const Student = (props: StudentDetail) => {
                     type="file"
                     name="files"
                     id="file"
-                    // onChange={handleFileSelect}
+                    onChange={handleFileSelect}
                   />
                   <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
                 </section>
@@ -251,7 +256,7 @@ const Student = (props: StudentDetail) => {
                   fullWidth
                   className="!mt-5"
                 >
-                  Save Student
+                  Update Student
                 </Button>
               </ThemeProvider>
             </form>
