@@ -1,4 +1,4 @@
-import { Delete, Edit } from "@mui/icons-material";
+import { Delete, Edit, Visibility } from "@mui/icons-material";
 import api from "../../api";
 import {
   Box,
@@ -9,6 +9,7 @@ import {
   createTheme,
 } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
+import { NavLink } from "react-router-dom";
 
 type BatchDetail = {
   _id: string;
@@ -92,6 +93,10 @@ const Batch = (props: BatchDetail) => {
       });
   };
 
+  const setCurrentBatch = () => {
+    localStorage.setItem("currentBatch", batchName);
+  };
+
   return (
     <div className="border rounded-lg p-4 flex flex-col items-center text-2xl text-sky-edited-500 font-semibold cursor-pointer gap-y-4">
       {props.batchName}
@@ -99,6 +104,14 @@ const Batch = (props: BatchDetail) => {
         ID : {props._id}
       </span>
       <section className="flex gap-4">
+        <NavLink to={"/viewBatch"}>
+          <button
+            className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
+            onClick={setCurrentBatch}
+          >
+            <Visibility className="!text-sm text-white" />
+          </button>
+        </NavLink>
         <button
           className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
           onClick={editBatch}
