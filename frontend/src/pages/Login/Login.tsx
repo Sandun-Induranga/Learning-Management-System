@@ -4,7 +4,12 @@ import { useNavigate } from "react-router-dom";
 import api from "../../api";
 import { ChangeEvent, useState } from "react";
 
-const Login = () => {
+type UserProps = {
+  username: string;
+  role: string;
+};
+
+const Login = (props: UserProps) => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [role, setRole] = useState<string>("");
