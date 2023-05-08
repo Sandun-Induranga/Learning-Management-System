@@ -115,7 +115,7 @@ const Student = (props: StudentDetail) => {
     setBatchName(event.target.value);
   };
 
-  const editStudent = (event: React.MouseEvent<HTMLElement>) => {
+  const editStudent = () => {
     handleOpen();
     setNic(props.nic);
     setStudentName(props.studentName);
@@ -132,7 +132,7 @@ const Student = (props: StudentDetail) => {
     setProfilePhoto(event.target.files[0]);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const updateStudent = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
 
     let newStudent = {
@@ -144,11 +144,10 @@ const Student = (props: StudentDetail) => {
       username: username,
       password: password,
       batchName: batchName,
-      profilePhoto: " ",
     };
 
     api
-      .put("student", newStudent)
+      .put(`student/${props._id}`, newStudent)
       .then((res) => {
         console.log(res);
       })
@@ -160,7 +159,7 @@ const Student = (props: StudentDetail) => {
   return (
     <>
       <tr className="h-12 cursor-pointer text-center" onClick={editStudent}>
-        <td>{props._id}</td>
+        <td>{props.nic}</td>
         <td>{props.studentName}</td>
         <td>{props.address}</td>
         <td>{props.email}</td>
@@ -178,7 +177,7 @@ const Student = (props: StudentDetail) => {
           <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
             <form
               className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center"
-              onSubmit={handleSubmit}
+              // onSubmit={saveStudent}
             >
               <ThemeProvider theme={theme}>
                 <TextField
@@ -275,14 +274,25 @@ const Student = (props: StudentDetail) => {
                   />
                   <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
                 </section>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  fullWidth
-                  className="!mt-5"
-                >
-                  Update Student
-                </Button>
+                <section>
+                  <Button
+                    type="button"
+                    variant="contained"
+                    fullWidth
+                    className="!mt-5"
+                    onClick={updateStudent}
+                  >
+                    Update Student
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    fullWidth
+                    className="!mt-5"
+                  >
+                    Delete Student
+                  </Button>
+                </section>
               </ThemeProvider>
             </form>
           </section>

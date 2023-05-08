@@ -311,7 +311,7 @@ const StudentPage = () => {
           <table className="w-full border p-5">
             <thead className="bg-sky-edited-500 h-12 text-white">
               <tr className="">
-                <th>Student Id</th>
+                <th>Student NIC</th>
                 <th>Student Name</th>
                 <th>Student Address</th>
                 <th>Email</th>
