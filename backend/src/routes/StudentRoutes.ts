@@ -27,8 +27,8 @@ export default class StudentRoutes {
 
     this.router.post("/", this.studentController.saveStudent);
     this.router.get("/", this.studentController.getAllStudents);
-    this.router.put("/", this.studentController.updateStudent);
-    this.router.delete("/", this.studentController.deleteStudent);
+    this.router.put("/:id", this.studentController.updateStudent);
+    this.router.delete("/:id", this.studentController.deleteStudent);
     this.router.put(
       "/image/:id",
       upload.single("files"),

@@ -333,6 +333,7 @@ const StudentPage = () => {
                   password={student.password}
                   profilePhoto={student.profilePhoto}
                   batchName={student.batchName}
+                  updateStudentList={getAllStudents}
                 />
               ))}
             </tbody>

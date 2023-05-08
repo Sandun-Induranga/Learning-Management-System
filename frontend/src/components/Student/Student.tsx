@@ -24,6 +24,7 @@ type StudentDetail = {
   password: string;
   batchName: string;
   profilePhoto: string;
+  updateStudentList: () => void;
 };
 
 const style = {
@@ -149,6 +150,7 @@ const Student = (props: StudentDetail) => {
       .put(`student/${props._id}`, newStudent)
       .then((res) => {
         console.log(res);
+        props.updateStudentList();
       })
       .catch((error) => {
         console.log(error);
@@ -161,6 +163,7 @@ const Student = (props: StudentDetail) => {
       .delete(`student/${props._id}`)
       .then((res) => {
         console.log(res);
+        props.updateStudentList();
       })
       .catch((error) => {
         console.log(error);

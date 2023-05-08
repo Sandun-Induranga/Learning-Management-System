@@ -101,7 +101,7 @@ export default class StudentController {
     res: Response
   ): Promise<Response> => {
     try {
-      let { id, username } = req.params;
+      let { id } = req.params;
 
       let {
         nic,
@@ -110,28 +110,32 @@ export default class StudentController {
         email,
         contact,
         batchName,
-        profilePhoto,
+        username,
         password,
       } = req.body;
 
-      let student = new Student({
+      let student = {
         nic: nic,
         studentName: studentName,
         address: address,
         email: email,
         contact: contact,
         batchName: batchName,
-        profilePhoto: profilePhoto,
         username: username,
-      });
+      };
+      console.log(student);
 
       let updatedStudent = await Student.findByIdAndUpdate(id, student, {
         new: true,
       });
 
-      let user = User.findOne({ username: username });
+      let user = {
+        username: username,
+        password: password,
+        role: "Student",
+      };
 
-      User.updateOne(user);
+      User.findOneAndUpdate({ username: username }, user);
 
       return res.status(200).json({
         message: "Successfully Updated..!",
