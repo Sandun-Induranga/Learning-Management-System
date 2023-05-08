@@ -134,7 +134,6 @@ const Student = (props: StudentDetail) => {
 
   const updateStudent = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
-
     let newStudent = {
       nic: nic,
       studentName: studentName,
@@ -148,6 +147,18 @@ const Student = (props: StudentDetail) => {
 
     api
       .put(`student/${props._id}`, newStudent)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const deleteStudent = (event: React.MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    api
+      .delete(`student/${props._id}`)
       .then((res) => {
         console.log(res);
       })
@@ -289,6 +300,7 @@ const Student = (props: StudentDetail) => {
                     variant="contained"
                     fullWidth
                     className="!mt-5"
+                    onClick={deleteStudent}
                   >
                     Delete Student
                   </Button>
