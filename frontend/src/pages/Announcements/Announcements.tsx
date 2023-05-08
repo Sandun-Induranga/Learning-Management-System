@@ -41,6 +41,15 @@ const Announcements = () => {
         .catch((error) => {
           console.log(error);
         });
+    } else {
+      api
+        .get(`announcement`)
+        .then((res) => {
+          setAnnouncementList(res.data.responseData);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
