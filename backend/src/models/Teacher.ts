@@ -10,7 +10,7 @@ export interface IStudent extends Document {
   username: string;
 }
 
-const StudentSchema = new Schema(
+const TeacherSchema = new Schema(
   {
     nic: {
       type: String,
@@ -44,4 +44,4 @@ const StudentSchema = new Schema(
   { timestamps: true }
 );
 
-export const Student = model<IStudent>("Student", StudentSchema);
+export const Teacher = model<IStudent>("Teacher", TeacherSchema);
