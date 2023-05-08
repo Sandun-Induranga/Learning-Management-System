@@ -46,7 +46,7 @@ export default class AnnouncementController {
   ): Promise<Response> => {
     try {
       let { batch } = req.params;
-      let announcement = await Announcement.findOne({ batch: batch });
+      let announcement = await Announcement.find({ batch: batch });
 
       return res.status(200).json({
         message: "Successfully Loaded..!",

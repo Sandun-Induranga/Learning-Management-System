@@ -2,7 +2,6 @@ import Header from "../../components/Header";
 import Announcement from "../../components/Announcement/Announcement";
 import api from "../../api";
 import { useEffect, useState } from "react";
-import StudentService from "../../services/StudentService";
 
 type Comment = {
   studentName: string;
@@ -23,22 +22,26 @@ const Announcements = () => {
 
   useEffect(() => {
     getAllAnnouncements();
-  });
+  }, []);
 
   const getAllAnnouncements = () => {
-    let student;
-    if (localStorage.getItem("currentUsername") == "Student") {
-      student = new StudentService().getStudentByUsername();
+    if (localStorage.getItem("currentRole") == "Student") {
+      api
+        .get(`student/current/${localStorage.getItem("currentUsername")}`)
+        .then((res) => {
+          api
+            .get(`announcement/${res.data.responseData.batchName}`)
+            .then((res) => {
+              setAnnouncementList(res.data.responseData);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-
-    api
-      .get(`announcement${student?.batchName}`)
-      .then((res) => {
-        setAnnouncementList(res.data.responseData);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   };
 
   return (
