@@ -4,12 +4,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../../api";
 import { ChangeEvent, useState } from "react";
 
-type UserProps = {
-  username: string;
-  role: string;
-};
-
-const Login = (props: UserProps) => {
+const Login = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [role, setRole] = useState<string>("");
@@ -27,10 +22,14 @@ const Login = (props: UserProps) => {
     api
       .post("user", loginDetail)
       .then((res) => {
-        setRole(res.data.responseData);
+        setRole(res.data.responseData.role);
 
-        switch (res.data.responseData) {
+        switch (res.data.responseData.role) {
           case "Student":
+            setRole(res.data.responseData.setRole);
+            localStorage.setItem("currentUsername", username);
+            localStorage.setItem("currentRole", "Student");
+            alert(localStorage.getItem("currentUsername"));
             navigate("/student", { replace: false });
             break;
           case "Teacher":

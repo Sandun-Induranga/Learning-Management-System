@@ -15,12 +15,7 @@ type AnnouncementDetail = {
   comments: Comment[];
 };
 
-type AnnouncementProps = {
-  username: string;
-  role: string;
-};
-
-const Announcements = (props: AnnouncementProps) => {
+const Announcements = () => {
   const [announcementList, setAnnouncementList] = useState<
     AnnouncementDetail[]
   >([]);

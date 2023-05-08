@@ -1,12 +1,7 @@
 import ClassWork from "../../components/ClassWork/ClassWork";
 import Header from "../../components/Header";
 
-type ClassWorkProps = {
-  username: string;
-  role: string;
-};
-
-const ClassWorks = (props: ClassWorkProps) => {
+const ClassWorks = (props: any) => {
   return (
     <>
       <Header />

@@ -13,7 +13,10 @@ export default class UserController {
         if (user.password == password) {
           return res
             .status(200)
-            .json({ message: "Login", responseData: user.role });
+            .json({
+              message: "Login",
+              responseData: { username: username, role: user.role },
+            });
         } else {
           return res.status(200).json({
             message: "Your Password is Wrong..!",
