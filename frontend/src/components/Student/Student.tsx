@@ -132,6 +132,31 @@ const Student = (props: StudentDetail) => {
     setProfilePhoto(event.target.files[0]);
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let newStudent = {
+      nic: nic,
+      studentName: studentName,
+      address: address,
+      email: email,
+      contact: contact,
+      username: username,
+      password: password,
+      batchName: batchName,
+      profilePhoto: " ",
+    };
+
+    api
+      .put("student", newStudent)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <tr className="h-12 cursor-pointer text-center" onClick={editStudent}>
@@ -153,7 +178,7 @@ const Student = (props: StudentDetail) => {
           <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
             <form
               className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center"
-              // onSubmit={handleSubmit}
+              onSubmit={handleSubmit}
             >
               <ThemeProvider theme={theme}>
                 <TextField
