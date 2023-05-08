@@ -34,6 +34,7 @@ export default class StudentRoutes {
       upload.single("files"),
       this.studentController.saveStudentImage
     );
+    this.router.get("/:username", this.studentController.getAllStudents);
   };
 
   public getRouter = (): Router => {

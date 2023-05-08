@@ -178,12 +178,12 @@ export default class StudentController {
     res: Response
   ): Promise<Response> => {
     try {
-      let { batchName } = req.params;
-      let students = await Student.findOne({ batch: batchName });
+      let { username } = req.params;
+      let student = await Student.findOne({ username: username });
 
       return res
         .status(200)
-        .json({ message: "Successfully Loaded..!", responseData: students });
+        .json({ message: "Successfully Loaded..!", responseData: student });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });
