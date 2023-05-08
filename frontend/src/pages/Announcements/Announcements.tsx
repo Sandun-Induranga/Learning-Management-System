@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import Announcement from "../../components/Announcement/Announcement";
 import api from "../../api";
 import { useEffect, useState } from "react";
+import StudentService from "../../services/StudentService";
 
 type Comment = {
   studentName: string;
@@ -25,8 +26,13 @@ const Announcements = () => {
   });
 
   const getAllAnnouncements = () => {
+    let student;
+    if (localStorage.getItem("currentUsername") == "Student") {
+      student = new StudentService().getStudentByUsername();
+    }
+
     api
-      .get("announcement")
+      .get(`announcement${student?.batchName}`)
       .then((res) => {
         setAnnouncementList(res.data.responseData);
       })
