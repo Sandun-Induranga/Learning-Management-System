@@ -17,6 +17,10 @@ export default class AnnoucementRoutes {
       "/:batch",
       this.announcementController.getAnnouncementByBatch
     );
+    this.router.put(
+      "/:description",
+      this.announcementController.updateAnnouncement
+    );
   };
 
   public getRouter = (): Router => {
