@@ -59,4 +59,31 @@ export default class AnnouncementController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
+  updateAnnouncement: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { description } = req.params;
+
+      let updatedBatch = await Announcement.findOneAndUpdate(
+        { description: description },
+        req.body,
+        {
+          new: true,
+        }
+      );
+
+      return res.status(200).json({
+        message: "Successfully Updated..!",
+        responseData: updatedBatch,
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
 }
