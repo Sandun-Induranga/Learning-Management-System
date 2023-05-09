@@ -33,7 +33,9 @@ const Login = () => {
             navigate("/student", { replace: false });
             break;
           case "Teacher":
-            window.location.href = "http://localhost:5173/teacher";
+            localStorage.setItem("currentUsername", username);
+            localStorage.setItem("currentRole", "Teacher");
+            navigate("/teacher/batch", { replace: false });
             break;
           default:
             break;

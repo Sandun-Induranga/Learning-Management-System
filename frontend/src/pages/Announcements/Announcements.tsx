@@ -60,22 +60,20 @@ const Announcements = () => {
         });
     } else {
       setIsTeacher(true);
+      // api
+      //   .get(`announcement`)
+      //   .then((res) => {
+      // setAnnouncementList(res.data.responseData);
+      // setIsTeacher(true);
       api
-        .get(`announcement`)
+        .get(`teacher/current/${localStorage.getItem("currentUsername")}`)
         .then((res) => {
-          setAnnouncementList(res.data.responseData);
-          setIsTeacher(true);
+          console.log(localStorage.getItem("currentBatch"), localStorage);
+
           api
-            .get(`teacher/current/${localStorage.getItem("currentUsername")}`)
+            .get(`announcement/${localStorage.getItem("currentBatch")}`)
             .then((res) => {
-              api
-                .get(`announcement/${localStorage.getItem("currentBatch")}`)
-                .then((res) => {
-                  setAnnouncementList(res.data.responseData);
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
+              setAnnouncementList(res.data.responseData);
             })
             .catch((error) => {
               console.log(error);
@@ -84,6 +82,10 @@ const Announcements = () => {
         .catch((error) => {
           console.log(error);
         });
+      // })
+      // .catch((error) => {
+      //   console.log(error);
+      // });
     }
   };
 

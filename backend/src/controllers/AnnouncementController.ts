@@ -46,11 +46,11 @@ export default class AnnouncementController {
   ): Promise<Response> => {
     try {
       let { batch } = req.params;
-      let announcement = await Announcement.find({ batch: batch });
+      let announcements = await Announcement.find({ batch: batch });
 
       return res.status(200).json({
         message: "Successfully Loaded..!",
-        responseData: announcement,
+        responseData: announcements,
       });
     } catch (error: unknown) {
       if (error instanceof Error)

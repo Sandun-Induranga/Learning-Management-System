@@ -94,7 +94,7 @@ const Batch = (props: BatchDetail) => {
   };
 
   const setCurrentBatch = () => {
-    localStorage.setItem("currentBatch", batchName);
+    localStorage.setItem("currentBatch", props.batchName);
   };
 
   return (
@@ -104,14 +104,14 @@ const Batch = (props: BatchDetail) => {
         ID : {props._id}
       </span>
       <section className="flex gap-4">
-        <NavLink to={"/viewBatch"}>
-          <button
-            className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
-            onClick={setCurrentBatch}
-          >
+        <button
+          className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
+          onClick={setCurrentBatch}
+        >
+          <NavLink to={"/student"}>
             <Visibility className="!text-sm text-white" />
-          </button>
-        </NavLink>
+          </NavLink>
+        </button>
         <button
           className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
           onClick={editBatch}

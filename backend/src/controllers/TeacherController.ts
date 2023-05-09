@@ -35,12 +35,12 @@ export default class TeacherController {
         role: "Teacher",
       });
 
-      let savedTeacger = await teacher.save();
+      let savedTeacher = await teacher.save();
       await user.save();
 
       return res
         .status(200)
-        .json({ message: "Successfully Saved..!", responseData: savedTeacger });
+        .json({ message: "Successfully Saved..!", responseData: savedTeacher });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });
@@ -120,7 +120,7 @@ export default class TeacherController {
       let user = {
         username: username,
         password: password,
-        role: "Student",
+        role: "Teacher",
       };
 
       User.findOneAndUpdate({ username: username }, user);

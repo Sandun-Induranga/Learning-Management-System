@@ -11,6 +11,10 @@ export default class TeacherRoutes {
 
   private configRoutes = (): void => {
     this.router.post("/", this.teacherController.saveTeacher);
+    this.router.get(
+      "/current/:username",
+      this.teacherController.getTeacherByUsername
+    );
   };
 
   public getRouter = (): Router => {

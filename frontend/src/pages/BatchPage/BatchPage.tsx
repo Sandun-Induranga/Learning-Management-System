@@ -25,7 +25,7 @@ const BatchPage = () => {
 
   useEffect(() => {
     getAllBatches();
-  });
+  }, []);
 
   const getAllBatches = () => {
     api
