@@ -2,7 +2,7 @@ import { Request, RequestHandler, Response } from "express";
 import { Teacher } from "../models/Teacher";
 import { User } from "../models/User";
 
-export default class StudentController {
+export default class TeacherController {
   saveTeacher: RequestHandler = async (
     req: Request,
     res: Response
@@ -32,7 +32,7 @@ export default class StudentController {
       let user = new User({
         username: username,
         password: password,
-        role: "Student",
+        role: "Teacher",
       });
 
       let savedTeacger = await teacher.save();
