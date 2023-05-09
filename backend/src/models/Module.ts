@@ -19,4 +19,4 @@ const ModuleSchema = new Schema(
   { timestamps: true }
 );
 
-export const Batch = model<IModule>("Batch", ModuleSchema);
+export const Module = model<IModule>("Module", ModuleSchema);
