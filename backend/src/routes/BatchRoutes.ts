@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import BatchController from "../controllers/BatchController";
 
-export default class CourseRoutes {
+export default class BatchRoutes {
   private router: Router = express.Router();
   private batchController: BatchController = new BatchController();
 

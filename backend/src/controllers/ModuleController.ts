@@ -1,7 +1,7 @@
 import { Request, RequestHandler, Response } from "express";
 import { Module } from "../models/Module";
 
-export default class BatchController {
+export default class ModuleController {
   saveModule: RequestHandler = async (
     req: Request,
     res: Response
