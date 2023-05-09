@@ -7,7 +7,7 @@ import Module from "../../components/Module";
 
 type ModuleDetail = {
   _id: string;
-  batchName: string;
+  batchName: string | null;
   moduleName: string;
 };
 
@@ -133,7 +133,12 @@ const ModulePage = () => {
 
         <main className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 grid-cols-1 gap-4">
           {moduleList.map((module) => (
-            <Module />
+            <Module
+              _id={module._id}
+              batchName={localStorage.getItem("currentBatch")}
+              moduleName={module.moduleName}
+              updateModuleList={getAllModules}
+            />
           ))}
         </main>
       </section>

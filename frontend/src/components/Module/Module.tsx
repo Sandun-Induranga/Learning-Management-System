@@ -13,7 +13,7 @@ import { NavLink } from "react-router-dom";
 
 type ModuleDetail = {
   _id: string;
-  batchName: string;
+  batchName: string | null;
   moduleName: string;
   updateModuleList: () => void;
 };
@@ -93,10 +93,6 @@ const Module = (props: ModuleDetail) => {
       });
   };
 
-  const setCurrentBatch = () => {
-    localStorage.setItem("currentBatch", props.batchName);
-  };
-
   return (
     <div className="border rounded-lg p-4 flex flex-col items-center text-2xl text-sky-edited-500 font-semibold cursor-pointer gap-y-4">
       {props.batchName}
@@ -104,10 +100,7 @@ const Module = (props: ModuleDetail) => {
         ID : {props._id}
       </span>
       <section className="flex gap-4">
-        <button
-          className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
-          onClick={setCurrentBatch}
-        >
+        <button className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center">
           <NavLink to={"/student"}>
             <Visibility className="!text-sm text-white" />
           </NavLink>
