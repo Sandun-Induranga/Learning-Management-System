@@ -2,9 +2,10 @@ import { Send } from "@mui/icons-material";
 import userImage from "../../assets/avatar.jpg";
 import { Avatar } from "@mui/material";
 import { ChangeEvent, useState } from "react";
+import api from "../../api";
 
 type Comment = {
-  studentName: string;
+  studentName: string | null;
   comment: string;
 };
 
@@ -21,7 +22,10 @@ const Announcement = (props: AnnouncementProps) => {
   const addComment = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     let newCommentList = props.comments;
-    newCommentList.push({ studentName: "", comment: comment });
+    newCommentList.push({
+      studentName: localStorage.getItem("currentStudent"),
+      comment: comment,
+    });
     let newAnnouncement = {
       teacherName: props.teacherName,
       description: props.description,
@@ -30,10 +34,9 @@ const Announcement = (props: AnnouncementProps) => {
     };
 
     api
-      .post("announcement", newAnnouncement)
+      .put(`announcement/${props.description}`, newAnnouncement)
       .then((res) => {
         console.log(res);
-        getAllAnnouncements();
       })
       .catch((error) => {
         console.log(error);
@@ -41,11 +44,9 @@ const Announcement = (props: AnnouncementProps) => {
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
 
-    if (name == "batchName") {
-      setComment(value);
-    }
+    setComment(value);
   };
 
   return (
