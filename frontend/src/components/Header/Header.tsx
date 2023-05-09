@@ -24,8 +24,11 @@ const Header = () => {
           <NavLink to={"/teacher/students"}>Students</NavLink>
           <NavLink to={"/modules"}>Modules</NavLink>
         </nav>
-        <div className="hidden sm:inline-block">
+        <div className="hidden sm:flex justify-center items-center gap-2">
           <Avatar className="border" src={userImage}></Avatar>
+          <p className="text-sm text-gray-700">
+            {localStorage.getItem("currentUsername")}
+          </p>
         </div>
         <div className="sm:hidden">
           {!isOpen ? (
@@ -46,8 +49,8 @@ const Header = () => {
           )}
         </div>
       </header>
-      <header className="w-full sm:px-80 py-5 h-40 fixed top-20 flex justify-center z-50">
-        <div className="w-full bg-sky-edited-500 rounded-lg flex justify-center items-center">
+      <header className="fixed bottom-20 right-10 flex justify-center z-50">
+        <div className="px-10 py-5 bg-sky-edited-500 rounded-full flex justify-center items-center">
           <h1 className="text-2xl text-white font-semibold">
             {localStorage.getItem("currentBatch")}
           </h1>

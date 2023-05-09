@@ -81,7 +81,7 @@ const Module = (props: ModuleDetail) => {
     setModuleName(value);
   };
 
-  const editBatch = (event: React.MouseEvent<HTMLElement>) => {
+  const editModule = (event: React.MouseEvent<HTMLElement>) => {
     handleOpen();
     api
       .put(`batch/${props._id}`)
@@ -95,9 +95,9 @@ const Module = (props: ModuleDetail) => {
 
   return (
     <div className="border rounded-lg p-4 flex flex-col items-center text-2xl text-sky-edited-500 font-semibold cursor-pointer gap-y-4">
-      {props.batchName}
+      {props.moduleName}
       <span className="text-xs text-gray-700 font-normal">
-        ID : {props._id}
+        Batch : {props.batchName}
       </span>
       <section className="flex gap-4">
         <button className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center">
@@ -107,7 +107,7 @@ const Module = (props: ModuleDetail) => {
         </button>
         <button
           className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
-          onClick={editBatch}
+          onClick={editModule}
         >
           <Edit className="!text-sm text-white" />
         </button>
