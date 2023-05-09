@@ -1,12 +1,5 @@
 import { Document, Schema, model } from "mongoose";
 
-type Answer = {
-  studentNic: string;
-  studentName: string;
-  submissionStatus: string;
-  file: string;
-};
-
 export interface IClassWork extends Document {
   type: string;
   dueDate: Date;
