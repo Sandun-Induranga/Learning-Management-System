@@ -1,7 +1,7 @@
 import Header from "../../components/Header";
 import Announcement from "../../components/Announcement/Announcement";
 import api from "../../api";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { Button, TextField, ThemeProvider, createTheme } from "@mui/material";
 
@@ -31,6 +31,7 @@ const Announcements = () => {
   >([]);
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(true);
   const [isTeacher, setIsTeacher] = useState<boolean>(false);
+  const [description, setDescription] = useState<string>("");
 
   useEffect(() => {
     getAllAnnouncements();
@@ -60,11 +61,7 @@ const Announcements = () => {
         });
     } else {
       setIsTeacher(true);
-      // api
-      //   .get(`announcement`)
-      //   .then((res) => {
-      // setAnnouncementList(res.data.responseData);
-      // setIsTeacher(true);
+
       api
         .get(`teacher/current/${localStorage.getItem("currentUsername")}`)
         .then((res) => {
@@ -82,10 +79,14 @@ const Announcements = () => {
         .catch((error) => {
           console.log(error);
         });
-      // })
-      // .catch((error) => {
-      //   console.log(error);
-      // });
+    }
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    if (name == "batchName") {
+      setDescription(value);
     }
   };
 
@@ -135,8 +136,8 @@ const Announcements = () => {
                         name="batchName"
                         multiline
                         rows={4}
-                        // value={batchName}
-                        // onChange={handleInputChange}
+                        value={description}
+                        onChange={handleInputChange}
                         placeholder="Enter Batch Name"
                         required
                       />
