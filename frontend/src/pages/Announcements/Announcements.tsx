@@ -65,7 +65,7 @@ const Announcements = () => {
       api
         .get(`teacher/current/${localStorage.getItem("currentUsername")}`)
         .then((res) => {
-          console.log(localStorage.getItem("currentBatch"), localStorage);
+          localStorage.setItem("currentTeacher", res.data.responseData);
 
           api
             .get(`announcement/${localStorage.getItem("currentBatch")}`)
@@ -88,6 +88,27 @@ const Announcements = () => {
     if (name == "batchName") {
       setDescription(value);
     }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let newAnnouncement = {
+      teacherName: localStorage.getItem("currentTeacher"),
+      description: description,
+      batch: localStorage.getItem("currentBatch"),
+      comments: [],
+    };
+
+    api
+      .post("announcement", newAnnouncement)
+      .then((res) => {
+        console.log(res);
+        getAllAnnouncements();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -127,7 +148,7 @@ const Announcements = () => {
                   </span>
                 </section>
                 <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-                  <form className="w-ful">
+                  <form className="w-ful" onSubmit={handleSubmit}>
                     <ThemeProvider theme={theme}>
                       <TextField
                         label="Description"
