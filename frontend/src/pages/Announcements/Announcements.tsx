@@ -65,6 +65,21 @@ const Announcements = () => {
         .then((res) => {
           setAnnouncementList(res.data.responseData);
           setIsTeacher(true);
+          api
+            .get(`teacher/current/${localStorage.getItem("currentUsername")}`)
+            .then((res) => {
+              api
+                .get(`announcement/${res.data.responseData.batchName}`)
+                .then((res) => {
+                  setAnnouncementList(res.data.responseData);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         })
         .catch((error) => {
           console.log(error);
@@ -75,7 +90,7 @@ const Announcements = () => {
   return (
     <>
       <Header />
-      <div className="mt-20 p-10 flex flex-col items-center justify-center gap-4">
+      <div className="mt-20 lg:mx-60 p-10 flex flex-col items-center justify-center gap-4">
         {isTeacher ? (
           <>
             {!isClickedAddButton ? (
@@ -116,6 +131,8 @@ const Announcements = () => {
                         fullWidth
                         color="primary"
                         name="batchName"
+                        multiline
+                        rows={4}
                         // value={batchName}
                         // onChange={handleInputChange}
                         placeholder="Enter Batch Name"
@@ -127,7 +144,7 @@ const Announcements = () => {
                         fullWidth
                         className="!mt-5"
                       >
-                        Save Batch
+                        Save Announcement
                       </Button>
                     </ThemeProvider>
                   </form>

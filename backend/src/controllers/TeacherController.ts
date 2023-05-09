@@ -160,4 +160,23 @@ export default class TeacherController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
+  getTeacherByUsername: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { username } = req.params;
+      let teacher = await Teacher.findOne({ username: username });
+
+      return res
+        .status(200)
+        .json({ message: "Successfully Loaded..!", responseData: teacher });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
 }
