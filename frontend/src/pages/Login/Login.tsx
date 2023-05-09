@@ -26,9 +26,13 @@ const Login = () => {
 
         switch (res.data.responseData.role) {
           case "Student":
-            setRole(res.data.responseData.setRole);
+            setRole(res.data.responseData.role);
             localStorage.setItem("currentUsername", username);
             localStorage.setItem("currentRole", "Student");
+            localStorage.setItem(
+              "currentBatch",
+              res.data.responseData.batchName
+            );
             alert(localStorage.getItem("currentUsername"));
             navigate("/student", { replace: false });
             break;
