@@ -15,6 +15,7 @@ type AnnouncementDetail = {
   description: string;
   createdAt: string;
   comments: Comment[];
+  batch: string;
 };
 
 const theme = createTheme({
@@ -65,7 +66,10 @@ const Announcements = () => {
       api
         .get(`teacher/current/${localStorage.getItem("currentUsername")}`)
         .then((res) => {
-          localStorage.setItem("currentTeacher", res.data.responseData);
+          localStorage.setItem(
+            "currentTeacher",
+            res.data.responseData.teacherName
+          );
 
           api
             .get(`announcement/${localStorage.getItem("currentBatch")}`)
@@ -123,7 +127,7 @@ const Announcements = () => {
                   className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
                   onClick={bindAddAndDiscartEvent}
                 >
-                  <p>Add New Batch</p>
+                  <p>Add New Announcement</p>
                   <span>
                     <AddCircle />
                   </span>
@@ -142,7 +146,7 @@ const Announcements = () => {
                   className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
                   onClick={bindAddAndDiscartEvent}
                 >
-                  <p>Discart Batch</p>
+                  <p>Discart Announcement</p>
                   <span>
                     <DoDisturbOn />
                   </span>
@@ -186,6 +190,7 @@ const Announcements = () => {
             description={announcement.description}
             comments={announcement.comments}
             createdAt={announcement.createdAt}
+            batch={announcement.batch}
           />
         ))}
       </div>
