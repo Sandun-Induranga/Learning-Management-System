@@ -69,7 +69,7 @@ const Announcements = () => {
             .get(`teacher/current/${localStorage.getItem("currentUsername")}`)
             .then((res) => {
               api
-                .get(`announcement/${res.data.responseData.batchName}`)
+                .get(`announcement/${localStorage.getItem("currentBatch")}`)
                 .then((res) => {
                   setAnnouncementList(res.data.responseData);
                 })
