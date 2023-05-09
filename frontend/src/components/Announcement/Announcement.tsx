@@ -30,7 +30,7 @@ const Announcement = (props: AnnouncementProps) => {
       teacherName: props.teacherName,
       description: props.description,
       batch: props.batch,
-      comments: [],
+      comments: newCommentList,
     };
 
     api
