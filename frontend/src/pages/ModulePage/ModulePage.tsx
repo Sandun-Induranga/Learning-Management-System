@@ -1,9 +1,9 @@
-import Batch from "../../components/Batch/Batch";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header";
 import api from "../../api";
 import { ChangeEvent, useEffect, useState } from "react";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { Button, TextField, ThemeProvider, createTheme } from "@mui/material";
+import Module from "../../components/Module";
 
 type ModuleDetail = {
   _id: string;
@@ -132,9 +132,9 @@ const ModulePage = () => {
         )}
 
         <main className="mt-10 grid sm:grid-cols-2 md:grid-cols-4 grid-cols-1 gap-4">
-          {/* {moduleList.map((module) => (
-
-          ))} */}
+          {moduleList.map((module) => (
+            <Module />
+          ))}
         </main>
       </section>
     </>
