@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import api from "../../api";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, createTheme } from "@mui/material";
 
 type ClassWorkDetail = {
   _id: string;
@@ -15,6 +15,14 @@ type ClassWorkDetail = {
   file: string;
   batch: string;
 };
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#007DFE",
+    },
+  },
+});
 
 const ClassWorks = () => {
   const [classWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
