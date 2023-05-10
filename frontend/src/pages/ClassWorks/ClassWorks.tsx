@@ -1,7 +1,20 @@
+import { useState } from "react";
 import ClassWork from "../../components/ClassWork/ClassWork";
 import Header from "../../components/Header";
 
-const ClassWorks = (props: any) => {
+type ClassWorkDetail = {
+  _id: string;
+  name: string;
+  type: string;
+  dueDate: Date;
+  moduleName: string;
+  file: string;
+  batch: string;
+};
+
+const ClassWorks = () => {
+  const [classWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
+
   return (
     <>
       <Header />
