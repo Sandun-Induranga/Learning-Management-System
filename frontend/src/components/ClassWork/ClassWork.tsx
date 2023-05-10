@@ -1,6 +1,16 @@
 import { Add, PictureAsPdf } from "@mui/icons-material";
 
-const ClassWork = () => {
+type ClassWorkDetail = {
+  _id: string;
+  name: string;
+  type: string;
+  dueDate: Date;
+  moduleName: string;
+  file: string;
+  batch: string;
+};
+
+const ClassWork = (props: ClassWorkDetail) => {
   return (
     <main className="mt-40 md:w-1/2 border p-10 rounded-lg flex flex-col items-center gap-6">
       <div className="flex flex-col items-center">

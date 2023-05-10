@@ -36,7 +36,15 @@ const ClassWorks = () => {
       <Header />
       <div className="mt-20 p-10 flex flex-col items-center justify-center gap-4">
         {classWorkList.map((classWork) => (
-          <ClassWork />
+          <ClassWork
+            _id=""
+            name=""
+            dueDate={new Date()}
+            batch=""
+            moduleName=""
+            type=""
+            file=""
+          />
         ))}
       </div>
     </>
