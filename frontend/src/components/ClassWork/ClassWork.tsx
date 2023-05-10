@@ -4,6 +4,7 @@ type ClassWorkDetail = {
   _id: string;
   name: string;
   type: string;
+  description: string;
   dueDate: Date;
   moduleName: string;
   file: string;
@@ -15,31 +16,21 @@ const ClassWork = (props: ClassWorkDetail) => {
     <main className="mt-40 md:w-1/2 border p-10 rounded-lg flex flex-col items-center gap-6">
       <div className="flex flex-col items-center">
         <span className="text-gray-700 text-lg font-semibold">
-          Programming Fundamentals
+          {props.moduleName}
         </span>
-        <span className="text-gray-700">Assingment 01</span>
-        <span className="text-xs text-gray-600">Due 2023-05-01</span>
+        <span className="text-gray-700">{props.name}</span>
+        <span className="text-xs text-gray-600">
+          Due {props.dueDate.toDateString()}
+        </span>
       </div>
 
       <section className="text-gray-700 text-center">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-        quibusdam labore libero vel sunt ut, hic quis magnam possimus voluptatem
-        vero aliquam voluptatibus qui veritatis sint porro molestias saepe
-        sapiente! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Ratione perferendis eius, id minus autem commodi nesciunt nobis ex
-        exercitationem velit minima dolores nostrum, quae mollitia vitae et
-        corporis vero. Earum!
+        {props.description}
       </section>
 
       <section className="grid grid-cols-2 gap-6 mb-10">
         <a
-          href="https://drive.google.com/viewerng/viewer?embedded=true&url=http://infolab.stanford.edu/pub/papers/google.pdf#toolbar=0&scrollbar=0"
-          className="bg-sky-edited-500 px-6 py-2 rounded-full text-white"
-        >
-          <PictureAsPdf /> Document
-        </a>
-        <a
-          href="https://drive.google.com/viewerng/viewer?embedded=true&url=http://infolab.stanford.edu/pub/papers/google.pdf#toolbar=0&scrollbar=0"
+          href={props.file}
           className="bg-sky-edited-500 px-6 py-2 rounded-full text-white"
         >
           <PictureAsPdf /> Document

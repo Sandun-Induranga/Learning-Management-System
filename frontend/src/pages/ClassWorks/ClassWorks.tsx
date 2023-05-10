@@ -39,6 +39,7 @@ const ClassWorks = () => {
           <ClassWork
             _id=""
             name=""
+            description=""
             dueDate={new Date()}
             batch=""
             moduleName=""
