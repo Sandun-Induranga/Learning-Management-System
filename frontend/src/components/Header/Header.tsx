@@ -51,7 +51,7 @@ const Header = () => {
       </header>
       <header className="fixed bottom-20 right-10 flex justify-center z-50">
         <div className="px-10 py-5 bg-sky-edited-500 rounded-full flex justify-center items-center">
-          <h1 className="text-2xl text-white font-semibold">
+          <h1 className="text-xl text-white font-semibold">
             {localStorage.getItem("currentBatch")}
           </h1>
         </div>

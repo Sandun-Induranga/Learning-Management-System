@@ -52,6 +52,10 @@ const Announcements = () => {
             "currentStudent",
             res.data.responseData.studentName
           );
+          localStorage.setItem(
+            "profilePhoto",
+            res.data.responseData.profilePhoto
+          );
           api
             .get(`announcement/${res.data.responseData.batchName}`)
             .then((res) => {

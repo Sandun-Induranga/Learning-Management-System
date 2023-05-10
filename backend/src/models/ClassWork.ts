@@ -1,10 +1,10 @@
 import { Document, Schema, model } from "mongoose";
 
 export interface IClassWork extends Document {
+  name: string;
   type: string;
   dueDate: Date;
   moduleName: string;
-  name: string;
   file: string;
 }
 
