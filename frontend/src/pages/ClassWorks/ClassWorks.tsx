@@ -35,6 +35,7 @@ const ClassWorks = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(true);
   const [classWorkName, setClassWorkName] = useState<string>("");
   const [type, setType] = useState<string>("");
+  const [moduleName, setModuleName] = useState<string>("");
   const [dueDate, setDueDate] = useState<Date>(new Date());
   const [description, setDescription] = useState<string>("");
   const [file, setFile] = useState<any>(" ");
@@ -77,6 +78,40 @@ const ClassWorks = () => {
     }
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let newStudent = {
+      name: classWorkName,
+      type: type,
+      dueDate: dueDate,
+      moduleName: moduleName,
+      file: " ",
+      batch: localStorage.getItem("currentBatch"),
+    };
+
+    api
+      .post("student", newStudent)
+      .then((res) => {
+        let id = res.data.responseData._id;
+
+        let formData = new FormData();
+        formData.append("file", file);
+        api
+          .put(`student/image/${id}`, formData)
+          .then((res) => {
+            getAllClassWorks();
+            console.log(res);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <Header />
@@ -114,7 +149,10 @@ const ClassWorks = () => {
                   </span>
                 </section>
                 <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-                  <form className="w-full flex flex-col gap-4">
+                  <form
+                    className="w-full flex flex-col gap-4"
+                    onSubmit={handleSubmit}
+                  >
                     <ThemeProvider theme={theme}>
                       <TextField
                         label="Name"
@@ -144,7 +182,7 @@ const ClassWorks = () => {
                         type="date"
                         required
                       />
-                      <Select fullWidth value={type}>
+                      <Select fullWidth value={moduleName}>
                         <MenuItem selected value={"Assignment"}>
                           Assignment
                         </MenuItem>
