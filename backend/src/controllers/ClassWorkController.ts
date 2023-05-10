@@ -82,4 +82,31 @@ export default class ClassWorkController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
+  saveStudentImage: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { id } = req.params;
+
+      let classWork = new ClassWork(await ClassWork.findById(id));
+      classWork.file =
+        "../../../public/uploads/classWorks/" +
+        req.file?.originalname.toString();
+
+      let updatedStudent = await ClassWork.findByIdAndUpdate(id, classWork, {
+        new: true,
+      });
+
+      return res
+        .status(200)
+        .json({ message: "Uploaded", responseData: updatedStudent });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
 }
