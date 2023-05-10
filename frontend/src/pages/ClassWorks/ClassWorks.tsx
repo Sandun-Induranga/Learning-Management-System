@@ -41,9 +41,11 @@ const ClassWorks = () => {
   const [dueDate, setDueDate] = useState<Date>(new Date());
   const [description, setDescription] = useState<string>("");
   const [file, setFile] = useState<any>(" ");
+  const [moduleList, setModuleList] = useState<any[]>([]);
 
   useEffect(() => {
     getAllClassWorks();
+    getAllModules();
   }, []);
 
   const bindAddAndDiscartEvent = () => {
@@ -59,6 +61,17 @@ const ClassWorks = () => {
       .get("classwork")
       .then((res) => {
         setClassWorkList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getAllModules = () => {
+    api
+      .get("classwork")
+      .then((res) => {
+        setModuleList(res.data.responseData);
       })
       .catch((error) => {
         console.log(error);
