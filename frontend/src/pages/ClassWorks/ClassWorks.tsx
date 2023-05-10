@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ClassWork from "../../components/ClassWork/ClassWork";
 import Header from "../../components/Header";
+import api from "../../api";
 
 type ClassWorkDetail = {
   _id: string;
@@ -15,13 +16,28 @@ type ClassWorkDetail = {
 const ClassWorks = () => {
   const [classWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
 
+  useEffect(() => {
+    getAllClassWorks();
+  }, []);
+
+  const getAllClassWorks = () => {
+    api
+      .get("classwork")
+      .then((res) => {
+        setClassWorkList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <Header />
       <div className="mt-20 p-10 flex flex-col items-center justify-center gap-4">
-        <ClassWork />
-        <ClassWork />
-        <ClassWork />
+        {classWorkList.map((classWork) => (
+          <ClassWork />
+        ))}
       </div>
     </>
   );
