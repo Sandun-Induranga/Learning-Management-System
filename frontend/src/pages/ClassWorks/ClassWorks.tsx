@@ -59,7 +59,7 @@ const ClassWorks = () => {
                   className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
                   onClick={bindAddAndDiscartEvent}
                 >
-                  <p>Add New Announcement</p>
+                  <p>Add New Class Work</p>
                   <span>
                     <AddCircle />
                   </span>
@@ -69,7 +69,7 @@ const ClassWorks = () => {
                   onClick={bindAddAndDiscartEvent}
                 >
                   <AddCircle />
-                  Add New Batch
+                  Add New Class Work
                 </section>
               </>
             ) : (
@@ -78,7 +78,7 @@ const ClassWorks = () => {
                   className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
                   onClick={bindAddAndDiscartEvent}
                 >
-                  <p>Discart Announcement</p>
+                  <p>Discart Class Work</p>
                   <span>
                     <DoDisturbOn />
                   </span>
@@ -104,7 +104,7 @@ const ClassWorks = () => {
                         fullWidth
                         className="!mt-5"
                       >
-                        Save Announcement
+                        Save Class Work
                       </Button>
                     </ThemeProvider>
                   </form>
