@@ -69,7 +69,7 @@ const ClassWorks = () => {
 
   const getAllModules = () => {
     api
-      .get("classwork")
+      .get("module")
       .then((res) => {
         setModuleList(res.data.responseData);
       })
@@ -87,6 +87,9 @@ const ClassWorks = () => {
         break;
       case "description":
         setDescription(value);
+        break;
+      case "dueDate":
+        setDueDate(new Date("2022-10-20"));
         break;
       default:
         break;
@@ -216,11 +219,11 @@ const ClassWorks = () => {
                         value={moduleName}
                         onChange={handleModuleComboBox}
                       >
-                        <MenuItem selected value={"Assignment"}>
-                          Assignment
-                        </MenuItem>
-                        <MenuItem value={"Project"}>Project</MenuItem>
-                        <MenuItem value={"Quize"}>Quize</MenuItem>
+                        {moduleList.map((module) => (
+                          <MenuItem selected value={module.moduleName}>
+                            {module.moduleName}
+                          </MenuItem>
+                        ))}
                       </Select>
                       <TextField
                         label="Description"
