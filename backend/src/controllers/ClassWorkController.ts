@@ -21,16 +21,16 @@ export default class ClassWorkController {
     }
   };
 
-  getAllAnnouncements: RequestHandler = async (
+  getAllClassworks: RequestHandler = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
     try {
-      let announcements = await Announcement.find();
+      let classWorks = await ClassWork.find();
 
       return res.status(200).json({
         message: "Successfully Loaded..!",
-        responseData: announcements,
+        responseData: classWorks,
       });
     } catch (error: unknown) {
       if (error instanceof Error)
@@ -40,17 +40,17 @@ export default class ClassWorkController {
     }
   };
 
-  getAnnouncementByBatch: RequestHandler = async (
+  getClassWorksByBatch: RequestHandler = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
     try {
       let { batch } = req.params;
-      let announcements = await Announcement.find({ batch: batch });
+      let classWorks = await ClassWork.find({ batch: batch });
 
       return res.status(200).json({
         message: "Successfully Loaded..!",
-        responseData: announcements,
+        responseData: classWorks,
       });
     } catch (error: unknown) {
       if (error instanceof Error)
@@ -60,24 +60,20 @@ export default class ClassWorkController {
     }
   };
 
-  updateAnnouncement: RequestHandler = async (
+  updateClassWork: RequestHandler = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
     try {
-      let { description } = req.params;
+      let { id } = req.params;
 
-      let updatedBatch = await Announcement.findOneAndUpdate(
-        { description: description },
-        req.body,
-        {
-          new: true,
-        }
-      );
+      let updateClassWork = await ClassWork.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
 
       return res.status(200).json({
         message: "Successfully Updated..!",
-        responseData: updatedBatch,
+        responseData: updateClassWork,
       });
     } catch (error: unknown) {
       if (error instanceof Error)
