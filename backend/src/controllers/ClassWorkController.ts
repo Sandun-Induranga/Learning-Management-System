@@ -83,7 +83,7 @@ export default class ClassWorkController {
     }
   };
 
-  saveStudentImage: RequestHandler = async (
+  saveClassWorkImage: RequestHandler = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
