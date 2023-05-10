@@ -15,6 +15,7 @@ import {
 type ClassWorkDetail = {
   _id: string;
   name: string;
+  description: string;
   type: string;
   dueDate: Date;
   moduleName: string;
@@ -34,7 +35,7 @@ const ClassWorks = () => {
   const [classWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(true);
   const [classWorkName, setClassWorkName] = useState<string>("");
-  const [type, setType] = useState<string>("");
+  const [type, setType] = useState<string>("Assignment");
   const [moduleName, setModuleName] = useState<string>("");
   const [dueDate, setDueDate] = useState<Date>(new Date());
   const [description, setDescription] = useState<string>("");
@@ -230,14 +231,14 @@ const ClassWorks = () => {
         )}
         {classWorkList.map((classWork) => (
           <ClassWork
-            _id=""
-            name=""
-            description=""
-            dueDate={new Date()}
-            batch=""
-            moduleName=""
-            type=""
-            file=""
+            _id={classWork._id}
+            name={classWork.name}
+            description={classWork.description}
+            dueDate={classWork.dueDate}
+            batch={classWork.batch}
+            moduleName={classWork.moduleName}
+            type={classWork.type}
+            file={classWork.file}
           />
         ))}
       </div>
