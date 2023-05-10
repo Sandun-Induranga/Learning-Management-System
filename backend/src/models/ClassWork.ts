@@ -5,6 +5,7 @@ export interface IClassWork extends Document {
   type: string;
   dueDate: Date;
   moduleName: string;
+  description: string;
   file: string;
   batch: string;
 }
@@ -24,6 +25,10 @@ const ClassWorkSchema = new Schema(
       required: true,
     },
     moduleName: {
+      type: String,
+      required: true,
+    },
+    description: {
       type: String,
       required: true,
     },
