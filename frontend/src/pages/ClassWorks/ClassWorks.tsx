@@ -37,6 +37,7 @@ const ClassWorks = () => {
   const [type, setType] = useState<string>("");
   const [dueDate, setDueDate] = useState<Date>(new Date());
   const [description, setDescription] = useState<string>("");
+  const [file, setFile] = useState<any>(" ");
 
   useEffect(() => {
     getAllClassWorks();
@@ -44,6 +45,10 @@ const ClassWorks = () => {
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
+  };
+
+  const handleFileSelect = (event: any) => {
+    setFile(event.target.files[0]);
   };
 
   const getAllClassWorks = () => {
@@ -109,7 +114,7 @@ const ClassWorks = () => {
                   </span>
                 </section>
                 <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-                  <form className="w-ful flex flex-col gap-4">
+                  <form className="w-full flex flex-col gap-4">
                     <ThemeProvider theme={theme}>
                       <TextField
                         label="Name"
@@ -164,7 +169,7 @@ const ClassWorks = () => {
                           type="file"
                           name="files"
                           id="file"
-                          // onChange={handleFileSelect}
+                          onChange={handleFileSelect}
                         />
                         <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
                       </section>
