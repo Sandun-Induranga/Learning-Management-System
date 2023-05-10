@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import ClassWork from "../../components/ClassWork/ClassWork";
 import Header from "../../components/Header";
 import api from "../../api";
@@ -33,6 +33,10 @@ const theme = createTheme({
 const ClassWorks = () => {
   const [classWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(true);
+  const [classWorkName, setClassWorkName] = useState<string>("");
+  const [type, setType] = useState<string>("");
+  const [dueDate, setDueDate] = useState<Date>(new Date());
+  const [description, setDescription] = useState<string>("");
 
   useEffect(() => {
     getAllClassWorks();
@@ -51,6 +55,19 @@ const ClassWorks = () => {
       .catch((error) => {
         console.log(error);
       });
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case "classWorkName":
+        setClassWorkName(value);
+        break;
+
+      default:
+        break;
+    }
   };
 
   return (
@@ -96,13 +113,13 @@ const ClassWorks = () => {
                         label="Name"
                         fullWidth
                         color="primary"
-                        name="batchName"
-                        // value={description}
-                        // onChange={handleInputChange}
+                        name="classWorkName"
+                        value={classWorkName}
+                        onChange={handleInputChange}
                         placeholder="Enter Class Work Name"
                         required
                       />
-                      <Select fullWidth>
+                      <Select fullWidth value={type}>
                         <MenuItem selected value={"Assignment"}>
                           Assignment
                         </MenuItem>
@@ -113,14 +130,14 @@ const ClassWorks = () => {
                         label="Due Date"
                         fullWidth
                         color="primary"
-                        name="batchName"
-                        // value={description}
-                        // onChange={handleInputChange}
+                        name="dueDate"
+                        value={dueDate}
+                        onChange={handleInputChange}
                         placeholder="Enter Class Work Name"
                         type="date"
                         required
                       />
-                      <Select fullWidth>
+                      <Select fullWidth value={type}>
                         <MenuItem selected value={"Assignment"}>
                           Assignment
                         </MenuItem>
@@ -134,8 +151,8 @@ const ClassWorks = () => {
                         name="batchName"
                         multiline
                         rows={4}
-                        // value={description}
-                        // onChange={handleInputChange}
+                        value={description}
+                        onChange={handleInputChange}
                         placeholder="Enter Batch Name"
                         required
                       />
