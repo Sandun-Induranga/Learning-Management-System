@@ -8,6 +8,7 @@ import {
   Button,
   MenuItem,
   Select,
+  SelectChangeEvent,
   TextField,
   createTheme,
 } from "@mui/material";
@@ -113,6 +114,16 @@ const ClassWorks = () => {
       });
   };
 
+  const handleTypeComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
+    setType(event.target.value);
+  };
+
+  const handleModuleComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
+    setModuleName(event.target.value);
+  };
+
   return (
     <>
       <Header />
@@ -165,7 +176,11 @@ const ClassWorks = () => {
                         placeholder="Enter Class Work Name"
                         required
                       />
-                      <Select fullWidth value={type}>
+                      <Select
+                        fullWidth
+                        value={type}
+                        onChange={handleTypeComboBox}
+                      >
                         <MenuItem selected value={"Assignment"}>
                           Assignment
                         </MenuItem>
@@ -183,7 +198,11 @@ const ClassWorks = () => {
                         type="date"
                         required
                       />
-                      <Select fullWidth value={moduleName}>
+                      <Select
+                        fullWidth
+                        value={moduleName}
+                        onChange={handleModuleComboBox}
+                      >
                         <MenuItem selected value={"Assignment"}>
                           Assignment
                         </MenuItem>
