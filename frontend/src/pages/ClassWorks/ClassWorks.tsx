@@ -4,7 +4,13 @@ import Header from "../../components/Header";
 import api from "../../api";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
-import { Button, TextField, createTheme } from "@mui/material";
+import {
+  Button,
+  MenuItem,
+  Select,
+  TextField,
+  createTheme,
+} from "@mui/material";
 
 type ClassWorkDetail = {
   _id: string;
@@ -84,8 +90,43 @@ const ClassWorks = () => {
                   </span>
                 </section>
                 <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-                  <form className="w-ful">
+                  <form className="w-ful flex flex-col gap-4">
                     <ThemeProvider theme={theme}>
+                      <TextField
+                        label="Name"
+                        fullWidth
+                        color="primary"
+                        name="batchName"
+                        // value={description}
+                        // onChange={handleInputChange}
+                        placeholder="Enter Class Work Name"
+                        required
+                      />
+                      <Select fullWidth>
+                        <MenuItem selected value={"Assignment"}>
+                          Assignment
+                        </MenuItem>
+                        <MenuItem value={"Project"}>Project</MenuItem>
+                        <MenuItem value={"Quize"}>Quize</MenuItem>
+                      </Select>
+                      <TextField
+                        label="Due Date"
+                        fullWidth
+                        color="primary"
+                        name="batchName"
+                        // value={description}
+                        // onChange={handleInputChange}
+                        placeholder="Enter Class Work Name"
+                        type="date"
+                        required
+                      />
+                      <Select fullWidth>
+                        <MenuItem selected value={"Assignment"}>
+                          Assignment
+                        </MenuItem>
+                        <MenuItem value={"Project"}>Project</MenuItem>
+                        <MenuItem value={"Quize"}>Quize</MenuItem>
+                      </Select>
                       <TextField
                         label="Description"
                         fullWidth
