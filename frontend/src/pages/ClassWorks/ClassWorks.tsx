@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import ClassWork from "../../components/ClassWork/ClassWork";
 import Header from "../../components/Header";
 import api from "../../api";
-import { AddCircle, DoDisturbOn } from "@mui/icons-material";
+import { Add, AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { ThemeProvider } from "@emotion/react";
 import {
   Button,
@@ -64,7 +64,9 @@ const ClassWorks = () => {
       case "classWorkName":
         setClassWorkName(value);
         break;
-
+      case "description":
+        setDescription(value);
+        break;
       default:
         break;
     }
@@ -148,7 +150,7 @@ const ClassWorks = () => {
                         label="Description"
                         fullWidth
                         color="primary"
-                        name="batchName"
+                        name="description"
                         multiline
                         rows={4}
                         value={description}
@@ -156,6 +158,16 @@ const ClassWorks = () => {
                         placeholder="Enter Batch Name"
                         required
                       />
+                      <section className="w-40 h-40 border rounded-lg flex justify-center relative">
+                        <input
+                          className="opacity-0 cursor-pointer w-full h-full z-10"
+                          type="file"
+                          name="files"
+                          id="file"
+                          // onChange={handleFileSelect}
+                        />
+                        <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
+                      </section>
                       <Button
                         type="submit"
                         variant="contained"
