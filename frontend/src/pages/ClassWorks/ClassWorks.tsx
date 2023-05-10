@@ -18,10 +18,15 @@ type ClassWorkDetail = {
 
 const ClassWorks = () => {
   const [classWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
+  const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(true);
 
   useEffect(() => {
     getAllClassWorks();
   }, []);
+
+  const bindAddAndDiscartEvent = () => {
+    setIsClickedAddButton(!isClickedAddButton);
+  };
 
   const getAllClassWorks = () => {
     api
@@ -38,7 +43,7 @@ const ClassWorks = () => {
     <>
       <Header />
       <div className="mt-20 p-10 flex flex-col items-center justify-center gap-4">
-        {isTeacher ? (
+        {localStorage.getItem("currentRole") == "Teacher" ? (
           <>
             {!isClickedAddButton ? (
               <>
@@ -71,7 +76,7 @@ const ClassWorks = () => {
                   </span>
                 </section>
                 <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-                  <form className="w-ful" onSubmit={handleSubmit}>
+                  <form className="w-ful">
                     <ThemeProvider theme={theme}>
                       <TextField
                         label="Description"
@@ -80,8 +85,8 @@ const ClassWorks = () => {
                         name="batchName"
                         multiline
                         rows={4}
-                        value={description}
-                        onChange={handleInputChange}
+                        // value={description}
+                        // onChange={handleInputChange}
                         placeholder="Enter Batch Name"
                         required
                       />
