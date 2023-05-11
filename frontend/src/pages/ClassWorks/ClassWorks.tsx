@@ -53,7 +53,7 @@ const ClassWorks = () => {
   };
 
   const handleFileSelect = (event: any) => {
-    setFile(event.target.files[0]);
+    setFile(event.target.file[0]);
   };
 
   const getAllClassWorks = () => {
