@@ -32,7 +32,7 @@ export default class ClassWorkRoutes {
     this.router.put(
       "/image/:id",
       upload.single("files"),
-      this.classWorkController.saveClassWork
+      this.classWorkController.saveClassWorkImage
     );
   };
 

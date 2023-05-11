@@ -95,13 +95,13 @@ export default class ClassWorkController {
         "../../../public/uploads/classWorks/" +
         req.file?.originalname.toString();
 
-      let updatedStudent = await ClassWork.findByIdAndUpdate(id, classWork, {
+      let updateClassWork = await ClassWork.findByIdAndUpdate(id, classWork, {
         new: true,
       });
 
       return res
         .status(200)
-        .json({ message: "Uploaded", responseData: updatedStudent });
+        .json({ message: "Uploaded", responseData: updateClassWork });
     } catch (error: unknown) {
       if (error instanceof Error)
         return res.status(500).json({ message: error.message });
