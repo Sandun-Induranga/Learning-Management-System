@@ -180,6 +180,9 @@ const Student = (props: StudentDetail) => {
         <td>{props.contact}</td>
         <td>{props.username}</td>
         <td>{props.batchName}</td>
+        <td>
+          <img src={props.profilePhoto} className="w-40 h-44 m-0 p-0" alt="" />
+        </td>
       </tr>
       <Modal
         open={open}

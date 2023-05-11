@@ -21,7 +21,7 @@ type AnnouncementDetail = {
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#007DFE",
+      main: "#ffb703",
     },
   },
 });
@@ -132,7 +132,7 @@ const Announcements = () => {
             {!isClickedAddButton ? (
               <>
                 <section
-                  className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
+                  className="w-full h-12 rounded-t-lg bg-[#ffb703] text-white flex justify-between items-center cursor-pointer px-20"
                   onClick={bindAddAndDiscartEvent}
                 >
                   <p>Add New Announcement</p>

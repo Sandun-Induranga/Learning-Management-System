@@ -318,6 +318,7 @@ const StudentPage = () => {
                 <th>Contact</th>
                 <th>Username</th>
                 <th>Batch</th>
+                <th>Photo</th>
               </tr>
             </thead>
             <tbody className="mt-12 overflow-auto">

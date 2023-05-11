@@ -5,7 +5,7 @@ type ClassWorkDetail = {
   name: string;
   type: string;
   description: string;
-  dueDate: Date;
+  dueDate: string;
   moduleName: string;
   file: string;
   batch: string;
@@ -19,9 +19,7 @@ const ClassWork = (props: ClassWorkDetail) => {
           {props.moduleName}
         </span>
         <span className="text-gray-700">{props.name}</span>
-        <span className="text-xs text-gray-600">
-          Due {props.dueDate.toDateString()}
-        </span>
+        <span className="text-xs text-gray-600">Due {props.dueDate}</span>
       </div>
 
       <section className="text-gray-700 text-center">
@@ -31,7 +29,7 @@ const ClassWork = (props: ClassWorkDetail) => {
       <section className="grid grid-cols-2 gap-6 mb-10">
         <a
           href={props.file}
-          className="bg-sky-edited-500 px-6 py-2 rounded-full text-white"
+          className="bg-[#ffb703]-500 px-6 py-2 rounded-full text-white"
         >
           <PictureAsPdf /> Document
         </a>

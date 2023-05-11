@@ -18,7 +18,7 @@ type ClassWorkDetail = {
   name: string;
   description: string;
   type: string;
-  dueDate: Date;
+  dueDate: string;
   moduleName: string;
   file: string;
   batch: string;
@@ -38,7 +38,7 @@ const ClassWorks = () => {
   const [classWorkName, setClassWorkName] = useState<string>("");
   const [type, setType] = useState<string>("Assignment");
   const [moduleName, setModuleName] = useState<string>("");
-  const [dueDate, setDueDate] = useState<Date>(new Date());
+  const [dueDate, setDueDate] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [file, setFile] = useState<any>(" ");
   const [moduleList, setModuleList] = useState<any[]>([]);
@@ -89,7 +89,7 @@ const ClassWorks = () => {
         setDescription(value);
         break;
       case "dueDate":
-        setDueDate(new Date("2022-10-20"));
+        setDueDate("2022-10-20");
         break;
       default:
         break;
@@ -99,24 +99,25 @@ const ClassWorks = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    let newStudent = {
+    let newClassWork = {
       name: classWorkName,
       type: type,
       dueDate: dueDate,
+      description: description,
       moduleName: moduleName,
       file: " ",
       batch: localStorage.getItem("currentBatch"),
     };
 
     api
-      .post("student", newStudent)
+      .post("classwork", newClassWork)
       .then((res) => {
         let id = res.data.responseData._id;
 
         let formData = new FormData();
         formData.append("file", file);
         api
-          .put(`student/image/${id}`, formData)
+          .put(`classwork/image/${id}`, formData)
           .then((res) => {
             getAllClassWorks();
             console.log(res);
@@ -212,7 +213,7 @@ const ClassWorks = () => {
                         onChange={handleInputChange}
                         placeholder="Enter Class Work Name"
                         type="date"
-                        required
+                        // required
                       />
                       <Select
                         fullWidth
