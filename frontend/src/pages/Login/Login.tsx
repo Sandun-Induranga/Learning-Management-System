@@ -33,7 +33,7 @@ const Login = () => {
               "currentBatch",
               res.data.responseData.batchName
             );
-            alert(localStorage.getItem("currentUsername"));
+            alert(localStorage.getItem("currentRole"));
             navigate("/student", { replace: false });
             break;
           case "Teacher":

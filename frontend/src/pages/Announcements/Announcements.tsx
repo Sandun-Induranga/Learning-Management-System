@@ -126,7 +126,7 @@ const Announcements = () => {
   return (
     <>
       <Header />
-      <div className="mt-60 lg:mx-60 p-10 flex flex-col items-center justify-center gap-4">
+      <div className="mt-20 lg:mx-60 p-10 flex flex-col items-center justify-center gap-4">
         {isTeacher ? (
           <>
             {!isClickedAddButton ? (

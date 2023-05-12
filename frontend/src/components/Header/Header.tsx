@@ -19,10 +19,22 @@ const Header = () => {
         <nav className="sm:flex gap-10 text-gray-700 hidden">
           <NavLink to={"/student"}>Announcement</NavLink>
           <NavLink to={"/student/class-work"}>Class Works</NavLink>
-          <NavLink to={"/teacher/batch"}>Batches</NavLink>
+          {localStorage.getItem("currentRole") == "Teacher" ? (
+            <NavLink to={"/teacher/batch"}>Batches</NavLink>
+          ) : (
+            <></>
+          )}
           <NavLink to={"/student/members"}>Members</NavLink>
-          <NavLink to={"/teacher/students"}>Students</NavLink>
-          <NavLink to={"/modules"}>Modules</NavLink>
+          {localStorage.getItem("currentRole") == "Teacher" ? (
+            <NavLink to={"/teacher/students"}>Students</NavLink>
+          ) : (
+            <></>
+          )}
+          {localStorage.getItem("currentRole") == "Teacher" ? (
+            <NavLink to={"/modules"}>Modules</NavLink>
+          ) : (
+            <></>
+          )}
         </nav>
         <div className="hidden sm:flex justify-center items-center gap-2">
           <Avatar className="border" src={userImage}></Avatar>
@@ -40,9 +52,22 @@ const Header = () => {
                 <NavLink to={"/announcement"}>Announcement</NavLink>
                 <NavLink to={"/classWork"}>Class Works</NavLink>
                 <NavLink to={"/announcement"}>Members</NavLink>
-                <NavLink to={"/teacher/batch"}>Batches</NavLink>
-                <NavLink to={"/teacher/students"}>Students</NavLink>
-                <NavLink to={"/modules"}>Modules</NavLink>
+                {localStorage.getItem("currentRole") == "Teacher" ? (
+                  <NavLink to={"/teacher/batch"}>Batches</NavLink>
+                ) : (
+                  <></>
+                )}
+                {localStorage.getItem("currentRole") == "Teacher" ? (
+                  <NavLink to={"/teacher/students"}>Students</NavLink>
+                ) : (
+                  <></>
+                )}
+                {localStorage.getItem("currentRole") == "Teacher" ? (
+                  <NavLink to={"/modules"}>Modules</NavLink>
+                ) : (
+                  <></>
+                )}
+
                 <Avatar className="border" src={userImage}></Avatar>
               </nav>
             </>
