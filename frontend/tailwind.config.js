@@ -10,7 +10,7 @@ export default {
     },colors:{
       sky:{
         edited:{
-          500:"#007DFE"
+          500:"#007f5f"
         }
       }
     }

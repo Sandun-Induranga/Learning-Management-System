@@ -29,10 +29,6 @@ const Login = () => {
             setRole(res.data.responseData.role);
             localStorage.setItem("currentUsername", username);
             localStorage.setItem("currentRole", "Student");
-            localStorage.setItem(
-              "currentBatch",
-              res.data.responseData.batchName
-            );
             alert(localStorage.getItem("currentRole"));
             navigate("/student", { replace: false });
             break;

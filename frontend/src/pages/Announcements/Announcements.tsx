@@ -56,6 +56,7 @@ const Announcements = () => {
             "profilePhoto",
             res.data.responseData.profilePhoto
           );
+          localStorage.setItem("currentBatch", res.data.responseData.batchName);
           api
             .get(`announcement/${res.data.responseData.batchName}`)
             .then((res) => {

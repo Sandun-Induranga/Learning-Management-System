@@ -53,7 +53,7 @@ const ClassWorks = () => {
   };
 
   const handleFileSelect = (event: any) => {
-    setFile(event.target.file[0]);
+    setFile(event.target.files[0]);
   };
 
   const getAllClassWorks = () => {
@@ -115,7 +115,7 @@ const ClassWorks = () => {
         let id = res.data.responseData._id;
 
         let formData = new FormData();
-        formData.append("file", file);
+        formData.append("files", file);
         api
           .put(`classwork/image/${id}`, formData)
           .then((res) => {
