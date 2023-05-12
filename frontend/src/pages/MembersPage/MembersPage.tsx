@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import api from "../../api";
 import { useEffect, useState } from "react";
 import { Avatar } from "@mui/material";
+import Card from "../../components/Card";
 
 type StudentDetail = {
   _id: string;
@@ -65,10 +66,10 @@ const MembersPage = () => {
         <h1 className="text-sky-edited-500 text-xl p-4">Teachers</h1>
         <aside className="grid grid-cols-4">
           {teacherList.map((teacher) => (
-            <aside className="text-lg">
-              <Avatar className="border" src={teacher.profilePhoto}></Avatar>
-              <h1>{teacher.teacherName}</h1>
-            </aside>
+            <Card
+              profilePhoto={teacher.profilePhoto}
+              name={teacher.teacherName}
+            />
           ))}
         </aside>
       </section>
@@ -77,10 +78,10 @@ const MembersPage = () => {
         <h1 className="text-sky-edited-500 text-xl p-4">Students</h1>
         <aside className="grid grid-cols-4">
           {studentList.map((student) => (
-            <aside className="text-lg">
-              <Avatar className="border" src={student.profilePhoto}></Avatar>
-              <h1>{student.studentName}</h1>
-            </aside>
+            <Card
+              profilePhoto={student.profilePhoto}
+              name={student.studentName}
+            />
           ))}
         </aside>
       </section>
