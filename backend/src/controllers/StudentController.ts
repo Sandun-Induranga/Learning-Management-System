@@ -198,7 +198,7 @@ export default class StudentController {
   ): Promise<Response> => {
     try {
       let { batch } = req.params;
-      let students = await Student.find({ batch: batch });
+      let students = await Student.find({ batchName: batch });
 
       return res
         .status(200)
