@@ -38,6 +38,7 @@ export default class StudentRoutes {
       "/current/:username",
       this.studentController.getStudentByUsername
     );
+    this.router.get("/:batch", this.studentController.getStudentsByBatch);
   };
 
   public getRouter = (): Router => {
