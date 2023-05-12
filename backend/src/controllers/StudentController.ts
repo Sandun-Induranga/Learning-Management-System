@@ -191,4 +191,23 @@ export default class StudentController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
+  getStudentsByBatch: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { batch } = req.params;
+      let students = await Student.find({ batch: batch });
+
+      return res
+        .status(200)
+        .json({ message: "Successfully Loaded..!", responseData: students });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
 }
