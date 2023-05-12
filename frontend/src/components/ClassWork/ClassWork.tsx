@@ -13,7 +13,7 @@ type ClassWorkDetail = {
 
 const ClassWork = (props: ClassWorkDetail) => {
   return (
-    <main className="mt-40 md:w-1/2 border p-10 rounded-lg flex flex-col items-center gap-6">
+    <main className="md:w-1/2 border p-10 rounded-lg flex flex-col items-center gap-6">
       <div className="flex flex-col items-center">
         <span className="text-gray-700 text-lg font-semibold">
           {props.moduleName}
@@ -26,10 +26,11 @@ const ClassWork = (props: ClassWorkDetail) => {
         {props.description}
       </section>
 
-      <section className="grid grid-cols-2 gap-6 mb-10">
+      <section className="flex mb-10">
         <a
           href={props.file}
-          className="bg-[#ffb703]-500 px-6 py-2 rounded-full text-white"
+          className="bg-sky-edited-500 px-6 py-2 rounded-full text-white"
+          target="_blank"
         >
           <PictureAsPdf /> Document
         </a>
