@@ -62,7 +62,7 @@ const MembersPage = () => {
     <>
       <Header />
       <section className="mt-20 p-10 shadow-lg mx-10 rounded-lg">
-        <h1 className="text-sky-edited-500 text-xl p-4">Students</h1>
+        <h1 className="text-sky-edited-500 text-xl p-4">Teachers</h1>
         <aside className="grid grid-cols-4">
           {teacherList.map((teacher) => (
             <aside className="text-lg">
