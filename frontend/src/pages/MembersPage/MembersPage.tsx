@@ -1,7 +1,6 @@
 import Header from "../../components/Header";
 import api from "../../api";
 import { useEffect, useState } from "react";
-import { Avatar } from "@mui/material";
 import Card from "../../components/Card";
 
 type StudentDetail = {

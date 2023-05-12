@@ -245,6 +245,7 @@ const ClassWorks = () => {
                           name="files"
                           id="file"
                           onChange={handleFileSelect}
+                          multiple
                         />
                         <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
                       </section>
