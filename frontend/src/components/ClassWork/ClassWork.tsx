@@ -1,5 +1,6 @@
 import { Add, PictureAsPdf } from "@mui/icons-material";
 import { useState } from "react";
+import api from "../../api";
 
 type ClassWorkDetail = {
   _id: string;
@@ -17,6 +18,23 @@ const ClassWork = (props: ClassWorkDetail) => {
 
   const handleFileSelect = (event: any) => {
     setFile(event.target.files[0]);
+  };
+
+  const submitAnswer = () => {
+    const newAnswer = {
+      studentNic: "",
+      studentName: localStorage.getItem("currentStudent"),
+      file: " ",
+      batch: localStorage.getItem("currentBatch"),
+    };
+    api
+      .post("answer", newAnswer)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -55,7 +73,10 @@ const ClassWork = (props: ClassWorkDetail) => {
           />
           <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
         </section>
-        <button className="px-6 py-2 bg-sky-edited-500 text-white rounded-lg w-max">
+        <button
+          className="px-6 py-2 bg-sky-edited-500 text-white rounded-lg w-max"
+          onClick={submitAnswer}
+        >
           Submit
         </button>
       </aside>

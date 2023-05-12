@@ -3,4 +3,5 @@ type Answer = {
   studentName: string;
   submissionStatus: string;
   file: string;
+  batch: string;
 };
