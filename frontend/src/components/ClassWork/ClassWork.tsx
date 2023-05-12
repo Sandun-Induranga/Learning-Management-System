@@ -1,4 +1,5 @@
 import { Add, PictureAsPdf } from "@mui/icons-material";
+import { useState } from "react";
 
 type ClassWorkDetail = {
   _id: string;
@@ -12,6 +13,12 @@ type ClassWorkDetail = {
 };
 
 const ClassWork = (props: ClassWorkDetail) => {
+  const [file, setFile] = useState<any>("");
+
+  const handleFileSelect = (event: any) => {
+    setFile(event.target.files[0]);
+  };
+
   return (
     <main className="md:w-1/2 border p-10 rounded-lg flex flex-col items-center gap-6">
       <div className="flex flex-col items-center">
@@ -42,6 +49,9 @@ const ClassWork = (props: ClassWorkDetail) => {
           <input
             className="opacity-0 cursor-pointer w-full h-full z-10"
             type="file"
+            name="files"
+            multiple
+            onChange={handleFileSelect}
           />
           <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
         </section>

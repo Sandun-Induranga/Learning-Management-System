@@ -62,8 +62,8 @@ const MembersPage = () => {
     <>
       <Header />
       <section className="mt-20 p-10 shadow-lg mx-10 rounded-lg">
-        <h1 className="text-sky-edited-500 text-xl p-4">Teachers</h1>
-        <aside className="grid grid-cols-4">
+        <h1 className="text-sky-edited-500 text-lg p-4">Teachers</h1>
+        <aside className="grid grid-cols-6">
           {teacherList.map((teacher) => (
             <Card
               profilePhoto={teacher.profilePhoto}
@@ -73,9 +73,9 @@ const MembersPage = () => {
         </aside>
       </section>
 
-      <section className="p-10 shadow-lg mx-10 rounded-lg">
-        <h1 className="text-sky-edited-500 text-xl p-4">Students</h1>
-        <aside className="grid grid-cols-4">
+      <section className="mt-10 p-10 shadow-lg mx-10 rounded-lg">
+        <h1 className="text-sky-edited-500 text-lg p-4">Students</h1>
+        <aside className="grid grid-cols-6">
           {studentList.map((student) => (
             <Card
               profilePhoto={student.profilePhoto}

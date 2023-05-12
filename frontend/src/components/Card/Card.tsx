@@ -8,7 +8,7 @@ type StudentProps = {
 const Card = (props: StudentProps) => {
   return (
     <>
-      <aside className="text-lg">
+      <aside className="flex flex-col items-center text-sm">
         <Avatar className="border" src={props.profilePhoto}></Avatar>
         <h1>{props.name}</h1>
       </aside>
