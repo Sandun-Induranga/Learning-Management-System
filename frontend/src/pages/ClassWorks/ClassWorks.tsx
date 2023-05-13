@@ -34,7 +34,7 @@ const theme = createTheme({
 
 const ClassWorks = () => {
   const [classWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
-  const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(true);
+  const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
   const [classWorkName, setClassWorkName] = useState<string>("");
   const [type, setType] = useState<string>("Assignment");
   const [moduleName, setModuleName] = useState<string>("");

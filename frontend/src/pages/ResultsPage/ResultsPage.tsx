@@ -19,7 +19,7 @@ const theme = createTheme({
 });
 
 const ResultsPage = () => {
-  const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(true);
+  const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
@@ -28,7 +28,7 @@ const ResultsPage = () => {
   return (
     <>
       <Header />
-      <section className="mt-20 p-10">
+      <section className="mt-20 p-10 sm:px-60">
         {localStorage.getItem("currentRole") == "Teacher" ? (
           <>
             {!isClickedAddButton ? (
@@ -63,20 +63,10 @@ const ResultsPage = () => {
                 </section>
                 <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
                   <form
-                    className="w-full flex flex-col gap-4"
+                    className="w-full flex flex-col gap-4 sm:px-28"
                     // onSubmit={handleSubmit}
                   >
                     <ThemeProvider theme={theme}>
-                      <TextField
-                        label="Name"
-                        fullWidth
-                        color="primary"
-                        name="classWorkName"
-                        // value={classWorkName}
-                        // onChange={handleInputChange}
-                        placeholder="Enter Class Work Name"
-                        required
-                      />
                       <Select
                         fullWidth
                         // value={type}
@@ -88,6 +78,27 @@ const ResultsPage = () => {
                         <MenuItem value={"Project"}>Project</MenuItem>
                         <MenuItem value={"Quize"}>Quize</MenuItem>
                       </Select>
+                      <Select
+                        fullWidth
+                        // value={type}
+                        // onChange={handleTypeComboBox}
+                      >
+                        <MenuItem selected value={"Assignment"}>
+                          Assignment
+                        </MenuItem>
+                        <MenuItem value={"Project"}>Project</MenuItem>
+                        <MenuItem value={"Quize"}>Quize</MenuItem>
+                      </Select>
+                      <TextField
+                        label="Marks"
+                        fullWidth
+                        color="primary"
+                        name="marks"
+                        // value={classWorkName}
+                        // onChange={handleInputChange}
+                        placeholder="Enter Marks"
+                        required
+                      />
 
                       <Button
                         type="submit"
