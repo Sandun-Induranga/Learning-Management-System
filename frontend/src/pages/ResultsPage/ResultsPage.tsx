@@ -7,10 +7,24 @@ import {
   Select,
   TextField,
   ThemeProvider,
+  createTheme,
 } from "@mui/material";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#007DFE",
+    },
+  },
+});
 
 const ResultsPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(true);
+
+  const bindAddAndDiscartEvent = () => {
+    setIsClickedAddButton(!isClickedAddButton);
+  };
+
   return (
     <>
       <Header />
@@ -21,7 +35,7 @@ const ResultsPage = () => {
               <>
                 <section
                   className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
-                  // onClick={bindAddAndDiscartEvent}
+                  onClick={bindAddAndDiscartEvent}
                 >
                   <p>Add New Class Work</p>
                   <span>
@@ -30,7 +44,7 @@ const ResultsPage = () => {
                 </section>
                 <section
                   className="w-full h-32 border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 cursor-pointer"
-                  // onClick={bindAddAndDiscartEvent}
+                  onClick={bindAddAndDiscartEvent}
                 >
                   <AddCircle />
                   Add New Class Work
@@ -40,7 +54,7 @@ const ResultsPage = () => {
               <>
                 <section
                   className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
-                  // onClick={bindAddAndDiscartEvent}
+                  onClick={bindAddAndDiscartEvent}
                 >
                   <p>Discart Class Work</p>
                   <span>
