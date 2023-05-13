@@ -46,4 +46,26 @@ export default class AnswerController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
+  getAnswersByUsernameAndClassWork: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { username, classWorkId } = req.params;
+      let answers = await Answer.find({
+        studentUsername: username,
+        classWorkId: classWorkId,
+      });
+
+      return res
+        .status(200)
+        .json({ message: "Successfully Loaded..!", responseData: answers });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
 }

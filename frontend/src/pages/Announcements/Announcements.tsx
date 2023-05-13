@@ -133,7 +133,7 @@ const Announcements = () => {
             {!isClickedAddButton ? (
               <>
                 <section
-                  className="w-full h-12 rounded-t-lg bg-[#ffb703] text-white flex justify-between items-center cursor-pointer px-20"
+                  className="w-full h-12 rounded-t-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white flex justify-between items-center cursor-pointer px-20"
                   onClick={bindAddAndDiscartEvent}
                 >
                   <p>Add New Announcement</p>

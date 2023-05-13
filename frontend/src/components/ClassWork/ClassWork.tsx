@@ -67,7 +67,7 @@ const ClassWork = (props: ClassWorkDetail) => {
       <section className="flex mb-10">
         <a
           href={props.file}
-          className="bg-sky-edited-500 px-6 py-2 rounded-full text-white"
+          className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 rounded-full text-white"
           target="_blank"
         >
           <PictureAsPdf /> Document
@@ -87,7 +87,7 @@ const ClassWork = (props: ClassWorkDetail) => {
           <Add className="text-gray-200 !text-8xl absolute top-0 bottom-0 left-0 right-0 m-auto" />
         </section>
         <button
-          className="px-6 py-2 bg-sky-edited-500 text-white rounded-lg w-max"
+          className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg w-max"
           onClick={submitAnswer}
         >
           Submit
