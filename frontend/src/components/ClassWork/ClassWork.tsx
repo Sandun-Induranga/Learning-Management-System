@@ -1,5 +1,5 @@
 import { Add, PictureAsPdf } from "@mui/icons-material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../../api";
 
 type ClassWorkDetail = {
@@ -25,6 +25,10 @@ type AnswerDetail = {
 const ClassWork = (props: ClassWorkDetail) => {
   const [file, setFile] = useState<any>("");
   const [answerList, setAnswerList] = useState<AnswerDetail[]>([]);
+
+  useEffect(() => {
+    getAllAnswers();
+  }, []);
 
   const getAllAnswers = () => {
     api
