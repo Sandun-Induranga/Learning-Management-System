@@ -7,6 +7,7 @@ import BatchPage from "../../pages/BatchPage/BatchPage";
 import StudentPage from "../../pages/StudentPage/StudentPage";
 import ModulePage from "../../pages/ModulePage/ModulePage";
 import MembersPage from "../../pages/MembersPage/MembersPage";
+import ResultsPage from "../../pages/ResultsPage/ResultsPage";
 
 const Content = () => {
   return (
@@ -22,6 +23,7 @@ const Content = () => {
 
         <Route path="/modules" element={<ModulePage />}></Route>
         <Route path="/student/members" element={<MembersPage />}></Route>
+        <Route path="/results" element={<ResultsPage />}></Route>
       </Routes>
     </>
   );

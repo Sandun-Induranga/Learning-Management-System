@@ -35,6 +35,7 @@ const Header = () => {
           ) : (
             <></>
           )}
+          <NavLink to={"/results"}>Results</NavLink>
         </nav>
         <div className="hidden sm:flex justify-center items-center gap-2">
           <Avatar className="border" src={userImage}></Avatar>
@@ -67,6 +68,7 @@ const Header = () => {
                 ) : (
                   <></>
                 )}
+                <NavLink to={"/results"}>Results</NavLink>
 
                 <Avatar className="border" src={userImage}></Avatar>
               </nav>
