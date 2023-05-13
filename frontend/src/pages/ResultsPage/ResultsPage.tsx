@@ -20,6 +20,10 @@ const theme = createTheme({
 
 const ResultsPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
+  const [module, setModule] = useState<string>("");
+  const [classWorkType, setClassWorkType] = useState<string>("");
+  const [classWorkName, setClassWorkName] = useState<string>("");
+  const [marks, setMarks] = useState<string>("");
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
@@ -47,7 +51,7 @@ const ResultsPage = () => {
                   onClick={bindAddAndDiscartEvent}
                 >
                   <AddCircle />
-                  Add New Class Work
+                  Add New Result
                 </section>
               </>
             ) : (
@@ -56,7 +60,7 @@ const ResultsPage = () => {
                   className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
                   onClick={bindAddAndDiscartEvent}
                 >
-                  <p>Discart Class Work</p>
+                  <p>Discart Result</p>
                   <span>
                     <DoDisturbOn />
                   </span>
