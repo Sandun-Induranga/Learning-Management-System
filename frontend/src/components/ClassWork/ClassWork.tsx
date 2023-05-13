@@ -95,7 +95,12 @@ const ClassWork = (props: ClassWorkDetail) => {
           <PictureAsPdf /> Document
         </a>
       </section>
-      <h6 className="text-gray-700">Submission Status : Pending</h6>
+      <section>
+        {answerList.map((answer) => (
+          <h6 className="text-gray-700">{answer.submissionStatus}</h6>
+        ))}
+      </section>
+
       <aside className="w-full border p-6 rounded-lg flex flex-col items-center gap-4">
         <p className="text-gray-700 font-semibold">Submit Your Work</p>
         <section className="w-40 h-40 border rounded-lg flex justify-center relative">
