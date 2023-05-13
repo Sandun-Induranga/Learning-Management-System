@@ -13,8 +13,26 @@ type ClassWorkDetail = {
   batch: string;
 };
 
+type AnswerDetail = {
+  studentUsername: string;
+  studentName: string;
+  submissionStatus: string;
+  file: string;
+  batch: string;
+  classWorkId: string;
+};
+
 const ClassWork = (props: ClassWorkDetail) => {
   const [file, setFile] = useState<any>("");
+  const [answerList, setAnswerList] = useState<AnswerDetail[]>([]);
+
+  const getAllAnswers = () => {
+    api
+      .get(`answer/${localStorage.getItem("currentUsername")}/${props._id}`)
+      .then((res) => {
+        setAnswerList(res.data.responseData);
+      });
+  };
 
   const handleFileSelect = (event: any) => {
     setFile(event.target.files[0]);
