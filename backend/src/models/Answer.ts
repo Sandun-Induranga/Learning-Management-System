@@ -1,16 +1,17 @@
 import { Document, Schema, model } from "mongoose";
 
 export interface IAnswer extends Document {
-  studentNic: string;
+  studentUsername: string;
   studentName: string;
   submissionStatus: string;
   file: string;
   batch: string;
+  classWorkId: string;
 }
 
 const AnswerSchema = new Schema(
   {
-    studentNic: {
+    studentUsername: {
       type: String,
       required: true,
     },
@@ -19,7 +20,7 @@ const AnswerSchema = new Schema(
       required: true,
     },
     submissionStatus: {
-      type: Date,
+      type: String,
       required: true,
     },
     file: {
@@ -27,6 +28,10 @@ const AnswerSchema = new Schema(
       required: true,
     },
     batch: {
+      type: String,
+      required: true,
+    },
+    classWorkId: {
       type: String,
       required: true,
     },

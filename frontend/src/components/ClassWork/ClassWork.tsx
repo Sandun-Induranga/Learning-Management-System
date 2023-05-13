@@ -22,15 +22,28 @@ const ClassWork = (props: ClassWorkDetail) => {
 
   const submitAnswer = () => {
     const newAnswer = {
-      studentNic: "",
+      studentUsername: localStorage.getItem("currentUsername"),
       studentName: localStorage.getItem("currentStudent"),
+      submissionStatus: "Submitted",
       file: " ",
       batch: localStorage.getItem("currentBatch"),
+      classWorkId: props._id,
     };
     api
       .post("answer", newAnswer)
       .then((res) => {
-        console.log(res);
+        let id = res.data.responseData._id;
+
+        let formData = new FormData();
+        formData.append("files", file);
+        api
+          .put(`answer/image/${id}`, formData)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       })
       .catch((error) => {
         console.log(error);
