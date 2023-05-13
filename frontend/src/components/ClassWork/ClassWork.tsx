@@ -73,7 +73,7 @@ const ClassWork = (props: ClassWorkDetail) => {
   };
 
   return (
-    <main className="md:w-1/2 border p-10 rounded-lg flex flex-col items-center gap-6">
+    <main className="md:w-1/2 border p-10 rounded-lg flex flex-col items-center gap-6 shadow-xl">
       <div className="flex flex-col items-center">
         <span className="text-gray-700 text-lg font-semibold">
           {props.moduleName}
@@ -92,12 +92,32 @@ const ClassWork = (props: ClassWorkDetail) => {
           className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 rounded-full text-white"
           target="_blank"
         >
-          <PictureAsPdf /> Document
+          <PictureAsPdf /> {props.file.split("/").pop()}
         </a>
       </section>
       <section>
         {answerList.map((answer) => (
-          <h6 className="text-gray-700">{answer.submissionStatus}</h6>
+          <div className="flex flex-col justify-center items-center gap-2 border px-2 py-4 rounded-lg">
+            <h6 className="text-gray-700">
+              Submission Status :{"  "}
+              <span
+                className={
+                  answer.submissionStatus == "Submitted"
+                    ? "text-green-600 font-semibold"
+                    : "text-red-700 font-semibold"
+                }
+              >
+                {answer.submissionStatus}
+              </span>
+            </h6>
+            <a
+              href={answer.file}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 rounded-full text-white opacity-70 hover:opacity-100 text-sm"
+              target="_blank"
+            >
+              <PictureAsPdf /> {answer.file.split("/").pop()}
+            </a>
+          </div>
         ))}
       </section>
 
