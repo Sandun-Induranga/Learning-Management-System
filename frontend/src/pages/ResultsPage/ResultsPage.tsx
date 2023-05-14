@@ -41,6 +41,11 @@ const ResultsPage = () => {
     setModule(event.target.value);
   };
 
+  const handleNameComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
+    setClassWorkName(event.target.value);
+  };
+
   return (
     <>
       <Header />
@@ -108,7 +113,7 @@ const ResultsPage = () => {
                       <Select
                         fullWidth
                         value={classWorkName}
-                        // onChange={handleTypeComboBox}
+                        onChange={handleNameComboBox}
                       >
                         <MenuItem selected value={"Assignment 01"}>
                           Assignment 01
