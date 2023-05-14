@@ -1,6 +1,7 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Header from "../../components/Header";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
+import api from "../../api";
 import {
   Button,
   MenuItem,
@@ -19,13 +20,24 @@ const theme = createTheme({
   },
 });
 
+type ModuleDetail = {
+  _id: string;
+  batchName: string | null;
+  moduleName: string;
+};
+
 const ResultsPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
+  const [moduleList, setModuleList] = useState<ModuleDetail[]>([]);
   const [module, setModule] = useState<string>("PRF");
   const [classWorkType, setClassWorkType] = useState<string>("Assignment");
   const [classWorkName, setClassWorkName] = useState<string>("Assignment 01");
   const [marks, setMarks] = useState<string>("");
   const [grade, setGrade] = useState<string>("");
+
+  useEffect(() => {
+    getAllModules();
+  }, []);
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
@@ -44,6 +56,17 @@ const ResultsPage = () => {
   const handleNameComboBox = (event: SelectChangeEvent<string>) => {
     event.preventDefault();
     setClassWorkName(event.target.value);
+  };
+
+  const getAllModules = () => {
+    api
+      .get(`module/${localStorage.getItem("currentBatch")}`)
+      .then((res) => {
+        setModuleList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -108,7 +131,7 @@ const ResultsPage = () => {
                         value={module}
                         onChange={handleModuleComboBox}
                       >
-                        <MenuItem disabled value={"PRF"}>
+                        <MenuItem disabled value={"Choose"}>
                           Choose the Module
                         </MenuItem>
                         <MenuItem value={"Project"}>Project</MenuItem>

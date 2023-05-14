@@ -12,6 +12,7 @@ export default class ModuleRoutes {
   private configRoutes = (): void => {
     this.router.post("/", this.moduleController.saveModule);
     this.router.get("/", this.moduleController.getAllModules);
+    this.router.get("/:batch", this.moduleController.getAllModulesByBatch);
     this.router.put("/:id", this.moduleController.updateModule);
     this.router.delete("/:id", this.moduleController.deleteModule);
   };
