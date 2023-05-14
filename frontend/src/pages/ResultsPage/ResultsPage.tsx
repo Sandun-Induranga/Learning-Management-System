@@ -108,6 +108,26 @@ const ResultsPage = () => {
     }
   };
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let newResult = {
+      studentId: " ",
+      classWorkId: classWorkName,
+      mark: marks,
+      grade: grade,
+    };
+
+    api
+      .post("classwork", newResult)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <>
       <Header />
@@ -147,7 +167,7 @@ const ResultsPage = () => {
                 <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
                   <form
                     className="w-full flex flex-col gap-4 sm:px-28"
-                    // onSubmit={handleSubmit}
+                    onSubmit={handleSubmit}
                   >
                     <ThemeProvider theme={theme}>
                       <Select
