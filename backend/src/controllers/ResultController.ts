@@ -37,12 +37,16 @@ export default class ResultController {
   ): Promise<Response> => {
     try {
       let results = await Result.find();
+
       let assignments: ResultDetail[] = [];
       let courseworks: ResultDetail[] = [];
       let projects: ResultDetail[] = [];
+
       for (let i = 0; i < results.length; i++) {
         const result = results[i];
+
         let classWork = await ClassWork.findById(result.classWorkId);
+
         if (classWork) {
           let newResult = {
             studentId: result.studentId,
