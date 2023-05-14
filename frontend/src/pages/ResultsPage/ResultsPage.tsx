@@ -27,12 +27,13 @@ const ResultsPage = () => {
   const [assingmentList, setAssignmentList] = useState<ResultDetail[]>([]);
   const [projectList, setProjectList] = useState<ResultDetail[]>([]);
   const [courseworkList, setCourseworkList] = useState<ResultDetail[]>([]);
+
   useEffect(() => {
     getResults();
   }, []);
 
   const getResults = () => {
-    api.get("result").then((res) => {
+    api.get(`result${localStorage.getItem("currentStudentId")}`).then((res) => {
       setAssignmentList(res.data.responseData.assignments);
       setProjectList(res.data.responseData.projects);
       setCourseworkList(res.data.responseData.courseworks);
