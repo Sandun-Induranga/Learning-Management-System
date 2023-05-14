@@ -147,15 +147,15 @@ const Card = (props: StudentProps) => {
 
   return (
     <>
-      <aside
-        className="flex flex-col items-center text-sm cursor-pointer"
-        onClick={handleOpen}
-      >
+      <aside className="flex flex-col items-center text-sm">
         <Avatar className="border" src={props.profilePhoto}></Avatar>
         <h1>{props.name}</h1>
         {localStorage.getItem("currentRole") == "Teacher" ? (
           <div className="flex flex-col gap-2">
-            <button className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 text-white rounded-lg text-xs">
+            <button
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 text-white rounded-lg text-xs"
+              onClick={handleOpen}
+            >
               Add Result
             </button>
             <button className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 text-white rounded-lg text-xs">
