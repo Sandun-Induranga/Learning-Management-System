@@ -84,4 +84,24 @@ export default class ModuleController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
+  getAllModulesByBatch: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { batch } = req.params;
+
+      let modules = await Module.find({ batchName: batch });
+
+      return res
+        .status(200)
+        .json({ message: "Successfully Loaded..!", responseData: modules });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
 }
