@@ -78,6 +78,7 @@ const MembersPage = () => {
         <aside className="grid grid-cols-6">
           {studentList.map((student) => (
             <Card
+              id={student._id}
               profilePhoto={student.profilePhoto}
               name={student.studentName}
             />

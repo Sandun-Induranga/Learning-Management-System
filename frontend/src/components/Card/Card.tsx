@@ -14,6 +14,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import api from "../../api";
 
 type StudentProps = {
+  id?: string;
   profilePhoto: string;
   name: string;
 };
@@ -25,9 +26,8 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+  p: 2,
 };
 
 const theme = createTheme({
@@ -129,14 +129,14 @@ const Card = (props: StudentProps) => {
     event.preventDefault();
 
     let newResult = {
-      studentId: " ",
+      studentId: props.id,
       classWorkId: classWorkName,
       mark: marks,
       grade: grade,
     };
 
     api
-      .post("classwork", newResult)
+      .post("result", newResult)
       .then((res) => {
         console.log(res);
       })
@@ -232,7 +232,7 @@ const Card = (props: StudentProps) => {
                   fullWidth
                   className="!mt-5"
                 >
-                  Save Class Work
+                  Save Result
                 </Button>
               </ThemeProvider>
             </form>
