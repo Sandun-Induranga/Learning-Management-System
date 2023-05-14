@@ -129,7 +129,7 @@ const Card = (props: StudentProps) => {
     event.preventDefault();
 
     let newResult = {
-      studentId: props.id,
+      studentId: localStorage.getItem("currentUsername"),
       classWorkId: classWorkName,
       mark: marks,
       grade: grade,

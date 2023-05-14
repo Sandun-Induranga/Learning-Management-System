@@ -11,6 +11,10 @@ export default class ResultRoutes {
 
   private configRoutes = (): void => {
     this.router.post("/", this.resultController.saveResult);
+    this.router.get(
+      "/:studentId/:type",
+      this.resultController.getResultsByStudentIdAndType
+    );
   };
 
   public getRouter = (): Router => {

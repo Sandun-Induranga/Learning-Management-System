@@ -27,7 +27,7 @@ export default class ResultController {
   ): Promise<Response> => {
     try {
       let { studentId, type } = req.params;
-      let results = await Result.find({ studentId: studentId, type: type });
+      let results = await Result.find({ studentId: studentId });
 
       return res.status(200).json({
         message: "Successfully Loaded..!",
