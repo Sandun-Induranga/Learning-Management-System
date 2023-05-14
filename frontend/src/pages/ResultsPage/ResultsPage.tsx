@@ -64,6 +64,25 @@ const ResultsPage = () => {
             )}
           </>
         ))}
+        <h1 className="text-2xl text-slate-700">Projects</h1>
+        {resultList.map((result) => (
+          <>
+            {getClassWorkById(result.classWorkId)}
+            {classWork?.type == "Project" ? (
+              <>
+                <Result
+                  key={result.classWorkId}
+                  name={classWork.name}
+                  moduleName={classWork.moduleName}
+                  mark={result.mark}
+                  grade={result.grade}
+                />
+              </>
+            ) : (
+              <></>
+            )}
+          </>
+        ))}
       </section>
     </>
   );
