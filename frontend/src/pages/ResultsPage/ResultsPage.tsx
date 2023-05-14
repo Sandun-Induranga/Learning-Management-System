@@ -33,11 +33,13 @@ const ResultsPage = () => {
   }, []);
 
   const getResults = () => {
-    api.get(`result${localStorage.getItem("currentStudentId")}`).then((res) => {
-      setAssignmentList(res.data.responseData.assignments);
-      setProjectList(res.data.responseData.projects);
-      setCourseworkList(res.data.responseData.courseworks);
-    });
+    api
+      .get(`result/${localStorage.getItem("currentStudentId")}`)
+      .then((res) => {
+        setAssignmentList(res.data.responseData.assignments);
+        setProjectList(res.data.responseData.projects);
+        setCourseworkList(res.data.responseData.courseworks);
+      });
   };
 
   return (

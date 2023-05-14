@@ -52,10 +52,7 @@ const Announcements = () => {
             "currentStudent",
             res.data.responseData.studentName
           );
-          localStorage.setItem(
-            "currentStudentId",
-            res.data.responseData.studentId
-          );
+          localStorage.setItem("currentStudentId", res.data.responseData._id);
           localStorage.setItem(
             "profilePhoto",
             res.data.responseData.profilePhoto
