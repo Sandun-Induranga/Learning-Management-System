@@ -1,7 +1,7 @@
 import express, { Router } from "express";
 import ResultController from "../controllers/ResultController";
 
-export default class BatchRoutes {
+export default class ResultRoutes {
   private router: Router = express.Router();
   private resultController: ResultController = new ResultController();
 

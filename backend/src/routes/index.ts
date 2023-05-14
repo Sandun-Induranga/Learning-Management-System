@@ -7,6 +7,7 @@ import TeacherRoutes from "./TeacherRoutes";
 import ModuleRoutes from "./ModuleRoutes";
 import ClassWorkRoutes from "./ClassWorkRoutes";
 import AnswerRoutes from "./AnswerRoutes";
+import ResultRoutes from "./ResultRoutes";
 
 const router: Router = Router();
 
@@ -20,5 +21,6 @@ router.use(`${url_prefix}teacher`, new TeacherRoutes().getRouter());
 router.use(`${url_prefix}module`, new ModuleRoutes().getRouter());
 router.use(`${url_prefix}classwork`, new ClassWorkRoutes().getRouter());
 router.use(`${url_prefix}answer`, new AnswerRoutes().getRouter());
+router.use(`${url_prefix}result`, new ResultRoutes().getRouter());
 
 export default router;
