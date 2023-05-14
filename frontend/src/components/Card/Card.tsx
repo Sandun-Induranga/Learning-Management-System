@@ -101,7 +101,9 @@ const Card = (props: StudentProps) => {
 
   const getAllClassWorks = (value: string) => {
     api
-      .get(`classwork/${localStorage.getItem("currentBatch")}/${value}`)
+      .get(
+        `classwork/${localStorage.getItem("currentBatch")}/${value}/${module}`
+      )
       .then((res) => {
         setClassWorkList(res.data.responseData);
       })

@@ -30,7 +30,7 @@ export default class ClassWorkRoutes {
     this.router.get("/:id", this.classWorkController.getClassWorkById);
     this.router.get("/:batch", this.classWorkController.getClassWorksByBatch);
     this.router.get(
-      "/:batch/:type",
+      "/:batch/:type/:module",
       this.classWorkController.getClassWorksByBatchAndType
     );
     this.router.put("/:id", this.classWorkController.updateClassWork);

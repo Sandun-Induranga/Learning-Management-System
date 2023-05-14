@@ -115,8 +115,12 @@ export default class ClassWorkController {
     res: Response
   ): Promise<Response> => {
     try {
-      let { batch, type } = req.params;
-      let classWorks = await ClassWork.find({ batch: batch, type: type });
+      let { batch, type, module } = req.params;
+      let classWorks = await ClassWork.find({
+        batch: batch,
+        type: type,
+        moduleName: module,
+      });
 
       return res.status(200).json({
         message: "Successfully Loaded..!",
