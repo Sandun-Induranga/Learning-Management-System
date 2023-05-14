@@ -1,6 +1,9 @@
 import Header from "../../components/Header";
+import api from "../../api";
 
 const ResultsPage = () => {
+  const getResults = () => {};
+
   return (
     <>
       <Header />

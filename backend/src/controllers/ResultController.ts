@@ -21,13 +21,12 @@ export default class ResultController {
     }
   };
 
-  getResultsByStudentIdAndType: RequestHandler = async (
+  getAllResults: RequestHandler = async (
     req: Request,
     res: Response
   ): Promise<Response> => {
     try {
-      let { studentId, type } = req.params;
-      let results = await Result.find({ studentId: studentId });
+      let results = await Result.find();
 
       return res.status(200).json({
         message: "Successfully Loaded..!",
