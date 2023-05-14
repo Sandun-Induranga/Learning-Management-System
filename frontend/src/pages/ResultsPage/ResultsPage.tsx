@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import Header from "../../components/Header";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import {
@@ -25,7 +25,7 @@ const ResultsPage = () => {
   const [classWorkType, setClassWorkType] = useState<string>("Assignment");
   const [classWorkName, setClassWorkName] = useState<string>("Assignment 01");
   const [marks, setMarks] = useState<string>("");
-  const [grade, setgrade] = useState<string>("");
+  const [grade, setGrade] = useState<string>("");
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
@@ -44,6 +44,21 @@ const ResultsPage = () => {
   const handleNameComboBox = (event: SelectChangeEvent<string>) => {
     event.preventDefault();
     setClassWorkName(event.target.value);
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case "marks":
+        setMarks(value);
+        break;
+      case "grade":
+        setGrade(value);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -127,7 +142,7 @@ const ResultsPage = () => {
                         color="primary"
                         name="marks"
                         value={marks}
-                        // onChange={handleInputChange}
+                        onChange={handleInputChange}
                         placeholder="Enter Marks"
                         required
                       />
@@ -138,7 +153,7 @@ const ResultsPage = () => {
                         color="primary"
                         name="grade"
                         value={grade}
-                        // onChange={handleInputChange}
+                        onChange={handleInputChange}
                         placeholder="Enter Marks"
                         required
                       />
