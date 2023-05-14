@@ -44,7 +44,7 @@ const ResultsPage = () => {
     <>
       <Header />
       <section className="mt-20 p-10 sm:px-60">
-        <h1>Assignments</h1>
+        <h1 className="text-2xl text-slate-700">Assignments</h1>
         {resultList.map((result) => (
           <>
             {getClassWorkById(result.classWorkId)}
