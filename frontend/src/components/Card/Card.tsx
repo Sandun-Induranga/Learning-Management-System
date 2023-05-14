@@ -2,11 +2,15 @@ import {
   Avatar,
   Box,
   Button,
+  MenuItem,
   Modal,
+  Select,
+  SelectChangeEvent,
   TextField,
   ThemeProvider,
 } from "@mui/material";
-import { useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import api from "../../api";
 
 type StudentProps = {
   profilePhoto: string;
@@ -29,6 +33,95 @@ const Card = (props: StudentProps) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [moduleList, setModuleList] = useState<ModuleDetail[]>([]);
+  const [classWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
+  const [module, setModule] = useState<string>("Choose");
+  const [classWorkType, setClassWorkType] = useState<string>("Assignment");
+  const [classWorkName, setClassWorkName] = useState<string>("Assignment 01");
+  const [marks, setMarks] = useState<string>("");
+  const [grade, setGrade] = useState<string>("");
+
+  useEffect(() => {
+    getAllModules();
+  }, []);
+
+  const bindAddAndDiscartEvent = () => {
+    setIsClickedAddButton(!isClickedAddButton);
+  };
+
+  const handleTypeComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
+    setClassWorkType(event.target.value);
+    getAllClassWorks(event.target.value);
+  };
+
+  const handleModuleComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
+    setModule(event.target.value);
+  };
+
+  const handleNameComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
+    setClassWorkName(event.target.value);
+  };
+
+  const getAllModules = () => {
+    api
+      .get(`module/${localStorage.getItem("currentBatch")}`)
+      .then((res) => {
+        setModuleList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getAllClassWorks = (value: string) => {
+    api
+      .get(`classwork/${localStorage.getItem("currentBatch")}/${value}`)
+      .then((res) => {
+        setClassWorkList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case "marks":
+        setMarks(value);
+        break;
+      case "grade":
+        setGrade(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let newResult = {
+      studentId: " ",
+      classWorkId: classWorkName,
+      mark: marks,
+      grade: grade,
+    };
+
+    api
+      .post("classwork", newResult)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <>
