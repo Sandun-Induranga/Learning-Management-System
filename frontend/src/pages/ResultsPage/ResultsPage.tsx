@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import api from "../../api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type ResultDetail = {
   studentId: string;
@@ -11,8 +11,15 @@ type ResultDetail = {
 
 const ResultsPage = () => {
   const [resultList, setResultList] = useState<ResultDetail[]>([]);
+
+  useEffect(() => {
+    getResults();
+  }, []);
+
   const getResults = () => {
-    api.get("result").then((res) => {});
+    api.get("result").then((res) => {
+      setResultList(res.data.responseData);
+    });
   };
 
   return (
