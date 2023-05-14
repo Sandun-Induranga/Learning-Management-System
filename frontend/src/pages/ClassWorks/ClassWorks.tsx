@@ -144,13 +144,13 @@ const ClassWorks = () => {
   return (
     <>
       <Header />
-      <div className="mt-20 p-10 flex flex-col items-center justify-center gap-4">
+      <div className="mt-20 p-10 flex flex-col items-center justify-center gap-4 sm:px-64 lg:px-96 mx-36">
         {localStorage.getItem("currentRole") == "Teacher" ? (
           <>
             {!isClickedAddButton ? (
               <>
                 <section
-                  className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
+                  className="w-full h-12 rounded-t-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white flex justify-between items-center cursor-pointer px-20"
                   onClick={bindAddAndDiscartEvent}
                 >
                   <p>Add New Class Work</p>
@@ -169,7 +169,7 @@ const ClassWorks = () => {
             ) : (
               <>
                 <section
-                  className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
+                  className="w-full h-12 rounded-t-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white flex justify-between items-center cursor-pointer px-20"
                   onClick={bindAddAndDiscartEvent}
                 >
                   <p>Discart Class Work</p>
