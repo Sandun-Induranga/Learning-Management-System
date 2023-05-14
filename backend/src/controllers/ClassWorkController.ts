@@ -109,4 +109,24 @@ export default class ClassWorkController {
       return res.status(500).json({ message: "Unknown Error Occured..!" });
     }
   };
+
+  getClassWorksByBatchAndType: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { batch, type } = req.params;
+      let classWorks = await ClassWork.find({ batch: batch, type: type });
+
+      return res.status(200).json({
+        message: "Successfully Loaded..!",
+        responseData: classWorks,
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
 }

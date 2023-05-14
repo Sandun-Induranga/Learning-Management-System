@@ -28,6 +28,10 @@ export default class ClassWorkRoutes {
     this.router.post("/", this.classWorkController.saveClassWork);
     this.router.get("/", this.classWorkController.getAllClassworks);
     this.router.get("/:batch", this.classWorkController.getClassWorksByBatch);
+    this.router.get(
+      "/:batch/:type",
+      this.classWorkController.getClassWorksByBatchAndType
+    );
     this.router.put("/:id", this.classWorkController.updateClassWork);
     this.router.put(
       "/image/:id",
