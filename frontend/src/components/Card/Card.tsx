@@ -153,6 +153,18 @@ const Card = (props: StudentProps) => {
       >
         <Avatar className="border" src={props.profilePhoto}></Avatar>
         <h1>{props.name}</h1>
+        {localStorage.getItem("currentRole") == "Teacher" ? (
+          <div className="flex flex-col gap-2">
+            <button className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 text-white rounded-lg text-xs">
+              Add Result
+            </button>
+            <button className="bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-2 text-white rounded-lg text-xs">
+              View Result
+            </button>
+          </div>
+        ) : (
+          <></>
+        )}
       </aside>
       <Modal
         open={open}
