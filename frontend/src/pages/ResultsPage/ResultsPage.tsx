@@ -1,6 +1,7 @@
 import Header from "../../components/Header";
 import api from "../../api";
 import { useEffect, useState } from "react";
+import Result from "../../components/Result/Result";
 
 type ResultDetail = {
   studentId: string;
@@ -50,10 +51,13 @@ const ResultsPage = () => {
             {getClassWorkById(result.classWorkId)}
             {classWork?.type == "Assignment" ? (
               <>
-                <h1>ClassWork : {classWork?.name}</h1>
-                <h1>Module Name : {classWork?.moduleName}</h1>
-                <h1>Marks : {result.mark}</h1>
-                <h1>Grade : {result.grade}</h1>
+                <Result
+                  key={result.classWorkId}
+                  name={classWork.name}
+                  moduleName={classWork.moduleName}
+                  mark={result.mark}
+                  grade={result.grade}
+                />
               </>
             ) : (
               <></>
