@@ -64,7 +64,7 @@ const ResultsPage = () => {
             )}
           </>
         ))}
-        <h1 className="text-2xl text-slate-700">Projects</h1>
+        <h1 className="text-2xl text-slate-700">Assignments</h1>
         {resultList.map((result) => (
           <>
             {getClassWorkById(result.classWorkId)}

@@ -7,7 +7,7 @@ type ResultProps = {
 
 const Result = (props: ResultProps) => {
   return (
-    <div>
+    <div className="flex flex-col">
       <h1>ClassWork : {props.name}</h1>
       <h1>Module Name : {props.moduleName}</h1>
       <h1>Marks : {props.mark}</h1>
