@@ -48,15 +48,50 @@ const ResultsPage = () => {
         {resultList.map((result) => (
           <>
             {getClassWorkById(result.classWorkId)}
-            <h1>ClassWork : {classWork?.name}</h1>
-            <h1>Module Name : {classWork?.moduleName}</h1>
-            <h1>type : {classWork?.type}</h1>
-            <h1>Marks : {result.mark}</h1>
-            <h1>Grade : {result.grade}</h1>
+            {classWork?.type == "Assignment" ? (
+              <>
+                <h1>ClassWork : {classWork?.name}</h1>
+                <h1>Module Name : {classWork?.moduleName}</h1>
+                <h1>Marks : {result.mark}</h1>
+                <h1>Grade : {result.grade}</h1>
+              </>
+            ) : (
+              <></>
+            )}
           </>
         ))}
         <h1>Courseworks</h1>
+        {resultList.map((result) => (
+          <>
+            {getClassWorkById(result.classWorkId)}
+            {classWork?.type == "Coursework" ? (
+              <>
+                <h1>ClassWork : {classWork?.name}</h1>
+                <h1>Module Name : {classWork?.moduleName}</h1>
+                <h1>Marks : {result.mark}</h1>
+                <h1>Grade : {result.grade}</h1>
+              </>
+            ) : (
+              <></>
+            )}
+          </>
+        ))}
         <h1>Projects</h1>
+        {resultList.map((result) => (
+          <>
+            {getClassWorkById(result.classWorkId)}
+            {classWork?.type == "Project" ? (
+              <>
+                <h1>ClassWork : {classWork?.name}</h1>
+                <h1>Module Name : {classWork?.moduleName}</h1>
+                <h1>Marks : {result.mark}</h1>
+                <h1>Grade : {result.grade}</h1>
+              </>
+            ) : (
+              <></>
+            )}
+          </>
+        ))}
       </section>
     </>
   );
