@@ -1,8 +1,19 @@
 import Header from "../../components/Header";
 import api from "../../api";
+import { useState } from "react";
+
+type ResultDetail = {
+  studentId: string;
+  classWorkId: string;
+  mark: number;
+  grade: string;
+};
 
 const ResultsPage = () => {
-  const getResults = () => {};
+  const [resultList, setResultList] = useState<ResultDetail[]>([]);
+  const getResults = () => {
+    api.get("result").then((res) => {});
+  };
 
   return (
     <>
