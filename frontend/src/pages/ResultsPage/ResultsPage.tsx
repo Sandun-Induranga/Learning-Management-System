@@ -29,7 +29,7 @@ type ModuleDetail = {
 const ResultsPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
   const [moduleList, setModuleList] = useState<ModuleDetail[]>([]);
-  const [module, setModule] = useState<string>("PRF");
+  const [module, setModule] = useState<string>("Choose");
   const [classWorkType, setClassWorkType] = useState<string>("Assignment");
   const [classWorkName, setClassWorkName] = useState<string>("Assignment 01");
   const [marks, setMarks] = useState<string>("");
@@ -134,8 +134,11 @@ const ResultsPage = () => {
                         <MenuItem disabled value={"Choose"}>
                           Choose the Module
                         </MenuItem>
-                        <MenuItem value={"Project"}>Project</MenuItem>
-                        <MenuItem value={"Quize"}>Quize</MenuItem>
+                        {moduleList.map((module) => (
+                          <MenuItem value={module.moduleName}>
+                            {module.moduleName}
+                          </MenuItem>
+                        ))}
                       </Select>
                       <Select
                         fullWidth
