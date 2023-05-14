@@ -8,6 +8,8 @@ type ResultDetail = {
   classWorkId: string;
   mark: number;
   grade: string;
+  classWorkName: string;
+  moduleName: string;
 };
 
 type ClassWorkDetail = {
