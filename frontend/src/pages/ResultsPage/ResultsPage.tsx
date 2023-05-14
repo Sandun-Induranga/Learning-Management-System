@@ -34,6 +34,12 @@ const ResultsPage = () => {
     });
   };
 
+  const getClassWorkById = (classWorkId: string) => {
+    api.get(`classwork/${classWorkId}`).then((res) => {
+      setClassWork(res.data.responseData);
+    });
+  };
+
   return (
     <>
       <Header />
@@ -41,18 +47,17 @@ const ResultsPage = () => {
         <h1 className="text-2xl text-slate-700">Assignments</h1>
         {resultList.map((result) => (
           <>
-            {api
-              .get(`classwork/:${result.classWorkId}`)
-              .then((res) => {
-                setClassWork(res.data.responseData);
-              })
-              .catch((error) => {
-                console.log(error);
-              })}
-            <h1>ClassWork : {classWork?.name}</h1>
-            <h1>Module Name : {classWork?.moduleName}</h1>
-            <h1>Marks : {result.mark}</h1>
-            <h1>Grade : {result.grade}</h1>
+            {getClassWorkById(result.classWorkId)}
+            {classWork?.type == "Assignment" ? (
+              <>
+                <h1>ClassWork : {classWork?.name}</h1>
+                <h1>Module Name : {classWork?.moduleName}</h1>
+                <h1>Marks : {result.mark}</h1>
+                <h1>Grade : {result.grade}</h1>
+              </>
+            ) : (
+              <></>
+            )}
           </>
         ))}
       </section>
