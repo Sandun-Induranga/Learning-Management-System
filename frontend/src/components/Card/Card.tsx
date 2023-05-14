@@ -8,6 +8,7 @@ import {
   SelectChangeEvent,
   TextField,
   ThemeProvider,
+  createTheme,
 } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 import api from "../../api";
@@ -29,6 +30,31 @@ const style = {
   p: 4,
 };
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#007DFE",
+    },
+  },
+});
+
+type ModuleDetail = {
+  _id: string;
+  batchName: string | null;
+  moduleName: string;
+};
+
+type ClassWorkDetail = {
+  _id: string;
+  name: string;
+  description: string;
+  type: string;
+  dueDate: string;
+  moduleName: string;
+  file: string;
+  batch: string;
+};
+
 const Card = (props: StudentProps) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -45,10 +71,6 @@ const Card = (props: StudentProps) => {
   useEffect(() => {
     getAllModules();
   }, []);
-
-  const bindAddAndDiscartEvent = () => {
-    setIsClickedAddButton(!isClickedAddButton);
-  };
 
   const handleTypeComboBox = (event: SelectChangeEvent<string>) => {
     event.preventDefault();
@@ -141,7 +163,7 @@ const Card = (props: StudentProps) => {
         <Box sx={style}>
           <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
             <form
-              className="w-full flex flex-col gap-4 sm:px-28"
+              className="w-full flex flex-col gap-4"
               onSubmit={handleSubmit}
             >
               <ThemeProvider theme={theme}>
