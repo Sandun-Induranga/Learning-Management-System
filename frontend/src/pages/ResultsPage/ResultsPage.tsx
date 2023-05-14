@@ -40,7 +40,7 @@ type ClassWorkDetail = {
 const ResultsPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
   const [moduleList, setModuleList] = useState<ModuleDetail[]>([]);
-  const [ClassWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
+  const [classWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
   const [module, setModule] = useState<string>("Choose");
   const [classWorkType, setClassWorkType] = useState<string>("Assignment");
   const [classWorkName, setClassWorkName] = useState<string>("Assignment 01");
@@ -58,6 +58,7 @@ const ResultsPage = () => {
   const handleTypeComboBox = (event: SelectChangeEvent<string>) => {
     event.preventDefault();
     setClassWorkType(event.target.value);
+    getAllClassWorks(event.target.value);
   };
 
   const handleModuleComboBox = (event: SelectChangeEvent<string>) => {
@@ -81,9 +82,9 @@ const ResultsPage = () => {
       });
   };
 
-  const getAllClassWorks = () => {
+  const getAllClassWorks = (value: string) => {
     api
-      .get(`module/${localStorage.getItem("currentBatch")}/${classWorkType}`)
+      .get(`classwork/${localStorage.getItem("currentBatch")}/${value}`)
       .then((res) => {
         setClassWorkList(res.data.responseData);
       })
@@ -179,11 +180,12 @@ const ResultsPage = () => {
                         value={classWorkName}
                         onChange={handleNameComboBox}
                       >
-                        <MenuItem selected value={"Assignment 01"}>
-                          Assignment 01
+                        <MenuItem disabled value={"Choose Name"}>
+                          Choose Name
                         </MenuItem>
-                        <MenuItem value={"Project"}>Project</MenuItem>
-                        <MenuItem value={"Quize"}>Quize</MenuItem>
+                        {classWorkList.map((work) => (
+                          <MenuItem value={work._id}>{work.name}</MenuItem>
+                        ))}
                       </Select>
                       <TextField
                         label="Marks"
