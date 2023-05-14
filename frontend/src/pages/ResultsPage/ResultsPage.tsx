@@ -26,9 +26,21 @@ type ModuleDetail = {
   moduleName: string;
 };
 
+type ClassWorkDetail = {
+  _id: string;
+  name: string;
+  description: string;
+  type: string;
+  dueDate: string;
+  moduleName: string;
+  file: string;
+  batch: string;
+};
+
 const ResultsPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
   const [moduleList, setModuleList] = useState<ModuleDetail[]>([]);
+  const [ClassWorkList, setClassWorkList] = useState<ClassWorkDetail[]>([]);
   const [module, setModule] = useState<string>("Choose");
   const [classWorkType, setClassWorkType] = useState<string>("Assignment");
   const [classWorkName, setClassWorkName] = useState<string>("Assignment 01");
@@ -63,6 +75,17 @@ const ResultsPage = () => {
       .get(`module/${localStorage.getItem("currentBatch")}`)
       .then((res) => {
         setModuleList(res.data.responseData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const getAllClassWorks = () => {
+    api
+      .get(`module/${localStorage.getItem("currentBatch")}/${classWorkType}`)
+      .then((res) => {
+        setClassWorkList(res.data.responseData);
       })
       .catch((error) => {
         console.log(error);
