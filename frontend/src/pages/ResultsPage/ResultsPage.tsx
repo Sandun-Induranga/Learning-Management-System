@@ -5,6 +5,7 @@ import {
   Button,
   MenuItem,
   Select,
+  SelectChangeEvent,
   TextField,
   ThemeProvider,
   createTheme,
@@ -20,13 +21,24 @@ const theme = createTheme({
 
 const ResultsPage = () => {
   const [isClickedAddButton, setIsClickedAddButton] = useState<boolean>(false);
-  const [module, setModule] = useState<string>("");
-  const [classWorkType, setClassWorkType] = useState<string>("");
-  const [classWorkName, setClassWorkName] = useState<string>("");
+  const [module, setModule] = useState<string>("PRF");
+  const [classWorkType, setClassWorkType] = useState<string>("Assignment");
+  const [classWorkName, setClassWorkName] = useState<string>("Assignment 01");
   const [marks, setMarks] = useState<string>("");
+  const [grade, setgrade] = useState<string>("");
 
   const bindAddAndDiscartEvent = () => {
     setIsClickedAddButton(!isClickedAddButton);
+  };
+
+  const handleTypeComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
+    setClassWorkType(event.target.value);
+  };
+
+  const handleModuleComboBox = (event: SelectChangeEvent<string>) => {
+    event.preventDefault();
+    setModule(event.target.value);
   };
 
   return (
@@ -73,8 +85,19 @@ const ResultsPage = () => {
                     <ThemeProvider theme={theme}>
                       <Select
                         fullWidth
-                        // value={type}
-                        // onChange={handleTypeComboBox}
+                        value={module}
+                        onChange={handleModuleComboBox}
+                      >
+                        <MenuItem disabled value={"PRF"}>
+                          Choose the Module
+                        </MenuItem>
+                        <MenuItem value={"Project"}>Project</MenuItem>
+                        <MenuItem value={"Quize"}>Quize</MenuItem>
+                      </Select>
+                      <Select
+                        fullWidth
+                        value={classWorkType}
+                        onChange={handleTypeComboBox}
                       >
                         <MenuItem selected value={"Assignment"}>
                           Assignment
@@ -84,11 +107,11 @@ const ResultsPage = () => {
                       </Select>
                       <Select
                         fullWidth
-                        // value={type}
+                        value={classWorkName}
                         // onChange={handleTypeComboBox}
                       >
-                        <MenuItem selected value={"Assignment"}>
-                          Assignment
+                        <MenuItem selected value={"Assignment 01"}>
+                          Assignment 01
                         </MenuItem>
                         <MenuItem value={"Project"}>Project</MenuItem>
                         <MenuItem value={"Quize"}>Quize</MenuItem>
@@ -98,7 +121,18 @@ const ResultsPage = () => {
                         fullWidth
                         color="primary"
                         name="marks"
-                        // value={classWorkName}
+                        value={marks}
+                        // onChange={handleInputChange}
+                        placeholder="Enter Marks"
+                        required
+                      />
+
+                      <TextField
+                        label="Grade"
+                        fullWidth
+                        color="primary"
+                        name="grade"
+                        value={grade}
                         // onChange={handleInputChange}
                         placeholder="Enter Marks"
                         required
