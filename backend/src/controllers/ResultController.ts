@@ -40,8 +40,8 @@ export default class ResultController {
       let assignments: ResultDetail[] = [];
       let courseworks: ResultDetail[] = [];
       let projects: ResultDetail[] = [];
-
-      results.forEach(async (result) => {
+      for (let i = 0; i < results.length; i++) {
+        const result = results[i];
         let classWork = await ClassWork.findById(result.classWorkId);
         if (classWork) {
           let newResult = {
@@ -67,7 +67,7 @@ export default class ResultController {
               break;
           }
         }
-      });
+      }
 
       return res.status(200).json({
         message: "Successfully Loaded..!",

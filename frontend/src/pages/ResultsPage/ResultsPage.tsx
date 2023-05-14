@@ -24,7 +24,7 @@ type ClassWorkDetail = {
 };
 
 const ResultsPage = () => {
-  const [resultList, setResultList] = useState<ResultDetail[]>([]);
+  const [assingmentList, setAssignmentList] = useState<ResultDetail[]>([]);
   const [classWork, setClassWork] = useState<ClassWorkDetail>();
 
   useEffect(() => {
@@ -33,13 +33,7 @@ const ResultsPage = () => {
 
   const getResults = () => {
     api.get("result").then((res) => {
-      setResultList(res.data.responseData);
-    });
-  };
-
-  const getClassWorkById = (classWorkId: string) => {
-    api.get(`classwork/${classWorkId}`).then((res) => {
-      setClassWork(res.data.responseData);
+      setAssignmentList(res.data.responseData.assignments);
     });
   };
 
@@ -48,41 +42,15 @@ const ResultsPage = () => {
       <Header />
       <section className="mt-20 p-10 sm:px-60">
         <h1 className="text-2xl text-slate-700">Assignments</h1>
-        {resultList.map((result) => (
+        {assingmentList.map((result) => (
           <>
-            {getClassWorkById(result.classWorkId)}
-            {classWork?.type == "Assignment" ? (
-              <>
-                <Result
-                  key={result.classWorkId}
-                  name={classWork.name}
-                  moduleName={classWork.moduleName}
-                  mark={result.mark}
-                  grade={result.grade}
-                />
-              </>
-            ) : (
-              <></>
-            )}
-          </>
-        ))}
-        <h1 className="text-2xl text-slate-700">Assignments</h1>
-        {resultList.map((result) => (
-          <>
-            {getClassWorkById(result.classWorkId)}
-            {classWork?.type == "Project" ? (
-              <>
-                <Result
-                  key={result.classWorkId}
-                  name={classWork.name}
-                  moduleName={classWork.moduleName}
-                  mark={result.mark}
-                  grade={result.grade}
-                />
-              </>
-            ) : (
-              <></>
-            )}
+            <Result
+              key={result.classWorkId}
+              name={result.classWorkName}
+              moduleName={result.moduleName}
+              mark={result.mark}
+              grade={result.grade}
+            />
           </>
         ))}
       </section>
