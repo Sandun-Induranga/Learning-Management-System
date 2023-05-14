@@ -26,7 +26,7 @@ type ClassWorkDetail = {
 const ResultsPage = () => {
   const [assingmentList, setAssignmentList] = useState<ResultDetail[]>([]);
   const [projectList, setProjectList] = useState<ResultDetail[]>([]);
-
+  const [courseworkList, setCourseworkList] = useState<ResultDetail[]>([]);
   useEffect(() => {
     getResults();
   }, []);
@@ -35,6 +35,7 @@ const ResultsPage = () => {
     api.get("result").then((res) => {
       setAssignmentList(res.data.responseData.assignments);
       setProjectList(res.data.responseData.projects);
+      setCourseworkList(res.data.responseData.courseworks);
     });
   };
 
@@ -56,6 +57,18 @@ const ResultsPage = () => {
         ))}
         <h1 className="text-2xl text-slate-700">Projects</h1>
         {projectList.map((result) => (
+          <>
+            <Result
+              key={result.classWorkId}
+              name={result.classWorkName}
+              moduleName={result.moduleName}
+              mark={result.mark}
+              grade={result.grade}
+            />
+          </>
+        ))}
+        <h1 className="text-2xl text-slate-700">Courseworks</h1>
+        {courseworkList.map((result) => (
           <>
             <Result
               key={result.classWorkId}
