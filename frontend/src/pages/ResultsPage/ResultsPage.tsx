@@ -45,10 +45,10 @@ const ResultsPage = () => {
   return (
     <>
       <Header />
-      <section className="mt-20 p-10 sm:px-60">
+      <section className="mt-20 w-full p-10 sm:px-60 flex flex-col gap-10">
         <h1 className="text-2xl text-slate-700">Assignments</h1>
-        {assingmentList.map((result) => (
-          <>
+        <aside className="flex flex-col gap-4">
+          {assingmentList.map((result) => (
             <Result
               key={result.classWorkId}
               name={result.classWorkName}
@@ -56,11 +56,11 @@ const ResultsPage = () => {
               mark={result.mark}
               grade={result.grade}
             />
-          </>
-        ))}
+          ))}
+        </aside>
         <h1 className="text-2xl text-slate-700">Projects</h1>
         {projectList.map((result) => (
-          <>
+          <aside className="flex flex-col gap-4">
             <Result
               key={result.classWorkId}
               name={result.classWorkName}
@@ -68,11 +68,11 @@ const ResultsPage = () => {
               mark={result.mark}
               grade={result.grade}
             />
-          </>
+          </aside>
         ))}
         <h1 className="text-2xl text-slate-700">Courseworks</h1>
         {courseworkList.map((result) => (
-          <>
+          <aside className="flex flex-col gap-4">
             <Result
               key={result.classWorkId}
               name={result.classWorkName}
@@ -80,7 +80,7 @@ const ResultsPage = () => {
               mark={result.mark}
               grade={result.grade}
             />
-          </>
+          </aside>
         ))}
       </section>
     </>
