@@ -12,17 +12,6 @@ type ResultDetail = {
   moduleName: string;
 };
 
-type ClassWorkDetail = {
-  _id: string;
-  name: string;
-  description: string;
-  type: string;
-  dueDate: string;
-  moduleName: string;
-  file: string;
-  batch: string;
-};
-
 const ResultsPage = () => {
   const [assingmentList, setAssignmentList] = useState<ResultDetail[]>([]);
   const [projectList, setProjectList] = useState<ResultDetail[]>([]);
