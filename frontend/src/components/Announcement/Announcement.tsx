@@ -3,6 +3,7 @@ import userImage from "../../assets/avatar.jpg";
 import { Avatar } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import api from "../../api";
+import { errorStyle, normalStyle } from "../../util";
 
 type Comment = {
   studentName: string | null;
@@ -44,9 +45,13 @@ const Announcement = (props: AnnouncementProps) => {
   };
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-
+    const { name, value } = event.target;
     setComment(value);
+    if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(value)) {
+      document.getElementById(name)?.classList.add("text-gray-700");
+    } else {
+      document.getElementById(name)?.classList.add("text-red-700");
+    }
   };
 
   return (
@@ -64,8 +69,10 @@ const Announcement = (props: AnnouncementProps) => {
           type="text"
           placeholder="Add a Comment"
           className="w-[92%] outline-none"
+          name="comment"
           value={comment}
           onChange={handleInputChange}
+          id="comment"
         />
         <button onClick={addComment}>
           <Send className="text-sky-edited-500" />

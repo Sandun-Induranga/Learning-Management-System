@@ -73,7 +73,7 @@ const ClassWork = (props: ClassWorkDetail) => {
   };
 
   return (
-    <main className="md:w-full border p-10 rounded-lg flex flex-col items-center gap-6 shadow-xl">
+    <main className="w-full border p-10 rounded-lg flex flex-col items-center gap-6 shadow-xl">
       <div className="flex flex-col items-center">
         <span className="text-gray-700 text-lg font-semibold">
           {props.moduleName}

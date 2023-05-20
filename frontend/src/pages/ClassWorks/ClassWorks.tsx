@@ -144,7 +144,7 @@ const ClassWorks = () => {
   return (
     <>
       <Header />
-      <div className="mt-20 p-10 flex flex-col items-center justify-center gap-4 sm:px-64 lg:px-96 mx-36">
+      <div className="mt-20 p-10 flex flex-col items-center justify-center gap-4 sm:px-64 mx-36">
         {localStorage.getItem("currentRole") == "Teacher" ? (
           <>
             {!isClickedAddButton ? (

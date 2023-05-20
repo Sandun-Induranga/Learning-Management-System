@@ -91,21 +91,56 @@ const StudentPage = () => {
         break;
       case "studentName":
         setStudentName(value);
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById("nic")?.classList.add("!text-gray-700");
+        } else {
+          document.getElementById("nic")?.classList.add("!text-red-700");
+        }
         break;
       case "address":
         setAddress(value);
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById(name)?.classList.add("text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("text-red-700");
+        }
         break;
       case "email":
         setEmail(value);
+        if (
+          /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/.test(
+            value
+          )
+        ) {
+          document.getElementById(name)?.classList.add("text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("text-red-700");
+        }
+
         break;
       case "contact":
         setContact(value);
+        if (/^[0-9]{10}$/.test(value)) {
+          document.getElementById(name)?.classList.add("text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("text-red-700");
+        }
         break;
       case "username":
         setUsername(value);
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById(name)?.classList.add("text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("text-red-700");
+        }
         break;
       case "password":
         setPassword(value);
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById(name)?.classList.add("text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("text-red-700");
+        }
         break;
 
       default:
@@ -204,9 +239,11 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="nic"
+                    id="nic"
                     value={nic}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
+                    className=""
                     required
                   />
                   <TextField

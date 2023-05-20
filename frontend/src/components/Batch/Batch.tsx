@@ -104,14 +104,14 @@ const Batch = (props: BatchDetail) => {
         ID : {props._id}
       </span>
       <section className="flex gap-4">
-        <button
-          className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
-          onClick={setCurrentBatch}
-        >
-          <NavLink to={"/student"}>
+        <NavLink to={"/student"}>
+          <button
+            className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
+            onClick={setCurrentBatch}
+          >
             <Visibility className="!text-sm text-white" />
-          </NavLink>
-        </button>
+          </button>
+        </NavLink>
         <button
           className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
           onClick={editBatch}

@@ -44,7 +44,7 @@ const Announcements = () => {
 
   const getAllAnnouncements = () => {
     if (localStorage.getItem("currentRole") == "Student") {
-      setIsTeacher(true);
+      setIsTeacher(false);
       api
         .get(`student/current/${localStorage.getItem("currentUsername")}`)
         .then((res) => {
