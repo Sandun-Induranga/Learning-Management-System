@@ -221,7 +221,7 @@ const StudentPage = () => {
         {!isClickedAddButton ? (
           <>
             <section
-              className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
+              className="w-full h-12 rounded-t-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white flex justify-between items-center cursor-pointer px-20"
               onClick={bindAddAndDiscartEvent}
             >
               <p>Add New Student</p>
@@ -240,7 +240,7 @@ const StudentPage = () => {
         ) : (
           <>
             <section
-              className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
+              className="w-full h-12 rounded-t-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white flex justify-between items-center cursor-pointer px-20"
               onClick={bindAddAndDiscartEvent}
             >
               <p>Discart Student</p>
@@ -372,7 +372,7 @@ const StudentPage = () => {
 
         <main className="mt-10">
           <table className="w-full border p-5">
-            <thead className="bg-sky-edited-500 h-12 text-white">
+            <thead className="bg-gradient-to-r from-cyan-500 to-blue-500 h-12 text-white">
               <tr className="">
                 <th>Student NIC</th>
                 <th>Student Name</th>
