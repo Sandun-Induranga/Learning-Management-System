@@ -1,5 +1,6 @@
 import { Add } from "@mui/icons-material";
 import {
+  Avatar,
   Box,
   Button,
   MenuItem,
@@ -181,7 +182,7 @@ const Student = (props: StudentDetail) => {
         <td>{props.username}</td>
         <td>{props.batchName}</td>
         <td>
-          <img src={props.profilePhoto} className="w-40 h-44 m-0 p-0" alt="" />
+          <Avatar src={props.profilePhoto} />
         </td>
       </tr>
       <Modal
