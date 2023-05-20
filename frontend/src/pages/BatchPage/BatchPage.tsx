@@ -4,6 +4,7 @@ import api from "../../api";
 import { ChangeEvent, useEffect, useState } from "react";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { Button, TextField, ThemeProvider, createTheme } from "@mui/material";
+import Swal from "sweetalert2";
 
 type BatchDetail = {
   _id: string;
@@ -60,10 +61,12 @@ const BatchPage = () => {
     api
       .post("batch", newBatch)
       .then((res) => {
-        console.log(res);
-        let batches = batchList;
-        batches.push(res.data.responseData);
-        setBatchList(batches);
+        Swal.fire({
+          title: "Success!",
+          text: "Successfully Saved..!",
+          icon: "success",
+        });
+        getAllBatches();
       })
       .catch((error) => {
         console.log(error);
