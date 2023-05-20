@@ -173,7 +173,10 @@ const Student = (props: StudentDetail) => {
 
   return (
     <>
-      <tr className="h-12 cursor-pointer text-center" onClick={editStudent}>
+      <tr
+        className="h-12 cursor-pointer text-center hover:bg-gradient-to-r from-cyan-500 to-blue-500 hover:opacity-80 hover:text-white"
+        onClick={editStudent}
+      >
         <td>{props.nic}</td>
         <td>{props.studentName}</td>
         <td>{props.address}</td>
