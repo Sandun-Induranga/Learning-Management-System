@@ -81,16 +81,9 @@ const Batch = (props: BatchDetail) => {
     }
   };
 
-  const editBatch = (event: React.MouseEvent<HTMLElement>) => {
+  const editBatch = () => {
     handleOpen();
-    api
-      .put(`batch/${props._id}`)
-      .then((res) => {
-        setBatchName(res.data.responseData.batchName);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setBatchName(props.batchName);
   };
 
   const setCurrentBatch = () => {
