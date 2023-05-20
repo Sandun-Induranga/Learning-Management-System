@@ -271,6 +271,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="studentName"
+                    id="studentName"
                     value={studentName}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
@@ -281,6 +282,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="address"
+                    id="address"
                     value={address}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
@@ -292,6 +294,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="email"
+                    id="email"
                     value={email}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
@@ -303,6 +306,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="contact"
+                    id="contact"
                     value={contact}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
@@ -314,6 +318,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="username"
+                    id="username"
                     value={username}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
@@ -325,6 +330,7 @@ const StudentPage = () => {
                     fullWidth
                     color="primary"
                     name="password"
+                    id="password"
                     value={password}
                     onChange={handleInputChange}
                     placeholder="Enter Batch Name"
