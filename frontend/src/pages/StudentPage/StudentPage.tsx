@@ -87,22 +87,34 @@ const StudentPage = () => {
 
     switch (name) {
       case "nic":
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
+        }
         setNic(value);
         break;
       case "studentName":
-        setStudentName(value);
         if (/^[A-z ]{4,20}$/.test(value)) {
-          document.getElementById("nic")?.classList.add("!text-gray-700");
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
         } else {
-          document.getElementById("nic")?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
         }
+        setStudentName(value);
+
         break;
       case "address":
         setAddress(value);
         if (/^[A-z ]{4,20}$/.test(value)) {
-          document.getElementById(name)?.classList.add("text-gray-700");
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
         } else {
-          document.getElementById(name)?.classList.add("text-red-700");
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
         }
         break;
       case "email":
@@ -112,34 +124,42 @@ const StudentPage = () => {
             value
           )
         ) {
-          document.getElementById(name)?.classList.add("text-gray-700");
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
         } else {
-          document.getElementById(name)?.classList.add("text-red-700");
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
         }
 
         break;
       case "contact":
         setContact(value);
         if (/^[0-9]{10}$/.test(value)) {
-          document.getElementById(name)?.classList.add("text-gray-700");
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
         } else {
-          document.getElementById(name)?.classList.add("text-red-700");
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
         }
         break;
       case "username":
         setUsername(value);
         if (/^[A-z ]{4,20}$/.test(value)) {
-          document.getElementById(name)?.classList.add("text-gray-700");
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
         } else {
-          document.getElementById(name)?.classList.add("text-red-700");
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
         }
         break;
       case "password":
         setPassword(value);
         if (/^[A-z ]{4,20}$/.test(value)) {
-          document.getElementById(name)?.classList.add("text-gray-700");
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
         } else {
-          document.getElementById(name)?.classList.add("text-red-700");
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
         }
         break;
 
