@@ -1,6 +1,7 @@
 import { Add, PictureAsPdf } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import api from "../../api";
+import Swal from "sweetalert2";
 
 type ClassWorkDetail = {
   _id: string;
@@ -62,6 +63,14 @@ const ClassWork = (props: ClassWorkDetail) => {
           .put(`answer/image/${id}`, formData)
           .then((res) => {
             console.log(res);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Successfully Saved..!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            getAllAnswers();
           })
           .catch((error) => {
             console.log(error);
