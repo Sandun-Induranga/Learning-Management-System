@@ -94,9 +94,13 @@ const Batch = (props: BatchDetail) => {
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-
-    if (name == "batchName") {
-      setBatchName(value);
+    setBatchName(value);
+    if (/^[A-z 0-9]{4,20}$/.test(value)) {
+      document.getElementById(name)?.classList.remove("!text-red-700");
+      document.getElementById(name)?.classList.add("!text-gray-700");
+    } else {
+      document.getElementById(name)?.classList.add("!text-red-700");
+      document.getElementById(name)?.classList.remove("!text-gray-700");
     }
   };
 
@@ -148,10 +152,12 @@ const Batch = (props: BatchDetail) => {
                 label="Batch Name"
                 fullWidth
                 color="primary"
+                id="batchName"
                 name="batchName"
                 value={batchName}
                 onChange={handleInputChange}
                 placeholder="Enter Batch Name"
+                className=""
                 required
               />
               <Button
