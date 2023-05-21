@@ -77,9 +77,7 @@ const Login = () => {
 
   return (
     <main className="flex flex-col justify-center items-center gap-10 h-screen">
-      <h1 className="text-4xl text-sky-edited-500 font-semibold">
-        Online Learning
-      </h1>
+      <h1 className="text-4xl text-blue-500 font-semibold">Online Learning</h1>
       <form
         className="md:w-1/4 flex flex-col items-center gap-y-5"
         onSubmit={userLogin}
@@ -96,7 +94,6 @@ const Login = () => {
           name="username"
           value={username}
           onChange={handleInputChange}
-          className="!border-sky-edited-500"
         ></TextField>
         <TextField
           type="password"
@@ -110,7 +107,6 @@ const Login = () => {
           name="password"
           value={password}
           onChange={handleInputChange}
-          className="!border-sky-edited-500"
         ></TextField>
         <FormControlLabel
           className="my-4"
@@ -121,7 +117,7 @@ const Login = () => {
           type="submit"
           variant="contained"
           fullWidth
-          className="!bg-sky-edited-500"
+          className="!bg-gradient-to-r from-cyan-500 to-blue-500"
         >
           Login
         </Button>
