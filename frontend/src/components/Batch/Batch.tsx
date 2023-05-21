@@ -45,14 +45,24 @@ const Batch = (props: BatchDetail) => {
   const [batchName, setBatchName] = useState<string>("");
 
   const deleteBatch = (batchId: string) => {
-    api
-      .delete(`batch/${batchId}`)
-      .then((res) => {
-        props.updateBatchList();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (confirm("Are You Sure..?")) {
+      api
+        .delete(`batch/${batchId}`)
+        .then((res) => {
+          console.log(res);
+          Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: "Successfully Deleted..!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          props.updateBatchList();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
