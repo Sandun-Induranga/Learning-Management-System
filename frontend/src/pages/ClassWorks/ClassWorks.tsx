@@ -12,6 +12,7 @@ import {
   TextField,
   createTheme,
 } from "@mui/material";
+import Swal from "sweetalert2";
 
 type ClassWorkDetail = {
   _id: string;
@@ -119,6 +120,13 @@ const ClassWorks = () => {
         api
           .put(`classwork/image/${id}`, formData)
           .then((res) => {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Successfully Saved..!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
             getAllClassWorks();
             console.log(res);
           })
