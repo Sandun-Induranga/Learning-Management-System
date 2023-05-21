@@ -3,7 +3,7 @@ import Announcement from "../../components/Announcement/Announcement";
 import api from "../../api";
 import { ChangeEvent, useEffect, useState } from "react";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
-import { Button, TextField, ThemeProvider, createTheme } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 type Comment = {
   studentName: string;
@@ -17,14 +17,6 @@ type AnnouncementDetail = {
   comments: Comment[];
   batch: string;
 };
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#ffb703",
-    },
-  },
-});
 
 const Announcements = () => {
   const [announcementList, setAnnouncementList] = useState<
@@ -128,10 +120,10 @@ const Announcements = () => {
   return (
     <>
       <Header />
-      <div className="mt-20 lg:mx-60 p-10 flex flex-col items-center justify-center gap-4">
+      <div className="mt-20 lg:mx-60 p-10 flex flex-col items-center justify-center">
         {isTeacher ? (
           <>
-            {!isClickedAddButton ? (
+            {isClickedAddButton ? (
               <>
                 <section
                   className="w-full h-12 rounded-t-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white flex justify-between items-center cursor-pointer px-20"
@@ -153,7 +145,7 @@ const Announcements = () => {
             ) : (
               <>
                 <section
-                  className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
+                  className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20 bg-gradient-to-r from-cyan-500 to-blue-500"
                   onClick={bindAddAndDiscartEvent}
                 >
                   <p>Discart Announcement</p>
@@ -163,28 +155,26 @@ const Announcements = () => {
                 </section>
                 <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
                   <form className="w-ful" onSubmit={handleSubmit}>
-                    <ThemeProvider theme={theme}>
-                      <TextField
-                        label="Description"
-                        fullWidth
-                        color="primary"
-                        name="batchName"
-                        multiline
-                        rows={4}
-                        value={description}
-                        onChange={handleInputChange}
-                        placeholder="Enter Batch Name"
-                        required
-                      />
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        fullWidth
-                        className="!mt-5"
-                      >
-                        Save Announcement
-                      </Button>
-                    </ThemeProvider>
+                    <TextField
+                      label="Description"
+                      fullWidth
+                      color="primary"
+                      name="batchName"
+                      multiline
+                      rows={4}
+                      value={description}
+                      onChange={handleInputChange}
+                      placeholder="Enter Batch Name"
+                      required
+                    />
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      fullWidth
+                      className="!mt-5 !bg-gradient-to-r from-cyan-500 to-blue-500 !text-white"
+                    >
+                      Save Announcement
+                    </Button>
                   </form>
                 </section>
               </>
