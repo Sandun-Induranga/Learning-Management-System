@@ -3,6 +3,7 @@ import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import api from "../../api";
 import { ChangeEvent, useState } from "react";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [username, setUsername] = useState<string>("");
@@ -29,7 +30,6 @@ const Login = () => {
             setRole(res.data.responseData.role);
             localStorage.setItem("currentUsername", username);
             localStorage.setItem("currentRole", "Student");
-            alert(localStorage.getItem("currentRole"));
             navigate("/student", { replace: false });
             break;
           case "Teacher":
@@ -40,9 +40,23 @@ const Login = () => {
           default:
             break;
         }
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successful..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.log(error);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Something Went Wrong..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
 
