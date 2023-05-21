@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 
 type BatchDetail = {
   _id: string;
@@ -64,6 +65,14 @@ const Batch = (props: BatchDetail) => {
     api
       .put(`batch/${props._id}`, newBatch)
       .then((res) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully Updated..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        console.log(res);
         props.updateBatchList();
       })
       .catch((error) => {
@@ -91,28 +100,26 @@ const Batch = (props: BatchDetail) => {
   };
 
   return (
-    <div className="border rounded-lg p-4 flex flex-col items-center text-2xl text-sky-edited-500 font-semibold cursor-pointer gap-y-4">
+    <div className="border rounded-lg p-4 flex flex-col items-center text-2xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold gap-y-4">
       {props.batchName}
-      <span className="text-xs text-gray-700 font-normal">
-        ID : {props._id}
-      </span>
+      <span className="text-xs text-white font-normal">ID : {props._id}</span>
       <section className="flex gap-4">
         <NavLink to={"/student"}>
           <button
-            className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
+            className="bg-gradient-to-r from-green-300 to-green-600  rounded-full w-6 h-6 flex justify-center items-center"
             onClick={setCurrentBatch}
           >
             <Visibility className="!text-sm text-white" />
           </button>
         </NavLink>
         <button
-          className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
+          className="bg-gradient-to-r from-yellow-500 to-yellow-900  rounded-full w-6 h-6 flex justify-center items-center"
           onClick={editBatch}
         >
           <Edit className="!text-sm text-white" />
         </button>
         <button
-          className="bg-sky-edited-500 rounded-full w-6 h-6 flex justify-center items-center"
+          className="bg-gradient-to-r from-red-500 to-red-900 rounded-full w-6 h-6 flex justify-center items-center"
           onClick={() => deleteBatch(props._id)}
         >
           <Delete className="!text-sm text-white" />
