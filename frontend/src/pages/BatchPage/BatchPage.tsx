@@ -84,7 +84,7 @@ const BatchPage = () => {
         {!isClickedAddButton ? (
           <>
             <section
-              className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
+              className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20 bg-gradient-to-r from-cyan-500 to-blue-500"
               onClick={bindAddAndDiscartEvent}
             >
               <p>Add New Batch</p>
@@ -103,7 +103,7 @@ const BatchPage = () => {
         ) : (
           <>
             <section
-              className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20"
+              className="w-full h-12 rounded-t-lg bg-sky-edited-500 text-white flex justify-between items-center cursor-pointer px-20 bg-gradient-to-r from-cyan-500 to-blue-500"
               onClick={bindAddAndDiscartEvent}
             >
               <p>Discart Batch</p>
@@ -128,7 +128,7 @@ const BatchPage = () => {
                     type="submit"
                     variant="contained"
                     fullWidth
-                    className="!mt-5"
+                    className="!mt-5 !bg-gradient-to-r from-cyan-500 to-blue-500"
                   >
                     Save Batch
                   </Button>

@@ -106,7 +106,7 @@ const Batch = (props: BatchDetail) => {
       <section className="flex gap-4">
         <NavLink to={"/student"}>
           <button
-            className="bg-gradient-to-r from-green-300 to-green-600  rounded-full w-6 h-6 flex justify-center items-center"
+            className="bg-gradient-to-r from-green-300 to-green-600 rounded-full w-6 h-6 flex justify-center items-center"
             onClick={setCurrentBatch}
           >
             <Visibility className="!text-sm text-white" />
