@@ -3,7 +3,7 @@ import userImage from "../../assets/avatar.jpg";
 import { Avatar } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 import api from "../../api";
-import { errorStyle, normalStyle } from "../../util";
+import Swal from "sweetalert2";
 
 type Comment = {
   studentName: string | null;
@@ -38,6 +38,13 @@ const Announcement = (props: AnnouncementProps) => {
       .put(`announcement/${props.description}`, newAnnouncement)
       .then((res) => {
         console.log(res);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully Updated..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.log(error);

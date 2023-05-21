@@ -4,6 +4,7 @@ import api from "../../api";
 import { ChangeEvent, useEffect, useState } from "react";
 import { AddCircle, DoDisturbOn } from "@mui/icons-material";
 import { Button, TextField } from "@mui/material";
+import Swal from "sweetalert2";
 
 type Comment = {
   studentName: string;
@@ -110,6 +111,13 @@ const Announcements = () => {
       .post("announcement", newAnnouncement)
       .then((res) => {
         console.log(res);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully Saved..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         getAllAnnouncements();
       })
       .catch((error) => {
