@@ -11,21 +11,19 @@ export default class UserController {
       let user = await User.findOne({ username: username });
       if (user) {
         if (user.password == password) {
-          return res
-            .status(200)
-            .json({
-              message: "Login",
-              responseData: { username: username, role: user.role },
-            });
-        } else {
           return res.status(200).json({
+            message: "Login",
+            responseData: { username: username, role: user.role },
+          });
+        } else {
+          return res.status(500).json({
             message: "Your Password is Wrong..!",
             responseData: user.role,
           });
         }
       } else {
         return res
-          .status(200)
+          .status(500)
           .json({ message: "Your Username is Wrong..!", responseData: "" });
       }
     } catch (error: unknown) {
