@@ -54,10 +54,12 @@ const Announcement = (props: AnnouncementProps) => {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setComment(value);
-    if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(value)) {
-      document.getElementById(name)?.classList.add("text-gray-700");
+    if (/^[A-z 0-9]{3,20}$/.test(value)) {
+      document.getElementById(name)?.classList.remove("!text-red-700");
+      document.getElementById(name)?.classList.add("!text-gray-700");
     } else {
-      document.getElementById(name)?.classList.add("text-red-700");
+      document.getElementById(name)?.classList.add("!text-red-700");
+      document.getElementById(name)?.classList.remove("!text-gray-700");
     }
   };
 

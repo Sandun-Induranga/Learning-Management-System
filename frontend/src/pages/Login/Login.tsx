@@ -63,6 +63,14 @@ const Login = () => {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
+    if (/^[A-z 0-9]{4,20}$/.test(value)) {
+      document.getElementById(name)?.classList.remove("!text-red-700");
+      document.getElementById(name)?.classList.add("!text-gray-700");
+    } else {
+      document.getElementById(name)?.classList.add("!text-red-700");
+      document.getElementById(name)?.classList.remove("!text-gray-700");
+    }
+
     switch (name) {
       case "username":
         setUsername(value);
@@ -92,6 +100,7 @@ const Login = () => {
           }
           fullWidth
           name="username"
+          id="username"
           value={username}
           onChange={handleInputChange}
         ></TextField>
@@ -105,6 +114,7 @@ const Login = () => {
           }
           fullWidth
           name="password"
+          id="password"
           value={password}
           onChange={handleInputChange}
         ></TextField>
