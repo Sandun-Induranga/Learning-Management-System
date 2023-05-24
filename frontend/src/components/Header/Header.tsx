@@ -73,6 +73,7 @@ const Header = () => {
           >
             Results
           </NavLink>
+          <NavLink to={"/login"}>Logout</NavLink>
         </nav>
         <div className="hidden sm:flex justify-center items-center gap-2">
           <Avatar className="border" src={userImage}></Avatar>

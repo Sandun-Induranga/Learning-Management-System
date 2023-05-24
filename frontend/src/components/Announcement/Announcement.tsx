@@ -16,6 +16,7 @@ type AnnouncementProps = {
   createdAt: string;
   comments: Comment[];
   batch: string;
+  updateAnnouncementList: () => void;
 };
 
 const Announcement = (props: AnnouncementProps) => {
