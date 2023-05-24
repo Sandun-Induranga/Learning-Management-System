@@ -84,28 +84,82 @@ const Student = (props: StudentDetail) => {
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     console.log(event.target);
-
     switch (name) {
       case "nic":
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
+        }
         setNic(value);
         break;
       case "studentName":
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
+        }
         setStudentName(value);
+
         break;
       case "address":
         setAddress(value);
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
+        }
         break;
       case "email":
         setEmail(value);
+        if (
+          /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-]+)(\.[a-zA-Z]{2,5}){1,2}$/.test(
+            value
+          )
+        ) {
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
+        }
+
         break;
       case "contact":
         setContact(value);
+        if (/^[0-9]{10}$/.test(value)) {
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
+        }
         break;
       case "username":
         setUsername(value);
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
+        }
         break;
       case "password":
         setPassword(value);
+        if (/^[A-z ]{4,20}$/.test(value)) {
+          document.getElementById(name)?.classList.remove("!text-red-700");
+          document.getElementById(name)?.classList.add("!text-gray-700");
+        } else {
+          document.getElementById(name)?.classList.add("!text-red-700");
+          document.getElementById(name)?.classList.remove("!text-gray-700");
+        }
         break;
 
       default:
@@ -137,6 +191,7 @@ const Student = (props: StudentDetail) => {
 
   const updateStudent = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
+    handleClose();
     let newStudent = {
       nic: nic,
       studentName: studentName,
@@ -221,6 +276,7 @@ const Student = (props: StudentDetail) => {
                   fullWidth
                   color="primary"
                   name="nic"
+                  id="nic"
                   value={nic}
                   onChange={handleInputChange}
                   placeholder="Enter Batch Name"
@@ -231,6 +287,7 @@ const Student = (props: StudentDetail) => {
                   fullWidth
                   color="primary"
                   name="studentName"
+                  id="studentName"
                   value={studentName}
                   onChange={handleInputChange}
                   placeholder="Enter Batch Name"
@@ -240,6 +297,7 @@ const Student = (props: StudentDetail) => {
                   label="Address"
                   fullWidth
                   color="primary"
+                  id="address"
                   name="address"
                   value={address}
                   onChange={handleInputChange}
@@ -251,6 +309,7 @@ const Student = (props: StudentDetail) => {
                   type="email"
                   fullWidth
                   color="primary"
+                  id="email"
                   name="email"
                   value={email}
                   onChange={handleInputChange}
@@ -262,6 +321,7 @@ const Student = (props: StudentDetail) => {
                   type="text"
                   fullWidth
                   color="primary"
+                  id="contact"
                   name="contact"
                   value={contact}
                   onChange={handleInputChange}
@@ -273,6 +333,7 @@ const Student = (props: StudentDetail) => {
                   type="text"
                   fullWidth
                   color="primary"
+                  id="username"
                   name="username"
                   value={username}
                   onChange={handleInputChange}
@@ -284,6 +345,7 @@ const Student = (props: StudentDetail) => {
                   type="password"
                   fullWidth
                   color="primary"
+                  id="password"
                   name="password"
                   value={password}
                   onChange={handleInputChange}
