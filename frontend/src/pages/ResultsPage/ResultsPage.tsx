@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import api from "../../api";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Result from "../../components/Result/Result";
 import { TextField } from "@mui/material";
 
@@ -37,7 +37,7 @@ const ResultsPage = () => {
   const searchResult = (event: any) => {
     event.preventDefault();
     if ((event.key = "Enter")) {
-      api.get(`result/${event.target.value}`).then((res) => {
+      api.get(`result/nic/${event.target.value}`).then((res) => {
         setAssignmentList(res.data.responseData.assignments);
         setProjectList(res.data.responseData.projects);
         setCourseworkList(res.data.responseData.courseworks);
