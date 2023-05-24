@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 
 type ModuleDetail = {
   _id: string;
@@ -49,6 +50,13 @@ const Module = (props: ModuleDetail) => {
       .delete(`batch/${batchId}`)
       .then((res) => {
         props.updateModuleList();
+        Swal.fire({
+          position: "top-end",
+          icon: "warning",
+          title: "Successfully Deleted..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.log(error);
