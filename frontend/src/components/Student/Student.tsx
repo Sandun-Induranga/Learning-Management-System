@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import { ChangeEvent, useEffect, useState } from "react";
 import api from "../../api";
+import Swal from "sweetalert2";
 
 type StudentDetail = {
   _id: string;
@@ -152,6 +153,13 @@ const Student = (props: StudentDetail) => {
       .then((res) => {
         console.log(res);
         props.updateStudentList();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully Updated..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -165,6 +173,13 @@ const Student = (props: StudentDetail) => {
       .then((res) => {
         console.log(res);
         props.updateStudentList();
+        Swal.fire({
+          position: "top-end",
+          icon: "warning",
+          title: "Successfully Deleted..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.log(error);
