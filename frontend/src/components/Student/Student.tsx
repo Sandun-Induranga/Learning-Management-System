@@ -266,10 +266,7 @@ const Student = (props: StudentDetail) => {
       >
         <Box sx={style}>
           <section className="w-full border rounded-b-lg text-xl flex flex-col justify-center items-center text-gray-700 sm:p-10 p-5">
-            <form
-              className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center"
-              // onSubmit={saveStudent}
-            >
+            <form className="w-full grid sm:grid-cols-2 gap-5 justify-between items-center">
               <ThemeProvider theme={theme}>
                 <TextField
                   label="Student NIC"

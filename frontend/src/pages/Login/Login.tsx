@@ -84,54 +84,58 @@ const Login = () => {
   };
 
   return (
-    <main className="flex flex-col justify-center items-center gap-10 h-screen">
-      <h1 className="text-4xl text-blue-500 font-semibold">Online Learning</h1>
-      <form
-        className="md:w-1/4 flex flex-col items-center gap-y-5"
-        onSubmit={userLogin}
-      >
-        <TextField
-          type="text"
-          label={
-            <span className="flex items-center gap-4">
-              <Person2 className="!text-4xl" />
-              Username
-            </span>
-          }
-          fullWidth
-          name="username"
-          id="username"
-          value={username}
-          onChange={handleInputChange}
-        ></TextField>
-        <TextField
-          type="password"
-          label={
-            <span className="flex items-center gap-4">
-              <Password className="!text-4xl" />
-              Password
-            </span>
-          }
-          fullWidth
-          name="password"
-          id="password"
-          value={password}
-          onChange={handleInputChange}
-        ></TextField>
-        <FormControlLabel
-          className="my-4"
-          control={<Checkbox />}
-          label="Remember Me"
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          fullWidth
-          className="!bg-gradient-to-r from-cyan-500 to-blue-500"
+    <main className="flex justify-center items-center h-screen">
+      <section className="flex flex-col justify-center items-center gap-y-10 border p-10 rounded-lg shadow-lg">
+        <h1 className="text-4xl text-blue-500 font-semibold">
+          Online Learning
+        </h1>
+        <form
+          className="w-full flex flex-col items-center gap-y-5"
+          onSubmit={userLogin}
         >
-          Login
-        </Button>
-      </form>
+          <TextField
+            type="text"
+            label={
+              <span className="flex items-center gap-4">
+                <Person2 className="!text-4xl" />
+                Username
+              </span>
+            }
+            fullWidth
+            name="username"
+            id="username"
+            value={username}
+            onChange={handleInputChange}
+          ></TextField>
+          <TextField
+            type="password"
+            label={
+              <span className="flex items-center gap-4">
+                <Password className="!text-4xl" />
+                Password
+              </span>
+            }
+            fullWidth
+            name="password"
+            id="password"
+            value={password}
+            onChange={handleInputChange}
+          ></TextField>
+          <FormControlLabel
+            className="my-4"
+            control={<Checkbox />}
+            label="Remember Me"
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            className="!bg-gradient-to-r from-cyan-500 to-blue-500"
+          >
+            Login
+          </Button>
+        </form>
+      </section>
     </main>
   );
 };
