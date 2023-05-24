@@ -199,6 +199,7 @@ const Announcements = () => {
             comments={announcement.comments}
             createdAt={announcement.createdAt}
             batch={announcement.batch}
+            updateAnnouncementList={getAllAnnouncements}
           />
         ))}
       </div>

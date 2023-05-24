@@ -39,6 +39,7 @@ const Announcement = (props: AnnouncementProps) => {
       .put(`announcement/${props.description}`, newAnnouncement)
       .then((res) => {
         console.log(res);
+        props.updateAnnouncementList();
         Swal.fire({
           position: "top-end",
           icon: "success",
