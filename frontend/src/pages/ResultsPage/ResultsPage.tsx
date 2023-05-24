@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import api from "../../api";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Result from "../../components/Result/Result";
 import { TextField } from "@mui/material";
 
@@ -34,6 +34,15 @@ const ResultsPage = () => {
     }
   };
 
+  const searchResult = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    api.get(`result/${event.target.value}`).then((res) => {
+      setAssignmentList(res.data.responseData.assignments);
+      setProjectList(res.data.responseData.projects);
+      setCourseworkList(res.data.responseData.courseworks);
+    });
+  };
+
   return (
     <>
       <Header />
@@ -43,6 +52,7 @@ const ResultsPage = () => {
             label="Enter NIC For Search..."
             type="search"
             className="lg:!mx-44"
+            onChange={searchResult}
           />
         ) : (
           <></>
