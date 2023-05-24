@@ -59,7 +59,7 @@ const ClassWorks = () => {
 
   const getAllClassWorks = () => {
     api
-      .get("classwork")
+      .get(`classwork/batch/${localStorage.getItem("currentBatch")}`)
       .then((res) => {
         setClassWorkList(res.data.responseData);
       })
