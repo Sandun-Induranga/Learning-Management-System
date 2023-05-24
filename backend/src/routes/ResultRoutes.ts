@@ -16,6 +16,7 @@ export default class ResultRoutes {
       "/:studentId",
       this.resultController.getAllResultsByStudentId
     );
+    this.router.get("/nic/:nic", this.resultController.getAllResultsByNic);
   };
 
   public getRouter = (): Router => {
