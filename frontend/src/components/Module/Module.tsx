@@ -49,6 +49,7 @@ const Module = (props: ModuleDetail) => {
     api
       .delete(`batch/${batchId}`)
       .then((res) => {
+        console.log(res);
         props.updateModuleList();
         Swal.fire({
           position: "top-end",
@@ -74,7 +75,15 @@ const Module = (props: ModuleDetail) => {
     api
       .put(`batch/${props._id}`, newModule)
       .then((res) => {
+        console.log(res);
         props.updateModuleList();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Successfully Updated..!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -89,16 +98,9 @@ const Module = (props: ModuleDetail) => {
     setModuleName(value);
   };
 
-  const editModule = (event: React.MouseEvent<HTMLElement>) => {
+  const editModule = () => {
     handleOpen();
-    api
-      .put(`batch/${props._id}`)
-      .then((res) => {
-        setModuleName(res.data.responseData.batchName);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    setModuleName(props.moduleName);
   };
 
   return (

@@ -61,6 +61,7 @@ const BatchPage = () => {
     api
       .post("batch", newBatch)
       .then((res) => {
+        console.log(res);
         Swal.fire({
           title: "Success!",
           text: "Successfully Saved..!",
