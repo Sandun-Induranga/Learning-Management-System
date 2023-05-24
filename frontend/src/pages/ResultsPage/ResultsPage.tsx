@@ -34,13 +34,15 @@ const ResultsPage = () => {
     }
   };
 
-  const searchResult = (event: ChangeEvent<HTMLInputElement>) => {
+  const searchResult = (event: any) => {
     event.preventDefault();
-    api.get(`result/${event.target.value}`).then((res) => {
-      setAssignmentList(res.data.responseData.assignments);
-      setProjectList(res.data.responseData.projects);
-      setCourseworkList(res.data.responseData.courseworks);
-    });
+    if ((event.key = "Enter")) {
+      api.get(`result/${event.target.value}`).then((res) => {
+        setAssignmentList(res.data.responseData.assignments);
+        setProjectList(res.data.responseData.projects);
+        setCourseworkList(res.data.responseData.courseworks);
+      });
+    }
   };
 
   return (
@@ -52,7 +54,7 @@ const ResultsPage = () => {
             label="Enter NIC For Search..."
             type="search"
             className="lg:!mx-44"
-            onChange={searchResult}
+            onKeyDown={searchResult}
           />
         ) : (
           <></>
