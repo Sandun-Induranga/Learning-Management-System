@@ -26,6 +26,7 @@ export default class AnswerRoutes {
     const upload = multer({ storage: storage });
 
     this.router.post("/", this.answerController.saveAnswer);
+    this.router.get("/", this.answerController.getAllAnswersByClasswork);
     this.router.get(
       "/:username/:classWorkId",
       this.answerController.getAnswersByUsernameAndClassWork

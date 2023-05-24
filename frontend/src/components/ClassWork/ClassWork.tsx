@@ -33,7 +33,17 @@ const ClassWork = (props: ClassWorkDetail) => {
 
   const getAllAnswers = () => {
     api
-      .get(`answer/${localStorage.getItem("currentUsername")}/${props._id}`)
+      .get(
+        `answer${
+          localStorage.getItem("currentRole") == "Student"
+            ? "/" + localStorage.getItem("currentUsername")
+            : ""
+        }${
+          localStorage.getItem("currentRole") == "Student"
+            ? "/" + props._id
+            : ""
+        }`
+      )
       .then((res) => {
         setAnswerList(res.data.responseData);
       });

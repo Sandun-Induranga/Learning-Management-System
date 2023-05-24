@@ -123,7 +123,7 @@ export default class ResultController {
             case "Project":
               projects.push(newResult);
               break;
-            case "coursework":
+            case "Quize":
               courseworks.push(newResult);
               break;
             default:

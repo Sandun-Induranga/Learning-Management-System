@@ -47,6 +47,26 @@ export default class AnswerController {
     }
   };
 
+  getAllAnswersByClasswork: RequestHandler = async (
+    req: Request,
+    res: Response
+  ): Promise<Response> => {
+    try {
+      let { classWorkId } = req.params;
+
+      let answers = await Answer.find({ classWorkId: classWorkId });
+
+      return res
+        .status(200)
+        .json({ message: "Successfully Loaded..!", responseData: answers });
+    } catch (error: unknown) {
+      if (error instanceof Error)
+        return res.status(500).json({ message: error.message });
+
+      return res.status(500).json({ message: "Unknown Error Occured..!" });
+    }
+  };
+
   getAnswersByUsernameAndClassWork: RequestHandler = async (
     req: Request,
     res: Response
