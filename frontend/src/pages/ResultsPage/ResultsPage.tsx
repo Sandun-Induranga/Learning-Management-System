@@ -23,13 +23,15 @@ const ResultsPage = () => {
   }, []);
 
   const getResults = () => {
-    api
-      .get(`result/${localStorage.getItem("currentStudentId")}`)
-      .then((res) => {
-        setAssignmentList(res.data.responseData.assignments);
-        setProjectList(res.data.responseData.projects);
-        setCourseworkList(res.data.responseData.courseworks);
-      });
+    if (localStorage.getItem("currentRole") == "Student") {
+      api
+        .get(`result/${localStorage.getItem("currentStudentId")}`)
+        .then((res) => {
+          setAssignmentList(res.data.responseData.assignments);
+          setProjectList(res.data.responseData.projects);
+          setCourseworkList(res.data.responseData.courseworks);
+        });
+    }
   };
 
   return (
