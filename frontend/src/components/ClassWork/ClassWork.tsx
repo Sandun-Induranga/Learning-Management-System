@@ -38,11 +38,7 @@ const ClassWork = (props: ClassWorkDetail) => {
           localStorage.getItem("currentRole") == "Student"
             ? "/" + localStorage.getItem("currentUsername")
             : ""
-        }${
-          localStorage.getItem("currentRole") == "Student"
-            ? "/" + props._id
-            : ""
-        }`
+        }${"/" + props._id}`
       )
       .then((res) => {
         setAnswerList(res.data.responseData);
