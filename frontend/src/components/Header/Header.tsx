@@ -7,6 +7,8 @@ import { useState } from "react";
 
 const Header = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
+  const activeStyle =
+    "bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full px-2 text-white";
 
   const openCloseMenu = () => {
     setOpen(!isOpen);
@@ -17,25 +19,60 @@ const Header = () => {
       <header className="w-full h-20 fixed px-10 sm:px-20 flex justify-between items-center shadow top-0 z-50 bg-white">
         <img src={logo} className="w-12" alt="" />
         <nav className="sm:flex gap-10 text-gray-700 hidden">
-          <NavLink to={"/student"}>Announcement</NavLink>
-          <NavLink to={"/student/class-work"}>Class Works</NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? activeStyle : "")}
+            to={"/student"}
+          >
+            Announcement
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? activeStyle : "")}
+            to={"/student/class-work"}
+          >
+            Class Works
+          </NavLink>
           {localStorage.getItem("currentRole") == "Teacher" ? (
-            <NavLink to={"/teacher/batch"}>Batches</NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeStyle : "")}
+              to={"/teacher/batch"}
+            >
+              Batches
+            </NavLink>
           ) : (
             <></>
           )}
-          <NavLink to={"/student/members"}>Members</NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? activeStyle : "")}
+            to={"/student/members"}
+          >
+            Members
+          </NavLink>
           {localStorage.getItem("currentRole") == "Teacher" ? (
-            <NavLink to={"/teacher/students"}>Students</NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeStyle : "")}
+              to={"/teacher/students"}
+            >
+              Students
+            </NavLink>
           ) : (
             <></>
           )}
           {localStorage.getItem("currentRole") == "Teacher" ? (
-            <NavLink to={"/modules"}>Modules</NavLink>
+            <NavLink
+              className={({ isActive }) => (isActive ? activeStyle : "")}
+              to={"/modules"}
+            >
+              Modules
+            </NavLink>
           ) : (
             <></>
           )}
-          <NavLink to={"/results"}>Results</NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? activeStyle : "")}
+            to={"/results"}
+          >
+            Results
+          </NavLink>
         </nav>
         <div className="hidden sm:flex justify-center items-center gap-2">
           <Avatar className="border" src={userImage}></Avatar>

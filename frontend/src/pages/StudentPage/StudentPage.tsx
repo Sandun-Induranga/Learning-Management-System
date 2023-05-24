@@ -12,6 +12,7 @@ import {
   createTheme,
 } from "@mui/material";
 import api from "../../api";
+import Swal from "sweetalert2";
 
 const theme = createTheme({
   palette: {
@@ -200,6 +201,13 @@ const StudentPage = () => {
           .then((res) => {
             getAllStudents();
             console.log(res);
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Successfully Saved..!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
           })
           .catch((error) => {
             console.log(error);
