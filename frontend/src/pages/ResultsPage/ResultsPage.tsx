@@ -2,6 +2,7 @@ import Header from "../../components/Header";
 import api from "../../api";
 import { useEffect, useState } from "react";
 import Result from "../../components/Result/Result";
+import { TextField } from "@mui/material";
 
 type ResultDetail = {
   studentId: string;
@@ -35,6 +36,15 @@ const ResultsPage = () => {
     <>
       <Header />
       <section className="mt-20 w-full p-10 sm:px-60 flex flex-col gap-10">
+        {localStorage.getItem("currentRole") == "Teacher" ? (
+          <TextField
+            label="Enter NIC For Search..."
+            type="search"
+            className="lg:!mx-44"
+          />
+        ) : (
+          <></>
+        )}
         <h1 className="text-2xl text-slate-700">Assignments</h1>
         <aside className="flex flex-col gap-4">
           {assingmentList.map((result) => (
